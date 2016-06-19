@@ -3,9 +3,10 @@
 module.exports = {
   mysql: {
     host: '127.0.0.1', 
-    user: 'root',
-    password: '',
-    database:'test', // 前面建的user表位于这个数据库中
+    user: 'dataDisplay',
+    password: '91c39254b901a03b5723a5effa206bc44d1ff038e9027183b1c141008f2b25cb',
+    database:'lgsafe',
     port: 3306
   }
 };
+
