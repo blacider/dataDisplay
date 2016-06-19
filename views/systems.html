@@ -31,47 +31,27 @@
                     <table class="table table-hover table-condensed" id="main-table">
                         <thead>
                             <tr>
-                                <th>单位名称</th>
-                                <th>应用名称</th>
-                                <th>数据集名称</th> 
-                                <th>表名称</th>
-                                <th>总条数</th>
-                                <th>今日更新条数</th>
+                                <th>id</th>
+                                <th>MAIN_PERSON</th>
+                                <th>CASE_MEMBER</th> 
+                                <th>MEMBER_TEL</th>
+                                <th>UNIT_PUNISH_MONEY</th>
+                                <th>CASE_NAME</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% for (items in tableData) {
+                                var item = tableData[items];
+                            %>
                             <tr>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
+                                <td><%=item["ID"]%></td>
+                                <td><%=item["MAIN_PERSON"]%></td>
+                                <td><%=item["CASE_MEMBER"]%></td>
+                                <td><%=item["MEMBER_TEL"]%></td>
+                                <td><%=item["UNIT_PUNISH_MONEY"]%></td>
+                                <td><%=item["CASE_NAME"]%></td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
