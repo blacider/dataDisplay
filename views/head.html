@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="css/common.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/chosen.min.css">
+    <script src="js/chosen.jquery.min.js"></script>
 </head>
 <body>
+    <script>
+        $(document).ready(function() {
+            $(".chosen-select").chosen({
+                no_results_text: "没有",
+                width:"100%"
+            });
+        });
+    </script>
     <header class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

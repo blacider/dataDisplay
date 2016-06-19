@@ -50,3 +50,10 @@ thead {
 .footer p {
     text-align: center;
 }
+.chosen-container-single .chosen-single div b {
+    background: url(chosen-sprite.png) no-repeat 0 6px !important;
+}
+.chosen-container-single .chosen-single {
+    padding: 5px 0 0 8px !important;
+    height: 34px !important;
+}
