@@ -8,7 +8,7 @@
     * 方法二:
         1. `npm install`
         2. `npm install supervisor -g`
-        3. `supervisor .bin/www`
+        3. `supervisor ./bin/www`
 ## 目录结构
     * bin: 执行目录
     * conf: mysql 配置文件
@@ -18,3 +18,5 @@
     * util: mysql 操作工具库
     * views: 你猜
     * app.js： express主要配置文件
+## lib
+    * express和 mysql 交互: http://www.tuicool.com/articles/JfqYN3I
