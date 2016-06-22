@@ -1,28 +1,19 @@
 <% include head.html %>
-<link rel="stylesheet" type="text/css" href="css/sidebar.css">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 sidebar z-depth-1 sidebar-font">
-              <ul class="nav nav-sidebar">
-                <li>
-                  <a href="#">工  商</a>
-                </li>
-                <li>
-                  <a href="#">审  批</a>
-                </li>
-                <li>
-                  <a href="#">监  管</a>
-                </li>
-                <li>
-                  <a href="#">水  费</a>
-                </li>
-                <li>
-                  <a href="#">电  费</a>
-                </li>
+            <div class="col-md-2">
+              <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">安监</a></li>
+                <li role="presentation"><a href="#">劳监</a></li>
+                <li role="presentation"><a href="#">环保</a></li>
+                <li role="presentation"><a href="#">药监</a></li>
+                <li role="presentation"><a href="#">审批</a></li>
+                <li role="presentation"><a href="#">水费</a></li>
+                <li role="presentation"><a href="#">电费</a></li>
               </ul>
             </div>
         
-            <div class="row col-md-10 col-md-offset-2">
+            <div class="col-md-10">
                 <div class="col-md-12">
                     <div class="well well-sm">
                         <h4>系统选择</h4>
@@ -79,6 +70,10 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+<% include foot.html %>
 
         </div>
     </div>
