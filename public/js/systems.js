@@ -6,6 +6,7 @@
                 var url = $(event.target).data("url");
                 $("#systems-nav .active").removeClass('active');
                 $(event.target).closest('li').addClass('active');
+                showLoading();
                 $.ajax({
                     url: url,
                     type: 'GET',
@@ -15,6 +16,7 @@
                 .done(function(result) {
                     $("#main-table").replaceWith(result);
                     $("#table-title").text($(event.target).text());
+                    hideLoading();
                 });
             });
         })();
