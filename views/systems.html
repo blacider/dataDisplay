@@ -1,22 +1,23 @@
 <% include head.html %>
+<script src="js/systems.js"></script>
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-              <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#">安监</a></li>
-                <li role="presentation"><a href="#">劳监</a></li>
-                <li role="presentation"><a href="#">环保</a></li>
-                <li role="presentation"><a href="#">药监</a></li>
-                <li role="presentation"><a href="#">审批</a></li>
-                <li role="presentation"><a href="#">水费</a></li>
-                <li role="presentation"><a href="#">电费</a></li>
+              <ul class="nav nav-pills nav-stacked" id="systems-nav">
+                <li role="presentation" class="active"><a href="#" data-url="/aqjg">安监</a></li>
+                <li role="presentation"><a href="#" data-url="/ldjg">劳监</a></li>
+                <li role="presentation"><a href="#" data-url="/hbjg">环保</a></li>
+                <li role="presentation"><a href="#" data-url="/syjg">药监</a></li>
+                <li role="presentation"><a href="#" data-url="/sp">审批</a></li>
+                <li role="presentation"><a href="#" data-url="/sf">水费</a></li>
+                <li role="presentation"><a href="#" data-url="/df">电费</a></li>
               </ul>
             </div>
         
             <div class="col-md-10">
                 <div class="col-md-12">
                     <div class="well well-sm">
-                        <h4>总览</h4>
+                        <h4 id="table-title">安监</h4>
                         <table class="table table-hover table-condensed" id="main-table">
                             <thead>
                                 <tr>

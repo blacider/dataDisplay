@@ -6,7 +6,7 @@ var $util = require('../util/util');
 var pool  = mysql.createPool($util.extend({}, $conf.mysql));
 
 
-var queryAll: 'select * from ';
+var queryAll = 'select * from ';
 
 module.exports = {
     queryAll: function (tableName, callback) {
