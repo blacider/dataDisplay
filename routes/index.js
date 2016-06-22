@@ -45,6 +45,18 @@ router.get('/case', function(req, res, next) {
     });
 });
 
+router.get('/table', function(req, res, next) {
+    var table = [{'name':'n','age':'11'},
+             {'name':'r','age':'12'},
+             {'name':'p','age':'13'}],
+        tableNames = ['n', 'r', 'p'];
+    res.render('table', {
+        title: '总览',
+        table: table,
+        tableNames:tableNames
+    });
+});
+
 
 
 module.exports = router;
