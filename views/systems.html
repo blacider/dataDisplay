@@ -19,30 +19,7 @@
                     <div class="well well-sm">
                         <h4 id="table-title">安监</h4>
                         <table class="table table-hover table-condensed" id="main-table">
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>MAIN_PERSON</th>
-                                    <th>CASE_MEMBER</th> 
-                                    <th>MEMBER_TEL</th>
-                                    <th>UNIT_PUNISH_MONEY</th>
-                                    <th>CASE_NAME</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% for (items in tableData) {
-                                    var item = tableData[items];
-                                %>
-                                <tr>
-                                    <td><%=item["ID"]%></td>
-                                    <td><%=item["MAIN_PERSON"]%></td>
-                                    <td><%=item["CASE_MEMBER"]%></td>
-                                    <td><%=item["MEMBER_TEL"]%></td>
-                                    <td><%=item["UNIT_PUNISH_MONEY"]%></td>
-                                    <td><%=item["CASE_NAME"]%></td>
-                                </tr>
-                                <% } %>
-                            </tbody>
+                            
                         </table>
                     </div>
                 </div>

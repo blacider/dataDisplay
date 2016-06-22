@@ -18,5 +18,6 @@
                 });
             });
         })();
+        $("#systems-nav .active a").click();
     });
 })(window);
