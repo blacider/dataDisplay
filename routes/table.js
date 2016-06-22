@@ -66,7 +66,7 @@ router.get('/df', function(req, res, next) {
 });
 
 router.get('/sf', function(req, res, next) {
-    getTable('GZLG_BD.T_WATER_NRESIDENT', res, {
+    getTable('T_WATER_NRESIDENT', res, {
         MONTH:"抄表月份",
         FN:"档案号",
         NAME:"客户名称",
