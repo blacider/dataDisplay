@@ -183,3 +183,13 @@ li {
 .hidden {
     display: none;
 }
+
+.loading {
+    margin-left: 48%;
+    margin-top: 288px;
+}
+
+.loading img {
+    height: 50px;
+    width: 50px;
+}
