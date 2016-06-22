@@ -183,3 +183,6 @@ li {
 .hidden {
     display: none;
 }
+#main-table th {
+    word-break: keep-all;
+}
