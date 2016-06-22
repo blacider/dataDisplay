@@ -26,7 +26,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'secret'
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: false
 }));
 
 app.use(function(req, res, next) {
@@ -36,6 +38,9 @@ app.use(function(req, res, next) {
     if (url != "/login" && url != "/signup")
       return res.redirect("/login");
   } else {
+    if (url == "/login") {
+      return res.redirect("/");
+    }
     res.locals.isLogin = true;
     res.locals.username = req.session.name;
   }
