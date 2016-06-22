@@ -11,7 +11,7 @@
     <tbody>
         <%for (tableData in table) {%>
         <tr>
-        <% for (items in table[tableData]) {
+        <% for (items in tableNames) {
             var item = table[tableData][items];
         %>
             <td><%=item%></td>

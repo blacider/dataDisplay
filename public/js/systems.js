@@ -3,10 +3,9 @@
         (function bendEvent() {
             $("#systems-nav").delegate('a', 'click', function(event) {
                 event.preventDefault();
-                //var url = $(event.target).data("url");
+                var url = $(event.target).data("url");
                 $("#systems-nav .active").removeClass('active');
                 $(event.target).closest('li').addClass('active');
-                var url = "/table";
                 $.ajax({
                     url: url,
                     type: 'GET',
