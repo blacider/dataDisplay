@@ -3,10 +3,11 @@
 var mysql = require('mysql');
 var $conf = require('../conf/db');
 var $util = require('../util/util');
+var logger = require("../../util/logger.js");
 var $sql = {
     save:"INSERT INTO user(id,name,pass) VALUES(0,?,?)",
     queryUserByName: 'SELECT * FROM user WHERE name = ?',
-    queryUserNumByName: "SELECT * FROM user WHERE username = ?"
+    queryUserNumByName: "SELECT * FROM user WHERE name = ?"
 };
 
 // 使用连接池，提升性能
@@ -18,7 +19,6 @@ function User(user) {
     this.pass = user.pass;
 }
 module.exports = User;
-
 User.prototype.save = function(callback) {
     var user = {
         name : this.name,
@@ -37,7 +37,7 @@ User.prototype.save = function(callback) {
             connection.release();
         });
     });   
-}
+};
 
 User.queryUserByName = function(name, callback) {
     pool.getConnection(function(err, connection) {
@@ -49,11 +49,12 @@ User.queryUserByName = function(name, callback) {
                 });
                 return;
             }
+            logger.log("queryUserNumByName:result = " + JSON.stringify(result));
             callback(err, result);
             connection.release();
         });
     });  
-}
+};
 User.queryUserNumByName = function(name, callback) {
     pool.getConnection(function(err, connection) {
         connection.query($sql.queryUserNumByName, [name], function(err, result) {
@@ -64,8 +65,9 @@ User.queryUserNumByName = function(name, callback) {
                 });
                 return;
             }
+            logger.log("queryUserByName:result = " + JSON.stringify(result));
             callback(err, result);
             connection.release();
         });
     });  
-}
+};

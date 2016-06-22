@@ -17,7 +17,10 @@ var jsonWrite = function (res, ret) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: '总览' , page:1});
+    res.render('index', {
+        title: '总览',
+        page:1
+    });
 });
 
 

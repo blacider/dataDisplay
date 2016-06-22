@@ -3,6 +3,7 @@
 var mysql = require('mysql');
 var $conf = require('../conf/db');
 var $util = require('../util/util');
+
 var $sql = {
   queryAll: 'select * from lgsafe.case',
   // insert:'INSERT INTO user(id, name, age) VALUES(0,?,?)',

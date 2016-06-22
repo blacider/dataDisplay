@@ -177,6 +177,9 @@ header .right li{
 header ul li a:hover {
     color: #D4C8C8;
 }
+.container {
+    position: relative;
+}
 li {
     text-decoration: none;
     list-style: none;
@@ -192,14 +195,13 @@ li {
 }
 #dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 45px;
     line-height: normal;
-    right: 0;
+    right:33px;
     text-align: center;
     z-index: 100;
     width: 160px;
     padding-top: 5px;
-    padding-bottom: 5px;
     margin-top: 2px;
     background-color: #fff;
     background-clip: padding-box;

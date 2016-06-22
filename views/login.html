@@ -1,3 +1,24 @@
+ <% include head.html %>
+ <script>
+     var error = "<%=error%>";
+     $(document).ready(function() {
+         if (error != '') {
+            $.jGrowl(error, {
+                life: 3000
+            });
+         }
+         $("#signup-form").submit(function(event) {
+            if (this.password.value != this.password_.value) {
+                $.jGrowl("两次密码不一致", {
+                    life: 3000
+                });
+                return false;
+            }
+            return true;
+         });
+     });
+ </script>
+    <h4 style="text-align:center;margin-top:200px">请登录后查看系统</h4>
     <div class="modal-fog">
     </div>
     <div class="modal" id="login">
@@ -6,14 +27,13 @@
         <div class="modal-head">
             <h1>登录</h1>
         </div>
-        <form id="login-form" method="post">
+        <form id="login-form" action="/login" method="post">
             <div class="border-wrap">
                 <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
                 <input type="password" placeholder="请输入密码" required name="password">
             </div>
-            <input type="text" name="history" style="display:none">
             <input class="login-submit" type="submit" value="登录">
         </form>
     </div>
@@ -23,16 +43,18 @@
         <div class="modal-head">
             <h1>注册</h1>
         </div>
-        <form action="#" method="post">
+        <form id="signup-form" action="/signup" method="post">
             <div class="border-wrap">
                 <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请输入密码">
+                <input type="password" placeholder="请输入密码" required name="password">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请确认密码" required name="password">
+                <input type="password" placeholder="请确认密码" required name="password_">
             </div>
             <input class="login-submit" type="submit" value="注册">
         </form>
     </div>
+</body>
+</html>

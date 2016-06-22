@@ -26,13 +26,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false
+  secret: 'secret'
 }));
 
+app.use(function(req, res, next) {
+  var url = req.originalUrl;
+  if (!req.session.hasOwnProperty("name")) {
+    res.locals.isLogin = false;
+    if (url != "/login" && url != "/signup")
+      return res.redirect("/login");
+  } else {
+    res.locals.isLogin = true;
+    res.locals.username = req.session.name;
+  }
+  next();
+});
+
 app.use('/', routes);
-app.use('/users', users);
+app.use('/', users);
 
 
 // catch 404 and forward to error handler

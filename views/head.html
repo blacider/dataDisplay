@@ -8,6 +8,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/chosen.min.css">
+    <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
+    <script src="js/jquery.jgrowl.min.js"></script>
     <script src="js/chosen.jquery.min.js"></script>
     <script src="js/common.js"></script>
 </head>
@@ -59,6 +61,7 @@
                     </a>
                 </li>
             </ul>
+        <% if (!isLogin) {%>
             <ul class="right nav navbar-nav login-signup">
                 <li>
                     <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
@@ -67,9 +70,10 @@
                     <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
                 </li>
             </ul>
+        <% } else {%>
             <ul class="right nav navbar-nav">
                 <li>
-                    <a id="user-button" href="javascript:void(0)">blacider</a>
+                    <a id="user-button" href="javascript:void(0)"><%= username%></a>
                 </li>
             </ul>
             <div id="dropdown-menu" class="hidden">
@@ -77,5 +81,6 @@
                     <a href="/logout"><li>登出</li></a>
                 </ul>
             </div>
+        <%}%>
         </div>
     </header>
