@@ -48,6 +48,8 @@ router.get('/case', function(req, res, next) {
 router.get('/table', function(req, res, next) {
     var table = [{'name':'n','age':'11'},
              {'name':'r','age':'12'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'},
              {'name':'p','age':'13'}],
         tableNames = {name: '姓名',
                       age:'年龄'};

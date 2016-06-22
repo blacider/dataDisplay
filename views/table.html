@@ -1,0 +1,22 @@
+<table class="table table-hover table-condensed" id="main-table">
+    <thead>
+        <tr>
+        <% for (items in tableNames) {
+            var item = tableNames[items];
+        %>
+                <td><%=item%></td>
+        <%}%>
+        </tr>
+    </thead>
+    <tbody>
+        <%for (tableData in table) {%>
+        <tr>
+        <% for (items in table[tableData]) {
+            var item = table[tableData][items];
+        %>
+            <td><%=item%></td>
+        <%}%>
+        </tr>
+        <%}%>
+    </tbody>
+</table>
