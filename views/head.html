@@ -47,7 +47,7 @@
                 <%}%>
                     <a href="/system">
                         <span class="glyphicon glyphicon-th-large"></span>
-                        各系统
+                        大数据共享
                     </a>
                 </li>
                 <% if (page == 3) { %>
@@ -57,7 +57,7 @@
                 <%}%>
                     <a href="/com">
                         <span class="glyphicon glyphicon-th"></span>
-                        企业
+                        一企一档
                     </a>
                 </li>
             </ul>
@@ -73,14 +73,15 @@
         <% } else {%>
             <ul class="right nav navbar-nav">
                 <li>
-                    <a id="user-button" href="javascript:void(0)"><%= username%></a>
+                      <a href="javascript:void(0)" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= username%>
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="/logout">登出</a></li>
+                      </ul>
                 </li>
             </ul>
-            <div id="dropdown-menu" class="hidden">
-                <ul>
-                    <a href="/logout"><li>登出</li></a>
-                </ul>
-            </div>
         <%}%>
         </div>
     </header>

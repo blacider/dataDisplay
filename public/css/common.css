@@ -169,11 +169,7 @@ input {
 header .right{
     float: right;
 }
-header .right li{
-    float: left;
-    margin-right: 10px;
-    font-size: 15px;
-}
+
 header ul li a:hover {
     color: #D4C8C8;
 }
@@ -184,38 +180,6 @@ li {
     text-decoration: none;
     list-style: none;
 }
-#dropdown-menu li {
-    color: black;
-}
-#dropdown-menu li:hover {
-    background-color: #4078c0;
-}
 .hidden {
     display: none;
-}
-#dropdown-menu {
-    position: absolute;
-    top: 45px;
-    line-height: normal;
-    right:33px;
-    text-align: center;
-    z-index: 100;
-    width: 160px;
-    padding-top: 5px;
-    margin-top: 2px;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-}
-#dropdown-menu:after {
-    top: -14px;
-    right: 10px;
-    left: auto;
-    border: 7px solid transparent;
-    border-bottom-color: #fff;
-    position: absolute;
-    display: inline-block;
-    content: "";
 }

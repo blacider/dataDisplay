@@ -1,61 +1,68 @@
 <% include head.html %>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="well well-sm">
-                    <h4>系统选择</h4>
-                    <form>
-                        <div class="col-md-5 form-group">
-                            <div class="input-group">
-                                <div class="input-group-addon">系统</div>
-                                <select class="col-md-4 form-control chosen-select" name="year">
-                                    <option value="2">安监</option>
-                                </select>
+            <div class="row col-md-2">
+                
+            </div>
+        
+            <div class="row col-md-10">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <h4>系统选择</h4>
+                        <form>
+                            <div class="col-md-5 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">系统</div>
+                                    <select class="col-md-4 form-control chosen-select" name="year">
+                                        <option value="2">安监</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-prepend btn-group">
-                                <div class="controls">
-                                    <div class="term-btn-group btn-group">
-                                      <button value="1" type="button" class="btn btn-primary">查询</button>
+                            <div class="form-group">
+                                <div class="input-prepend btn-group">
+                                    <div class="controls">
+                                        <div class="term-btn-group btn-group">
+                                          <button value="1" type="button" class="btn btn-primary">查询</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <h4>总览</h4>
+                        <table class="table table-hover table-condensed" id="main-table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>MAIN_PERSON</th>
+                                    <th>CASE_MEMBER</th> 
+                                    <th>MEMBER_TEL</th>
+                                    <th>UNIT_PUNISH_MONEY</th>
+                                    <th>CASE_NAME</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (items in tableData) {
+                                    var item = tableData[items];
+                                %>
+                                <tr>
+                                    <td><%=item["ID"]%></td>
+                                    <td><%=item["MAIN_PERSON"]%></td>
+                                    <td><%=item["CASE_MEMBER"]%></td>
+                                    <td><%=item["MEMBER_TEL"]%></td>
+                                    <td><%=item["UNIT_PUNISH_MONEY"]%></td>
+                                    <td><%=item["CASE_NAME"]%></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="well well-sm">
-                    <h4>总览</h4>
-                    <table class="table table-hover table-condensed" id="main-table">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>MAIN_PERSON</th>
-                                <th>CASE_MEMBER</th> 
-                                <th>MEMBER_TEL</th>
-                                <th>UNIT_PUNISH_MONEY</th>
-                                <th>CASE_NAME</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% for (items in tableData) {
-                                var item = tableData[items];
-                            %>
-                            <tr>
-                                <td><%=item["ID"]%></td>
-                                <td><%=item["MAIN_PERSON"]%></td>
-                                <td><%=item["CASE_MEMBER"]%></td>
-                                <td><%=item["MEMBER_TEL"]%></td>
-                                <td><%=item["UNIT_PUNISH_MONEY"]%></td>
-                                <td><%=item["CASE_NAME"]%></td>
-                            </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
         </div>
     </div>
 <% include foot.html %>

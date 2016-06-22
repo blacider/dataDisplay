@@ -19,9 +19,6 @@
                     opacity:0
                 });
             });
-            $("#user-button").click(function(event) {
-                $("#dropdown-menu").removeClass('hidden');
-            });
             $(window).click(function(event) {
                 if (event.target.id != "user-button") {
                     $("#dropdown-menu").addClass('hidden');
