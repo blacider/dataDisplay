@@ -46,17 +46,13 @@ router.post('/login', function(req, res, next) {
     logger.log("/login" + JSON.stringify(req.body));
     userDao.queryUserNumByName(req.body.name, function(err, result) {
         if (result == 0) {
-            res.json({
-                code:0,
-                msg:"请输入正确用户名"
-            });
+            req.session.error = "请输入正确用户名";
+            res.redirect("/login");
         } else {
             userDao.queryUserByName(req.body.name, function(err, result) {
                 if (result.pass != req.body.pass) {
-                    res.json({
-                        code:-1,
-                        msg:"密码不正确"
-                    });
+                    req.session.error = "密码不正确";
+                    res.redirect("/login");
                 } else {
                     req.session.name = req.body.name;
                     res.redirect("/");
