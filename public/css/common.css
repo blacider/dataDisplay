@@ -57,3 +57,163 @@ thead {
     padding: 5px 0 0 8px !important;
     height: 34px !important;
 }
+.modal-fog {
+    background-color: #000;
+    opacity:0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1031;
+    overflow: auto;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+}
+.border-wrap {
+    border-bottom: 1px solid #eee;
+}
+.border-wrap:first-child {
+    border-top: 1px solid #eee;
+}
+.modal {
+    z-index: 1032;
+    position: absolute;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+    margin: auto;
+    animation-name:modal;
+    animation-duration:600ms;
+    animation-timing-function: ease-in-out;
+     -webkit-transition: .3s ease-out; 
+    transition: .3s ease-out;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+    background-color: white;
+    opacity: 1;
+    display: none;
+    border: 1px solid #cbcbcb;
+}
+@keyframes modal{
+
+    0% {transform-origin: 50% 50%;transform: rotate3d(0, 1, 0, 720deg) rotateZ(45deg) scale(0);}
+
+    100% {transform: rotate3d(0, 1, 0, 0) rotateZ(0) scale(1);}
+
+}
+.modal-head {
+    margin: 40px auto 40px;
+    text-align: center;
+}
+#login {
+    width: 300px;
+    height: 320px;
+}
+#signin {
+    width: 300px;
+    height: 375px;
+}
+.icon {
+    background-position: -37px -76px;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/icons.png);
+}
+.close {
+    right: 10px;
+    opacity: .2;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+}
+.close:hover {
+    opacity: .3;
+}
+.login-submit {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 80%;
+    margin: 28px auto;
+    background: #eb6120;
+    color: white;
+    border-bottom: 3px solid #C1480E;
+    border-top: 3px solid #eb6120;
+}
+.login-submit:hover {
+    border-bottom: 3px solid #eb6120;
+}
+input {
+    border:none;
+    padding: 15px 8px;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.modal-body {
+    margin: 30px 20px auto 20px;
+}
+.button:hover {
+    opacity:0.75;
+}
+header .right{
+    float: right;
+}
+header .right li{
+    float: left;
+    margin-right: 10px;
+    font-size: 15px;
+}
+header ul li a:hover {
+    color: #D4C8C8;
+}
+li {
+    text-decoration: none;
+    list-style: none;
+}
+#dropdown-menu li {
+    color: black;
+}
+#dropdown-menu li:hover {
+    background-color: #4078c0;
+}
+.hidden {
+    display: none;
+}
+#dropdown-menu {
+    position: absolute;
+    top: 100%;
+    line-height: normal;
+    right: 0;
+    text-align: center;
+    z-index: 100;
+    width: 160px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+#dropdown-menu:after {
+    top: -14px;
+    right: 10px;
+    left: auto;
+    border: 7px solid transparent;
+    border-bottom-color: #fff;
+    position: absolute;
+    display: inline-block;
+    content: "";
+}

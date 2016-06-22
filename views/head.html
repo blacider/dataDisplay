@@ -9,6 +9,7 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/chosen.min.css">
     <script src="js/chosen.jquery.min.js"></script>
+    <script src="js/common.js"></script>
 </head>
 <body>
     <script>
@@ -58,5 +59,23 @@
                     </a>
                 </li>
             </ul>
+            <ul class="right nav navbar-nav login-signup">
+                <li>
+                    <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
+                </li>
+                <li>
+                    <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
+                </li>
+            </ul>
+            <ul class="right nav navbar-nav">
+                <li>
+                    <a id="user-button" href="javascript:void(0)">blacider</a>
+                </li>
+            </ul>
+            <div id="dropdown-menu" class="hidden">
+                <ul>
+                    <a href="/logout"><li>登出</li></a>
+                </ul>
+            </div>
         </div>
     </header>

@@ -3,23 +3,16 @@
 var mysql = require('mysql');
 var $conf = require('../conf/db');
 var $util = require('../util/util');
-var $sql = require('./caseSqlMapping');
+var $sql = {
+  queryAll: 'select * from lgsafe.case',
+  // insert:'INSERT INTO user(id, name, age) VALUES(0,?,?)',
+  // update:'update user set name=?, age=? where id=?',
+  // delete: 'delete from user where id=?',
+  queryById: 'select * from lgsafe.case where id=?'
+};
 
 // 使用连接池，提升性能
 var pool  = mysql.createPool($util.extend({}, $conf.mysql));
-
-// 向前台返回JSON方法的简单封装
-var jsonWrite = function (res, ret) {
-    if(typeof ret === 'undefined') {
-        res.json({
-            code:'1',
-            msg: '操作失败'
-        });
-    } else {
-        res.json(ret);
-    }
-};
-
 
 module.exports = {
     // add: function (req, res, next) {
@@ -101,10 +94,11 @@ module.exports = {
         });
     },
     queryAll: function (callback) {
+        console.log($sql.queryAll);
         pool.getConnection(function(err, connection) {
             console.log($sql.queryAll);
             connection.query($sql.queryAll, function(err, result) {
-                callback(result);
+                callback(err, result);
                 connection.release();
             });
         });

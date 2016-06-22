@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/system', function(req, res, next) {
-    caseDao.queryAll(function(results) {
+    caseDao.queryAll(function(err, results) {
         res.render('systems', { title: '系统' , page:2, tableData:results});
     });
 });
@@ -33,8 +33,12 @@ router.get('/com', function(req, res, next) {
 });
 
 router.get('/case', function(req, res, next) {
-    caseDao.queryAll(function(results) {
-        res.json(results);
+    var re_ = [1];
+    caseDao.queryAll(function(err, results) {
+        if (!err) {
+            console.log(err);
+            res.json(results);
+        }
     });
 });
 
