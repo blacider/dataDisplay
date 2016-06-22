@@ -26,3 +26,5 @@ router.get('/hbjg', function(req, res, next) {
 router.get('/syjg', function(req, res, next) {
     getTable('B_CY_RC_J_XCJC', res);
 });
+
+module.exports = router;
