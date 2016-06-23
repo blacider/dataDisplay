@@ -48,14 +48,24 @@ router.get('/case', function(req, res, next) {
 router.get('/table', function(req, res, next) {
     var table = [{'name':'n','age':'11'},
              {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
              {'name':'p','age':'13'},
              {'name':'p','age':'13'},
              {'name':'p','age':'13'}],
         tableNames = {name: '姓名',
                       age:'年龄'};
+    var current=Number(req.query.p);
+    var total = 100;
     res.render('table', {
         title: '总览',
         table: table,
+        page:1,
+        total :total,
+        current:current,
         tableNames:tableNames
     });
 });

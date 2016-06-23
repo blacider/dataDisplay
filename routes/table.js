@@ -3,19 +3,24 @@ var router = express.Router();
 var mysqlDao = require("../modal/dao/mysqlDao.js");
 
 
-function getTable(tableName, res, tableNames) {
+function getTable(tableUrl, current, total, tableName, res, tableNames) {
 	mysqlDao.queryAll(tableName, function(err, results) {
         if (!err) {
             res.render('table', {
                     title: '总览',
                     table: results,
-                    tableNames:tableNames
+                    tableNames:tableNames,
+                    current:current,
+                    total:total,
+                    tableUrl:tableUrl
                 });
         }
     });
 }
 router.get('/ldjg', function(req, res, next) {
-    getTable('LDZF_CASE', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/ldjg', current, total, 'LDZF_CASE', res, {
         ORG_CODE:"所属中队",
         CASE_TYPE:"基本情况-案件类型（案由）",
         CASE_AMT:"基本情况-涉案金额",
@@ -26,7 +31,9 @@ router.get('/ldjg', function(req, res, next) {
 });
 
 router.get('/aqjg', function(req, res, next) {
-    getTable('LGSAFE_CASE', res,{
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/aqjg', current, total, 'LGSAFE_CASE', res,{
         CREATOR:"创建者",
         MAIN_PERSON:"主要人物",
         CASE_NAME:"案件名",
