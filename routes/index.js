@@ -30,34 +30,12 @@ router.get('/system', function(req, res, next) {
     });
 });
 
-var test = [{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"},
-{name:"企业1", people:"祥俊", address:"黄土高坡"}
-];
+
 router.get('/com', function(req, res, next) {
     var current = 1;
     var name = "";
     dataDao.queryAllByConName(name,function(err,results) {
-        results = test;
+        // results = test;
         console.log(results);
         var start = (current-1)*10;
         var total = Math.ceil(results.length/10);
@@ -75,7 +53,7 @@ router.get('/comtable', function(req, res, next) {
     var current = Number(req.query['p']);
     var name = req.query['name'];
     dataDao.queryAllByConName(name,function(err,results) {
-        results = test;
+        // results = test;
         console.log(results);
         var start = (current-1)*10;
         var total = Math.ceil(results.length/10);
