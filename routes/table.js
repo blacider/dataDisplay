@@ -44,7 +44,9 @@ router.get('/aqjg', function(req, res, next) {
 });
 
 router.get('/hbjg', function(req, res, next) {
-    getTable('T_YYYD_LA_MAIN', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/hbjq', current, total, 'T_YYYD_LA_MAIN', res, {
         UNDERTAKEMAN:"承办人",
         STARTTIME:"立案时间",
         PARTY:"当事人",
@@ -55,7 +57,9 @@ router.get('/hbjg', function(req, res, next) {
 });
 
 router.get('/syjg', function(req, res, next) {
-    getTable('B_CY_RC_J_XCJC', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/syjq', current, total, 'B_CY_RC_J_XCJC', res, {
         JCQYMC:"公司名称",
         JCDD:"公司地址",
         DH:"电话"
@@ -63,7 +67,9 @@ router.get('/syjg', function(req, res, next) {
 });
 
 router.get('/df', function(req, res, next) {
-    getTable('T_ELECTRICITY', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/df', current, total, 'T_ELECTRICITY', res, {
         MONTH:"抄表月份",
         UNIT:"单位",
         CODE:"工代号",
@@ -73,7 +79,9 @@ router.get('/df', function(req, res, next) {
 });
 
 router.get('/sf', function(req, res, next) {
-    getTable('T_WATER_NRESIDENT', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('sf', current, total, 'T_WATER_NRESIDENT', res, {
         MONTH:"抄表月份",
         FN:"档案号",
         NAME:"客户名称",
@@ -83,7 +91,9 @@ router.get('/sf', function(req, res, next) {
 });
 
 router.get('/sp', function(req, res, next) {
-    getTable('V_LZCITY_APPROVE_CONTROL_INFO', res, {
+    var current=Number(req.query.p);
+    var total = 100;
+    getTable('/sp', current, total, 'V_LZCITY_APPROVE_CONTROL_INFO', res, {
         BEGIN_DATE:"开始时间",
         ACCEPT_DATE:"受理时间",
         APPROVE_ITEM:"流水号",
