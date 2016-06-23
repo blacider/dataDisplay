@@ -34,7 +34,7 @@
         </table>
     </div>
     <div style="text-align:center">
-        <ul class="pagination" data-url="<%=tableUrl%>">
+        <ul id="pagination" class="pagination" data-url="<%=tableUrl%>">
           <li <%var current_ = current; if (current == 1) {%>class="disabled"<%}%>><a data-url="<%=current-1%>" href="#">&laquo;</a></li>
           <li><a href="#" data-url="<%=1%>">首页</a></li>
           <% if (current != 1) {%>
