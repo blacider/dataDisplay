@@ -17,10 +17,10 @@
                 });
             };
             $("#systems-nav").delegate('a', 'click', function(event) {
-                var url = $(event.target).data("url");
+                var url = $(event.target).closest('a').data("url");
                 $("#systems-nav .active").removeClass('active');
                 $(event.target).closest('li').addClass('active');
-                $("#table-title").text($(event.target).text());
+                $("#table-title").text($(event.target).closest('a').text());
                 var p = 1;
                 getTable(event, url, p, function(){});
             });
@@ -31,7 +31,8 @@
                 getTable(event, url, p, function(){});
             });
             $(".panel").delegate('#btn-toolbar a', 'click', function(event) {
-                var url = $(event.target).data("url");
+                var url = $(event.target).closest('a').data("url");
+                console.log(url);
                 var index = $(event.target).closest('li').index();
                 $("#table-title").text("监管");
                 var p = 1;
