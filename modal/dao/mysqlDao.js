@@ -9,15 +9,15 @@ var pool  = mysql.createPool($util.extend({}, $conf.mysql));
 
 var sql = {
     queryAll:"select * from ?",
-    queryNum:"select count(*) from"
+    queryNum:"select count(*) from "
 };
 
 
 module.exports = {
     queryAll: function (tableName,current, callback) {
-    	console.log(new Date(), current);
+    	//console.log(new Date(), current);
         pool.getConnection(function(err, connection) {
-        	console.log(new Date(), current);
+        	//console.log(new Date(), current);
         	itemNum = (current-1)*10;
         	querySQL = "select * from " + tableName + " limit " + itemNum + ", 10";
             connection.query(querySQL, function(err, result) {

@@ -5,9 +5,12 @@ var mysqlDao = require("../modal/dao/mysqlDao.js");
 
 function getTable(tableUrl, current, total, tableName, res, req, tableNames) {
     mysqlDao.queryNum(tableName, function(err,result) {
-        total = Math.ceil(result/10);
+        total = Math.ceil(result[0]['count(*)']/10);
+        //console.log("log:::::::",result, ":", total);
         mysqlDao.queryAll(tableName, current, function(err, results) {
             if (!err) {
+
+                //console.log("log:::::::",results);
                 var isJg = req.session['isJg'] | false;
                 req.session['isJg'] = false;
                 res.render('table', {
@@ -15,7 +18,7 @@ function getTable(tableUrl, current, total, tableName, res, req, tableNames) {
                     table: results,
                     tableNames:tableNames,
                     current:current,
-                    total:total,
+                    total:+total,
                     tableUrl:tableUrl,
                     isJg:isJg
                 });
