@@ -33,6 +33,17 @@ router.get('/login', function(req, res, next) {
         error:error
     });
 });
+router.get('/signup', function(req, res, next) {
+    var error = "";
+    if (req.session["error"]) {
+        error = req.session["error"];
+    }
+    res.render('signup', {
+        title: '注册',
+        page:1,
+        error:error
+    });
+});
 
 
 

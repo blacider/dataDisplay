@@ -77,7 +77,7 @@ thead {
 .border-wrap:first-child {
     border-top: 1px solid #eee;
 }
-.modal {
+.moda {
     z-index: 1032;
     position: absolute;
     position: fixed;
@@ -96,7 +96,6 @@ thead {
     box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
     background-color: white;
     opacity: 1;
-    display: none;
     border: 1px solid #cbcbcb;
 }
 @keyframes modal{
