@@ -72,6 +72,7 @@
             </div>
         </div>
 <script>
+var searchText = "";
     $(document).ready(function() {
         var getTable = function(p, name) {
             showLoading();
@@ -90,12 +91,13 @@
             event.preventDefault();
             if ($(event.target).closest('li').hasClass('disabled')) return;
             var p = $(event.target).data('url');
-            getTable(p, "");
+            getTable(p, searchText);
         });
         $("#search").click(function(event) {
             var text = $("#search-text").val();
             if (text)
               getTable(1, text);
+            searchText = text;
         });
     });
 </script>
