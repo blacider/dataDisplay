@@ -1,4 +1,27 @@
 <% include head.html %>
+<script src="js/jquery.jOrgChart.js"></script>
+<script>
+    // jQuery(document).ready(function() {
+    //     $("#org").jOrgChart({
+    //         chartElement : '#chart',
+    //         dragAndDrop  : false
+    //     });
+    // });
+</script>
+<style>
+    div.jOrgChart .node {
+        background-color: #337ab7;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 10px 30px;
+        z-index: 10;
+        margin: 0 20px;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -8,55 +31,8 @@
                                 总览
                             </p>
                         </div>
-                        <div class=" panel-body table-container" id="main-table">
-                            <div class="table-container">
-                                 <table class="table table-hover" id="main-table">
-                                     <thead>
-                                         <tr>
-                                             <th>单位名称</th>
-                                             <th>应用名称</th>
-                                             <th>数据集名称</th> 
-                                             <th>表名称</th>
-                                             <th>总条数</th>
-                                             <th>今日更新条数</th>
-                                         </tr>
-                                     </thead>
-                                     <tbody>
-                                         <tr>
-                                             <td>2</td>
-                                             <td>2</td>
-                                             <td>3</td>
-                                             <td>4</td>
-                                             <td>5</td>
-                                             <td>6</td>
-                                         </tr>
-                                         <tr>
-                                             <td>1</td>
-                                             <td>2</td>
-                                             <td>3</td>
-                                             <td>4</td>
-                                             <td>5</td>
-                                             <td>6</td>
-                                         </tr>
-                                         <tr>
-                                             <td>1</td>
-                                             <td>2</td>
-                                             <td>3</td>
-                                             <td>4</td>
-                                             <td>5</td>
-                                             <td>6</td>
-                                         </tr>
-                                         <tr>
-                                             <td>1</td>
-                                             <td>2</td>
-                                             <td>3</td>
-                                             <td>4</td>
-                                             <td>5</td>
-                                             <td>6</td>
-                                         </tr>
-                                     </tbody>
-                                 </table>
-                            </div>
+                        <div class=" panel-body table-container">
+                            <div id="chart" style="margin:70px auto 70px auto" class="orgChart"><div class="jOrgChart"><table style="margin: 0 auto;" cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="4"><div class="node">清单管理系统</div></td></tr><tr><td colspan="4"><div class="line down"></div></td></tr><tr><td class="line left">&nbsp;</td><td class="line right top">&nbsp;</td><td class="line left top">&nbsp;</td><td class="line right">&nbsp;</td></tr><tr><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="2"><div class="node">网办大厅</div></td></tr></tbody></table></td><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="8"><div class="node">审批系统</div></td></tr><tr><td colspan="8"><div class="line down"></div></td></tr><tr><td class="line left">&nbsp;</td><td class="line right top">&nbsp;</td><td class="line left top">&nbsp;</td><td class="line right top">&nbsp;</td><td class="line left top">&nbsp;</td><td class="line right top">&nbsp;</td><td class="line left top">&nbsp;</td><td class="line right">&nbsp;</td></tr><tr><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="2"><div class="node">安监</div></td></tr></tbody></table></td><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="2"><div class="node">环监</div></td></tr></tbody></table></td><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="2"><div class="node">食药</div></td></tr></tbody></table></td><td class="node-container" colspan="2"><table cellpadding="0" cellspacing="0" border="0"><tbody><tr class="node-cells"><td class="node-cell" colspan="2"><div class="node">劳监</div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></div></div>
                         </div>
                     </div>
                 </div>
