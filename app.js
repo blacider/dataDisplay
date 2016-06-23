@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
     if (url != "/login" && url != "/signup")
       return res.redirect("/login");
   } else {
-    if (url == "/login") {
+    if (url == "/login" || url == "/signup") {
       return res.redirect("/");
     }
     res.locals.isLogin = true;
