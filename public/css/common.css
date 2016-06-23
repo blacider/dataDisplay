@@ -2,14 +2,21 @@
     margin: 0;
     padding: 0;
 }
+a {
+    color: #e2e2e2;
+}
 body {
+    background-image: url(../images/bg1.jpg);
     font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
     color: #333;
     font-size: 14px;
     margin:0 auto;
     background-color:#fdfdfd;
-    padding-top: 70px;
+    padding-top: 30px;
     font-family:"Helvetica Neue",Helvetica,Microsoft Yahei;
+}
+.navbar {
+    background-color: #0b2a33;
 }
 input{outline:0px;}
 .navbar-default {
@@ -36,7 +43,8 @@ footer {
     padding: 50px 10px;
 }
 th, td {
-    text-align:center;
+    text-align:left;
+    vertical-align: middle;
 }
 h4 {
     margin-bottom: 10px;
@@ -162,11 +170,17 @@ input {
 .button:hover {
     opacity:0.75;
 }
-header .right{
+header {
+    margin-bottom: 5px;
+}
+.header {
+    margin-bottom: 40px;
+}
+.header .right{
     float: right;
 }
 
-header ul li a:hover {
+.header ul li a:hover {
     color: #D4C8C8;
 }
 .container {

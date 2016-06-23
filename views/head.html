@@ -23,13 +23,15 @@
             });
         });
     </script>
-    <header class="navbar navbar-default navbar-fixed-top">
+    <header>
         <div class="container">
-            <div class="navbar-header">
-                <a href="/" class="navbar-brand">
-                    BMJL
-                </a>
+            <div>
+                <img src="images/2015_logo.png" alt="logo">
             </div>
+        </div>
+    </header>
+    <div class="header navbar navbar-inverse">
+        <div class="container">
             <ul class="nav navbar-nav">
                 <% if (page == 1) { %>
                 <li class="active">
@@ -78,6 +80,6 @@
             </ul>
         <%}%>
         </div>
-    </header>
+    </div>
     <div class="modal-fog"></div>
     <div class="loading"><img src="images/loading.gif"/></div>

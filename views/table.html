@@ -13,6 +13,7 @@
         <table class="table table-hover" id="main-table">
             <thead>
                 <tr>
+                    <th>序号</th>
                 <% for (items in tableNames) {
                     var item = tableNames[items];
                 %>
@@ -23,6 +24,7 @@
             <tbody>
                 <%for (tableData in table) {%>
                 <tr>
+                    <td><%=Number(tableData)+1%></td>
                 <% for (items in tableNames) {
                     var item = table[tableData][items];
                 %>
