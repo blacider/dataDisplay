@@ -4,20 +4,26 @@ var mysqlDao = require("../modal/dao/mysqlDao.js");
 
 
 function getTable(tableUrl, current, total, tableName, res, req, tableNames) {
-	mysqlDao.queryAll(tableName, function(err, results) {
-        if (!err) {
-            var isJg = req.session['isJg'] | false;
-            req.session['isJg'] = false;
-            res.render('table', {
+    mysqlDao.queryNum(tableName, function(err,result) {
+        total = Math.ceil(result[0]['count(*)']/10);
+        //console.log("log:::::::",result, ":", total);
+        mysqlDao.queryAll(tableName, current, function(err, results) {
+            if (!err) {
+
+                //console.log("log:::::::",results);
+                var isJg = req.session['isJg'] | false;
+                req.session['isJg'] = false;
+                res.render('table', {
                     title: '总览',
                     table: results,
                     tableNames:tableNames,
                     current:current,
-                    total:total,
+                    total:+total,
                     tableUrl:tableUrl,
                     isJg:isJg
                 });
-        }
+            }
+        });
     });
 }
 
