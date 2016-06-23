@@ -12,9 +12,9 @@
                             </div>
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="企业名">
+                                    <input id="search-text" type="text" class="form-control" placeholder="企业名">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+                                        <button id="search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> 搜索</button>
                                     </span>
                                 </div>
                             </div>
@@ -91,6 +91,11 @@
             if ($(event.target).closest('li').hasClass('disabled')) return;
             var p = $(event.target).data('url');
             getTable(p, "");
+        });
+        $("#search").click(function(event) {
+            var text = $("#search-text").val();
+            if (text)
+              getTable(1, text);
         });
     });
 </script>
