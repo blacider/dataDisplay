@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var caseDao = require("../modal/dao/caseDao.js");
 
-
+var dataDao = require("../modal/dao/dataDao.js");
 // 向前台返回JSON方法的简单封装
 var jsonWrite = function (res, ret) {
     if(typeof ret === 'undefined') {
@@ -30,13 +30,62 @@ router.get('/system', function(req, res, next) {
     });
 });
 
-
+var test = [{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"},
+{name:"企业1", people:"祥俊", address:"黄土高坡"}
+];
 router.get('/com', function(req, res, next) {
-    res.render('com', {
-        title: '系统',
-        page: 3,
-        total: 10,
-        current: 1
+    var current = 1;
+    var name = "";
+    dataDao.queryAllByConName(name,function(err,results) {
+        results = test;
+        console.log(results);
+        var start = (current-1)*10;
+        var total = Math.ceil(results.length/10);
+        var data = results.slice(start, start+10);
+        res.render('com', {
+            title: '一企一档',
+            page: 3,
+            total: total,
+            current: current,
+            data:data
+        });
+    });
+});
+router.get('/comtable', function(req, res, next) {
+    var current = Number(req.query['p']);
+    var name = req.query['name'];
+    dataDao.queryAllByConName(name,function(err,results) {
+        results = test;
+        console.log(results);
+        var start = (current-1)*10;
+        var total = Math.ceil(results.length/10);
+        var data = results.slice(start, start+10);
+        console.log(current, total);
+        res.render('comtable', {
+            total: total,
+            current: current,
+            data:data
+        });
     });
 });
 

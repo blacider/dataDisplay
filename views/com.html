@@ -1,5 +1,5 @@
 <% include head.html %>
-    <div class="container">
+    <div class="container" id="container-">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -25,53 +25,29 @@
                             <table class="table table-hover" id="main-table">
                                 <thead>
                                     <tr>
-                                        <th>单位名称</th>
-                                        <th>应用名称</th>
-                                        <th>数据集名称</th> 
-                                        <th>表名称</th>
-                                        <th>总条数</th>
-                                        <th>今日更新条数</th>
+                                        <th>序号</th>
+                                        <th>企业名称</th>
+                                        <th>企业法人</th>
+                                        <th>企业地址</th>
+                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <%for (var i = 0; i < data.length; i++) {%>
                                      <tr>
-                                         <td>2</td>
-                                         <td>2</td>
-                                         <td>3</td>
-                                         <td>4</td>
-                                         <td>5</td>
-                                         <td>6</td>
+                                         <td><%=i+1%></td>
+                                         <td><%=data[i]["name"]%></td>
+                                         <td><%=data[i]["people"]%></td>
+                                         <td><%=data[i]["address"]%></td>
+                                         <td><button class="btn btn-default">查看</button></td>
                                      </tr>
-                                     <tr>
-                                         <td>1</td>
-                                         <td>2</td>
-                                         <td>3</td>
-                                         <td>4</td>
-                                         <td>5</td>
-                                         <td>6</td>
-                                     </tr>
-                                     <tr>
-                                         <td>1</td>
-                                         <td>2</td>
-                                         <td>3</td>
-                                         <td>4</td>
-                                         <td>5</td>
-                                         <td>6</td>
-                                     </tr>
-                                     <tr>
-                                         <td>1</td>
-                                         <td>2</td>
-                                         <td>3</td>
-                                         <td>4</td>
-                                         <td>5</td>
-                                         <td>6</td>
-                                     </tr>
+                                <%}%>
                                  </tbody>
                              </table>
-                        </div>
-                        <div style="text-align:center">
+                          </div>
+                          <div style="text-align:center">
                             <ul id="pagination" class="pagination">
-                              <li <%var current_ = current; if (current == 1) {%>class="disabled"<%}%>><a data-url="<%=current-1%>" href="#">&laquo;</a></li>
+                              <li <%var current_ = current; if (current == 1) { %> class="disabled" <% } %> ><a data-url="<%=current-1%>" href="#">&laquo;</a></li>
                               <li><a href="#" data-url="<%=1%>">首页</a></li>
                               <% if (current != 1) {%>
                                 <li class="disabled"><a href="#">...</a></li>
@@ -89,10 +65,33 @@
 
                               <li <% if (end == total+3) {%>class="disabled"<%}%>><a data-url="<%=current_+1%>" href="#">&raquo;</a></li>
                             </ul>
-                        </div>
-                        </div>
+                          </div>
+                      </div>
                     </div>
                 </div>
             </div>
         </div>
+<script>
+    $(document).ready(function() {
+        var getTable = function(p, name) {
+            showLoading();
+            $.ajax({
+                url: '/comtable',
+                type: 'GET',
+                dataType: 'html',
+                data: {name:name, p:p},
+            })
+            .done(function(res) {
+                $(".panel-body").replaceWith(res);
+                hideLoading();
+            });
+        };
+        $("#container-").delegate('#pagination a', 'click', function(event) {
+            event.preventDefault();
+            if ($(event.target).closest('li').hasClass('disabled')) return;
+            var p = $(event.target).data('url');
+            getTable(p, "");
+        });
+    });
+</script>
 <% include foot.html %>
