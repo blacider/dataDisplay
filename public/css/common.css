@@ -196,7 +196,9 @@ li {
 #main-table th {
     word-break: keep-all;
 }
-
+.table-container {
+    min-height: 341px;
+}
 .loading {
     top: 0;
     left: 0;

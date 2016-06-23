@@ -4,14 +4,14 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <p class="panel-title default" id="table-title">
-                            总览
-                        </p>
-                    </div>
-                    <div class=" panel-body table-container">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <div class="input-group input-group-lg">
+                            <div class="col-md-2">
+                                <p class="panel-title default" style="padding-top: 6px;" id="table-title">
+                                    公司列表
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="input-group">
                                     <input type="text" class="form-control" placeholder="企业名">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> 搜索</button>
@@ -20,29 +20,20 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <p class="panel-title default" id="table-title">
-                            总览
-                        </p>
-                    </div>
-                    <div class=" panel-body table-container">
+                    <div class="panel-body">
                         <div class="table-container">
-                             <table class="table table-hover" id="main-table">
-                                 <thead>
-                                     <tr>
-                                         <th>单位名称</th>
-                                         <th>应用名称</th>
-                                         <th>数据集名称</th> 
-                                         <th>表名称</th>
-                                         <th>总条数</th>
-                                         <th>今日更新条数</th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>
+                            <table class="table table-hover" id="main-table">
+                                <thead>
+                                    <tr>
+                                        <th>单位名称</th>
+                                        <th>应用名称</th>
+                                        <th>数据集名称</th> 
+                                        <th>表名称</th>
+                                        <th>总条数</th>
+                                        <th>今日更新条数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                      <tr>
                                          <td>2</td>
                                          <td>2</td>
@@ -78,9 +69,30 @@
                                  </tbody>
                              </table>
                         </div>
+                        <div style="text-align:center">
+                            <ul id="pagination" class="pagination">
+                              <li <%var current_ = current; if (current == 1) {%>class="disabled"<%}%>><a data-url="<%=current-1%>" href="#">&laquo;</a></li>
+                              <li><a href="#" data-url="<%=1%>">首页</a></li>
+                              <% if (current != 1) {%>
+                                <li class="disabled"><a href="#">...</a></li>
+                              <% } %>
+                              <li class="active"><a href="#" data-url="<%=current%>"><%=current%></a></li>
+                              <%
+                                var end = current+3; 
+                                for (current = current+1; current < end && current <= total; current++) {%>
+                                <li><a data-url="<%=current%>" href="#"><%=current%></a></li>
+                              <%}%>
+                              <% if (current < total) {%>
+                                <li class="disabled"><a href="#">...</a></li>
+                              <% } %>
+                              <li><a href="#" data-url="<%=total%>">尾页(<%=total%>)</a></li>
+
+                              <li <% if (end == total+3) {%>class="disabled"<%}%>><a data-url="<%=current_+1%>" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 <% include foot.html %>

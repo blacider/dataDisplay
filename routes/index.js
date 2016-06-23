@@ -32,7 +32,12 @@ router.get('/system', function(req, res, next) {
 
 
 router.get('/com', function(req, res, next) {
-  res.render('com', { title: '系统' , page:3});
+    res.render('com', {
+        title: '系统',
+        page: 3,
+        total: 10,
+        current: 1
+    });
 });
 
 router.get('/case', function(req, res, next) {
