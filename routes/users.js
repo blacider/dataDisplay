@@ -56,7 +56,8 @@ router.get('/logout', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     logger.log("/login" + JSON.stringify(req.body));
     userDao.queryUserNumByName(req.body.name, function(err, result) {
-        if (result == 0) {
+        console.log(JSON.stringify(result));
+        if (result[0]["count(*)"] == 0) {
             req.session.error = "请输入正确用户名";
             res.redirect("/login");
         } else {

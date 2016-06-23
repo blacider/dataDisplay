@@ -7,7 +7,7 @@ var logger = require("../../util/logger.js");
 var $sql = {
     save:"INSERT INTO user(id,name,pass) VALUES(0,?,?)",
     queryUserByName: 'SELECT * FROM user WHERE name = ?',
-    queryUserNumByName: "SELECT * FROM user WHERE name = ?"
+    queryUserNumByName: "SELECT count(*) FROM user WHERE name = ?"
 };
 
 // 使用连接池，提升性能
