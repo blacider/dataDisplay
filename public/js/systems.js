@@ -3,8 +3,6 @@
         (function bendEvent() {
             var getTable = function(event, url, p) {
                 event.preventDefault();
-                $("#systems-nav .active").removeClass('active');
-                $(event.target).closest('li').addClass('active');
                 showLoading();
                 $.ajax({
                     url: url,
@@ -14,12 +12,14 @@
                 })
                 .done(function(result) {
                     $("#main-table").replaceWith(result);
-                    $("#table-title").text($(event.target).text());
                     hideLoading();
                 });
             };
             $("#systems-nav").delegate('a', 'click', function(event) {
                 var url = $(event.target).data("url");
+                $("#systems-nav .active").removeClass('active');
+                $(event.target).closest('li').addClass('active');
+                $("#table-title").text($(event.target).text());
                 var p = 1;
                 getTable(event, url, p);
             });
