@@ -30,6 +30,12 @@ router.get('/system', function(req, res, next) {
     });
 });
 
+router.get('/view', function(req, res, next) {
+    var name = req.query.name;
+    res.render('viewcom', { title: '公司详情' ,name:name, page:3
+    });
+});
+
 
 router.get('/com', function(req, res, next) {
     var current = 1;

@@ -39,7 +39,7 @@
                                          <td><%=data[i]["name"]%></td>
                                          <td><%=data[i]["people"]%></td>
                                          <td><%=data[i]["address"]%></td>
-                                         <td><button class="btn btn-default">查看</button></td>
+                                         <td><button class="btn btn-default view-com" data-name="<%=data[i]["name"]%>">查看</button></td>
                                      </tr>
                                 <%}%>
                                  </tbody>
@@ -92,6 +92,11 @@ var searchText = "";
             if ($(event.target).closest('li').hasClass('disabled')) return;
             var p = $(event.target).data('url');
             getTable(p, searchText);
+        });
+        $("#container-").delegate('.view-com', 'click', function(event) {
+            event.preventDefault();
+            var p = $(event.target).data('name');
+            window.location.href = "/view?name=" + p;
         });
         $("#search").click(function(event) {
             var text = $("#search-text").val();
