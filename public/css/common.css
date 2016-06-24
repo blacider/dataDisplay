@@ -2,8 +2,11 @@
     margin: 0;
     padding: 0;
 }
-a {
+.nav a {
     color: #e2e2e2;
+}
+.panel-body .nav a {
+    color: #337ab7;
 }
 body {
     background-image: url(../images/bg1.jpg);
