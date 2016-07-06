@@ -45,6 +45,23 @@ router.get('/signup', function(req, res, next) {
     });
 });
 
+router.get('/isLogin', function(req, res, next) {
+    logger.log("1");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', true);
+    var isLogin = false, name = "";
+    logger.log(JSON.stringify(req.session));
+    if (req.session["name"]) {
+        logger.log("3"); 
+        isLogin = true;
+        name = req.session.name;
+    }
+    res.jsonp({
+        status:1,
+        isLogin:isLogin,
+        name:name
+    });
+});
 
 
 router.get('/logout', function(req, res, next) {

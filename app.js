@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var log = require("./util/logger.js");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var table = require('./routes/table');
@@ -17,7 +17,13 @@ var ejs = require('ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
-
+// app.all('*', function(req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*");
+//    res.header("Access-Control-Allow-Credentials", true);
+//    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+//    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//    next();
+// });
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -29,14 +35,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'secret',
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24 * 30 // 30 day
+    }
 }));
 
+
+
 app.use(function(req, res, next) {
-  var url = req.originalUrl;
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  var url = req.originalUrl.split("?")[0];
+  log.log(url);
   if (!req.session.hasOwnProperty("name")) {
     res.locals.isLogin = false;
-    if (url != "/login" && url != "/signup")
+    if (url != "/login" && url != "/signup" && url != "/isLogin")
       return res.redirect("/login");
   } else {
     if (url == "/login" || url == "/signup") {
@@ -47,6 +64,8 @@ app.use(function(req, res, next) {
   }
   next();
 });
+
+
 
 app.use('/', routes);
 app.use('/', users);
