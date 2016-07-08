@@ -45,10 +45,12 @@ router.get('/signup', function(req, res, next) {
     });
 });
 
+
 router.get('/isLogin', function(req, res, next) {
-    logger.log("1");
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://157.7.108.76:3000');
     res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     var isLogin = false, name = "";
     logger.log(JSON.stringify(req.session));
     if (req.session["name"]) {

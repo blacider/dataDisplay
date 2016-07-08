@@ -11,6 +11,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.2.3",
     "express": "~4.13.4",
+    "express-mysql-session": "^1.1.1",
     "express-session": "^1.13.0",
     "morgan": "~1.7.0",
     "mysql": "latest",
