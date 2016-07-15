@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var table = require('./routes/table');
 var enterprise = require('./routes/enterprise');
+var oracleRoute = require('./routes/oracle.js');
 var session = require('express-session');
 
 var utils = require("./modal/util/util.js");
@@ -79,6 +80,7 @@ app.use('/', routes);
 app.use('/', users);
 app.use('/', table);
 app.use('/', enterprise);
+app.use('/', oracleRoute);
 
 
 // catch 404 and forward to error handler

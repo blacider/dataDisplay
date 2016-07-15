@@ -16,5 +16,8 @@
     "morgan": "~1.7.0",
     "mysql": "latest",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "oracledb": "^1.10.0"
   }
 }
