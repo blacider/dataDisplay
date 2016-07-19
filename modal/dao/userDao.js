@@ -41,6 +41,10 @@ User.prototype.save = function(callback) {
 
 User.queryUserByName = function(name, callback) {
     pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(JSON.stringify(err));
+            return;
+        }
         connection.query($sql.queryUserByName, [name], function(err, result) {
             if (err) {
                 res.json({
@@ -50,13 +54,17 @@ User.queryUserByName = function(name, callback) {
                 return;
             }
             logger.log("queryUserNumByName:result = " + JSON.stringify(result));
-            callback(err, result);
             connection.release();
+            callback(err, result);
         });
     });  
 };
 User.queryUserNumByName = function(name, callback) {
     pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(JSON.stringify(err));
+            return;
+        }
         connection.query($sql.queryUserNumByName, [name], function(err, result) {
             if (err) {
                 res.json({

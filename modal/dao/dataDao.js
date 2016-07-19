@@ -28,6 +28,10 @@ module.exports = {
     queryAllByConName: function(enterpriseName, callback) {
         var status = 0, max = 7, results = [], tempresults = [];
             pool.getConnection(function(err, connection) {
+              if (err) {
+                  console.log(JSON.stringify(err));
+                  return;
+              }
               for(item in sql) {
                 connection.query(sql[item]+enterpriseName+'%\'', function(err,result) {
                      //console.log(sql[item]+enterpriseName+'%\'');
