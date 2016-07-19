@@ -18,6 +18,8 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "oracledb": "^1.10.0"
+    "crypto": "0.0.3",
+    "oracledb": "^1.10.0",
+    "request": "^2.73.0"
   }
 }

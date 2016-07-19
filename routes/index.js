@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var caseDao = require("../modal/dao/caseDao.js");
-
+var crypto = require('crypto');
 var dataDao = require("../modal/dao/dataDao.js");
 // 向前台返回JSON方法的简单封装
 var jsonWrite = function (res, ret) {
@@ -14,7 +14,7 @@ var jsonWrite = function (res, ret) {
         res.json(ret);
     }
 };
-
+var request = require('request');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -82,6 +82,17 @@ router.get('/case', function(req, res, next) {
         }
     });
 });
+
+router.get('/other', function(req, res, next) {
+    var n = Number(req.query.n);
+    if (n === 1) {
+        request('http://172.16.55.74:8442/lgydzf/login_sso.jsp?user='+req.session.name, function(error, resp, body) {
+            var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
+            res.redirect('//172.16.55.74:8442/lgydzf/login_sso.jsp?token=' + token);
+        });
+    }
+});
+
 
 router.get('/table', function(req, res, next) {
     var table = [{'name':'n','age':'11'},
