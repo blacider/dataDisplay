@@ -1,4 +1,15 @@
- <% include head.html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
+    <script src="js/jquery.jgrowl.min.js"></script>
+    <script src="js/loading.js"></script>
+</head>
+<body>
  <script>
      var error = "<%=error%>";
      $(document).ready(function() {
@@ -15,22 +26,37 @@
         opacity:0.3;
      }
  </style>
-    <div class="moda" id="login">
-        <div class="modal-head">
-            <h1>登录</h1>
+    <div id="main">
+        <div class="logo">
+            <img src="images/2015_logo.png" alt="">
         </div>
-        <form id="login-form" action="/login" method="post">
-            <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required name="name">
+        <div class="login">
+            <div class="left">
+                <h2 style="margin: 0px auto 25px 58px;">登录系统 | Login System</h2>
+                <form id="login-form" action="/login" method="post">
+                    <div class="border-wrap">
+                        <label for="name">
+                            用户名:
+                        </label>
+                        <input id="name" type="text" placeholder="请输入用户名" required name="name">
+                    </div>
+                    <div class="border-wrap">
+                        <label for="password">
+                            密码:
+                        </label>
+                        <input id="password" type="password" placeholder="请输入密码" required name="password">                        
+                    </div>
+                    <input style="margin-left: 124px;" type="checkbox" id="r_n" name="r_n">
+                    <label for="r_n">记住我</label>
+
+                    <input style="margin-left: 28px;" class="button" type="submit" value="登录">
+                </form>
             </div>
-            <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required name="password">
+            <div class="right">
+                <h3>登录说明</h3>
+                <p>广州开发区成立于1984年，成立之初仅9.6平方公里。2002年，广州经济技术开发区、广州高新技术产业开发区、广州保税区和广州出口加工区实行合署办公。</p>
+                <a href="/signup"><input style="margin-left: 133px;" class="button" type="submit" value="注册"></a>
             </div>
-            <input class="login-submit" type="submit" style="width: 50%;" value="登录">
-            <div id="signup" style="position:relative;top: -62px;color: black;left: 249px;">
-                <a href="/signup" style="color: black;">注册</a>
-            </div>
-        </form>
+        </div>
     </div>
-</body>
-</html>
+<% include foot.html%>
