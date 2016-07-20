@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    background: white;
+}
+body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url(../images/bg1.png);
+    background-size: 100% 100%;
+    font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
+    color: #333;
+    font-size: 14px;
+    margin:0;
+    background-color:#fdfdfd;
+    font-family:"Helvetica Neue",Helvetica,Microsoft Yahei;
+}
+.footer p {
+    color: #3c638f;
+    text-align: center;
+    font-size: 11px;
+    margin: 0;
+}
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+}
+#main {
+    z-index: 1;
+    height: 367px;
+    margin:135px auto;
+    width: 661px;
+}
+.logo {
+    width: 608px;
+    margin: 0 auto;
+}
+.login {
+    width: 661px;
+    height: 291px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 12px;
+    background-color: rgba(0,156,238, .6);
+}

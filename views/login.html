@@ -1,4 +1,15 @@
- <% include head.html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
+    <script src="js/jquery.jgrowl.min.js"></script>
+    <script src="js/loading.js"></script>
+</head>
+<body>
  <script>
      var error = "<%=error%>";
      $(document).ready(function() {
@@ -15,22 +26,14 @@
         opacity:0.3;
      }
  </style>
-    <div class="moda" id="login">
-        <div class="modal-head">
-            <h1>登录</h1>
+    <div id="main">
+        <div class="logo">
+            <img src="images/2015_logo.png" alt="">
         </div>
-        <form id="login-form" action="/login" method="post">
-            <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required name="name">
+        <div class="login">
+            <div class="left">
+                <h3>登录系统 | Login System</h3>
             </div>
-            <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required name="password">
-            </div>
-            <input class="login-submit" type="submit" style="width: 50%;" value="登录">
-            <div id="signup" style="position:relative;top: -62px;color: black;left: 249px;">
-                <a href="/signup" style="color: black;">注册</a>
-            </div>
-        </form>
+        </div>
     </div>
-</body>
-</html>
+<% include foot.html%>

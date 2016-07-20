@@ -9,7 +9,9 @@
     color: #337ab7;
 }
 body {
-    background-image: url(../images/bg1.jpg);
+    height: 813px;
+    background-image: url(../images/bg1.png);
+    background-size: cover;
     font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
     color: #333;
     font-size: 14px;
@@ -32,10 +34,15 @@ input:-webkit-autofill {
     background-color: #ffffff;
     border-color: #ccc;
 }
+.footer p {
+    color: #3c638f;
+    text-align: center;
+    font-size: 11px;
+}
 footer {
     width: 100%;
-    padding: 20px 0 10px;
-    margin-top: 40px;
+    position: absolute;
+    bottom: 5px;
 }
 #main {
     position: relative;
@@ -54,9 +61,6 @@ h4 {
 }
 .form-group {
     margin-right: 20px;
-}
-.footer p {
-    text-align: center;
 }
 .chosen-container-single .chosen-single div b {
     background: url(chosen-sprite.png) no-repeat 0 6px !important;
