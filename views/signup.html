@@ -1,4 +1,15 @@
- <% include head.html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
+    <script src="js/jquery.jgrowl.min.js"></script>
+    <script src="js/loading.js"></script>
+</head>
+<body>
  <script>
      var error = "<%=error%>";
      $(document).ready(function() {
@@ -18,28 +29,46 @@
          });
      });
  </script>
-  <style>
+ <style>
      .modal-fog {
         visibility: visible;
         opacity:0.3;
      }
  </style>
-    <div class="moda" id="signin">
-        <div class="modal-head">
-            <h1>注册</h1>
+    <div id="main">
+        <div class="logo">
+            <img src="images/2015_logo.png" alt="">
         </div>
-        <form id="signup-form" action="/signup" method="post">
-            <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required name="name">
+        <div class="login" style="height:295px">
+            <div class="left">
+                <h2 style="margin: 0px auto 25px 58px;">登录系统 | Login System</h2>
+                <form id="signup-form" action="/signup" method="post">
+                    <div class="border-wrap">
+                        <label for="name">
+                            用户名:
+                        </label>
+                        <input id="name" type="text" placeholder="请输入用户名" required name="name">
+                    </div>
+                    <div class="border-wrap">
+                        <label for="password">
+                            密码:
+                        </label>
+                        <input id="password" type="password" placeholder="请输入密码" required name="password">                        
+                    </div>
+                    <div class="border-wrap">
+                        <label for="password">
+                            确认密码:
+                        </label>
+                        <input type="password" placeholder="请确认密码" required name="password_">                    
+                    </div>
+                    <input style="margin-left: 215px" class="button" type="submit" value="注册">
+                </form>
             </div>
-            <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required name="password">
+            <div class="right">
+                <h3>注册说明</h3>
+                <p>广州开发区成立于1984年，成立之初仅9.6平方公里。2002年，广州经济技术开发区、广州高新技术产业开发区、广州保税区和广州出口加工区实行合署办公。</p>
+                <a href="/login"><input style="margin-left: 133px;margin-top: 49px;" class="button" type="submit" value="登录"></a>
             </div>
-            <div class="border-wrap">
-                <input type="password" placeholder="请确认密码" required name="password_">
-            </div>
-            <input class="login-submit" type="submit" value="注册">
-        </form>
+        </div>
     </div>
-</body>
-</html>
+<% include foot.html%>
