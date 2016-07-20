@@ -46,28 +46,29 @@ router.get('/signup', function(req, res, next) {
 });
 
 
-router.get('/isLogin', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://157.7.108.76:3000');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    var isLogin = false, name = "";
-    logger.log(JSON.stringify(req.session));
-    if (req.session["name"]) {
-        logger.log("3"); 
-        isLogin = true;
-        name = req.session.name;
-    }
-    res.jsonp({
-        status:1,
-        isLogin:isLogin,
-        name:name
-    });
-});
+// router.get('/isLogin', function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', 'http://157.7.108.76:3000');
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     var isLogin = false, name = "";
+//     logger.log(JSON.stringify(req.session));
+//     if (req.session["name"]) {
+//         logger.log("3"); 
+//         isLogin = true;
+//         name = req.session.name;
+//     }
+//     res.jsonp({
+//         status:1,
+//         isLogin:isLogin,
+//         name:name
+//     });
+// });
 
 
 router.get('/logout', function(req, res, next) {
     req.session.destroy();
+    logger.log(JSON.stringify(req.session));
     res.locals.isLogin = false;
     res.redirect("/login");
 });
@@ -86,6 +87,10 @@ router.post('/login', function(req, res, next) {
                     res.redirect("/login");
                 } else {
                     req.session.name = req.body.name;
+                    if (req.body.r_n == 'on') {
+                        req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30 // 30 day;
+                        console.log("!!!!!"+req.session.cookie.maxAge);
+                    }
                     res.redirect("/");
                 }
             });

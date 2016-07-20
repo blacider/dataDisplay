@@ -53,8 +53,7 @@ app.use(session({
   saveUninitialized: true,
   store: sessionStore,
   cookie: {
-      path: '/',
-      maxAge: 1000 * 60 * 60 * 24 * 30 // 30 day
+      path: '/'
     }
 }));
 
