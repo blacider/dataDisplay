@@ -3,83 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title><%=title%></title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/common.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/chosen.min.css">
+    <script src="js/jquery.min.js"></script>    
     <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
     <script src="js/jquery.jgrowl.min.js"></script>
-    <script src="js/chosen.jquery.min.js"></script>
-    <script src="js/common.js"></script>
     <script src="js/loading.js"></script>
 </head>
 <body>
-    <script>
-        $(document).ready(function() {
-            $(".chosen-select").chosen({
-                no_results_text: "没有",
-                width:"100%"
-            });
-        });
-    </script>
     <header>
-        <div class="container">
-            <div>
-                <img src="images/2015_logo.png" alt="logo">
-            </div>
+        <div class="logo content">
+            <img src="images/2015_logo.png" alt="logo">
         </div>
     </header>
-    <div class="header navbar navbar-inverse">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <% if (page == 1) { %>
-                <li class="active">
-                <%} else{%>
-                <li>
-                <%}%>
-                    <a href="/">
-                        <span class="glyphicon glyphicon-home"></span>
-                        总览
-                    </a>
-                </li>
-                <% if (page == 2) { %>
-                <li class="active">
-                <%} else{%>
-                <li>
-                <%}%>
-                    <a href="/system">
-                        <span class="glyphicon glyphicon-th-large"></span>
-                        大数据共享
-                    </a>
-                </li>
-                <% if (page == 3) { %>
-                <li class="active">
-                <%} else{%>
-                <li>
-                <%}%>
-                    <a href="/com">
-                        <span class="glyphicon glyphicon-th"></span>
-                        一企一档
-                    </a>
-                </li>
-            </ul>
-        <% if (!isLogin) {%>
-        <% } else {%>
-            <ul class="right nav navbar-nav">
-                <li>
-                      <a href="javascript:void(0)" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <%= username%>
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="/logout">登出</a></li>
-                      </ul>
-                </li>
-            </ul>
-        <%}%>
-        </div>
-    </div>
+    <ul class="content nav">
+        <a href="/"><li style="margin-left: 40px;">主界面</li></a>
+        <li>|</li>
+        <a href="/data"><li>大数据共享</li></a>
+        <li>|</li>
+        <a href="com"><li>一企一档</li></a>
+    </ul>
     <div class="modal-fog"></div>
     <div class="loading"><img src="images/loading.gif"/></div>

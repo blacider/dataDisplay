@@ -1,0 +1,47 @@
+.left {
+    float: left;
+    width: 539px;
+    margin-top: 20px;
+    position: relative;
+}
+.right {
+    float: right;
+    width: 184px;
+    margin-top: 20px;
+    position: relative;
+}
+.left img, .right img {
+    width: 100%;
+    position: absolute;
+}
+.right img {
+    width:176px;
+}
+.right-item {
+    width: 85px;
+    margin-bottom: 8px;
+    margin-right: 7px;
+    float: left;
+    height: 84px;
+    box-sizing: border-box;
+    z-index: 10;
+    padding: 18px;
+    position: relative;
+}
+.right-item a {
+    text-decoration: none;
+}
+.right-item p {
+    height: 100%;
+    border-radius: 24px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 11px;
+    padding: 14px 2px 0px 3px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+}
+.right-item p:hover {
+    font-size: 11px;
+}

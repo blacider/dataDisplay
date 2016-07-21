@@ -17,7 +17,7 @@ var jsonWrite = function (res, ret) {
 var request = require('request');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', {
+    res.render('home', {
         title: '总览',
         page:1
     });
