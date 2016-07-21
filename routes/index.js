@@ -30,6 +30,10 @@ router.get('/system', function(req, res, next) {
     });
 });
 
+router.get('/data', function(req, res, next) {
+    res.render('data', { title: '大数据共享'});
+});
+
 router.get('/view', function(req, res, next) {
     var name = req.query.name;
     res.render('viewcom', { title: '公司详情' ,name:name, page:3
