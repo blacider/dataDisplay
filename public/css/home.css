@@ -1,8 +1,10 @@
 .left {
     float: left;
-    width: 539px;
+    width: 525px;
     margin-top: 20px;
     position: relative;
+    height: 370px;
+    border-right: 1px white dashed;
 }
 .right {
     float: right;
@@ -11,11 +13,13 @@
     position: relative;
 }
 .left img, .right img {
-    width: 100%;
     position: absolute;
 }
 .right img {
     width:176px;
+}
+.left img {
+    width: 500px;
 }
 .right-item {
     width: 85px;
@@ -44,4 +48,74 @@
 }
 .right-item p:hover {
     font-size: 11px;
+}
+.left-title {
+    position: absolute;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+}
+.left-title1 {
+    width: 144px;
+    top: 0px;
+    left: 170px;
+    line-height: 35px;
+}
+.left-title2 {
+    width: 100px;
+    bottom: -2px;
+    left: 192px;
+    line-height: 30px;
+}
+.left-text {
+    position: absolute;
+    font-size: 9px;
+    line-height: 18px;
+}
+.left-text1 {
+    left: 176px;
+    top: 66px;
+}
+.left-text2 {
+    left: 290px;
+    top: 84px;
+}
+.left-text3 {
+    left: 399px;
+    top: 84px;
+}
+.left-text4 {
+    left: 176px;
+    top: 239px;
+}
+.left-text5 {
+    left: 290px;
+    top: 239px;
+}
+.left-text6 {
+    left: 399px;
+    top: 239px;
+}
+.left-text a {
+    color: black;
+}
+.left-item {
+    padding: 13px 43px 15px 14px;
+    box-sizing: border-box;
+    float: left;
+    width: 111.5px;
+    height: 85px;
+    position: relative;
+    top: 137px;
+    left: 16px;
+    font-size: 11px;
+    line-height: 12px;
+}
+.left-item p {
+    height: 100%;
+    border-radius: 35px;
+    color: #036eb7;
+    text-align: center;
+    padding: 17px 0;
+    box-sizing: border-box;
 }
