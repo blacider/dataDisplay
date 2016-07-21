@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+a {
+    text-decoration: none;
+}
 .nav a {
     color: #e2e2e2;
 }
@@ -108,4 +111,18 @@ header {
 }
 .nav li:hover {
     opacity:0.8;
+}
+.gohome a {
+    color: #19597c;
+    font-size: 13px;
+}
+.gohome {
+    float: right;
+    position: relative;
+    top: 12px;
+    right: 20px;
+}
+.gohome img {
+    width: 16px;
+    vertical-align: text-bottom;
 }
