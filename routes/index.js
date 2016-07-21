@@ -85,10 +85,16 @@ router.get('/case', function(req, res, next) {
 
 router.get('/other', function(req, res, next) {
     var n = Number(req.query.n);
+    // 1:环保  2：审批系统
     if (n === 1) {
         request('http://172.16.55.74:8442/lgydzf/login_sso.jsp?user='+req.session.name, function(error, resp, body) {
             var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
             res.redirect('//172.16.55.74:8442/lgydzf/login_sso.jsp?token=' + token);
+        });
+    } else if (n == 2) {
+        request('http://172.23.8.24/SingleLoginService/getRandom?user=zgh', function(error, resp, body) {
+            var token = crypto.createHash('md5').update('zgh'+body.trim()).digest('hex');
+            res.redirect('//172.23.8.24/SingleLoginService/redirection?token=' + token);
         });
     }
 });
