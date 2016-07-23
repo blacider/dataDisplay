@@ -39,7 +39,11 @@ router.get('/view', function(req, res, next) {
     res.render('viewcom', { title: '公司详情' ,name:name, page:3
     });
 });
-
+router.get('/coms', function(req, res, next) {
+    res.render('coms', {
+        title: '一企一档'
+    });
+});
 
 router.get('/com', function(req, res, next) {
     var current = 1;
