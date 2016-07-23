@@ -42,6 +42,20 @@ router.get('/system', function(req, res, next) {
                       age:'年龄'}});
 });
 
+router.get('/getData', function(req, res, next) {
+    res.json({
+        table:[{'name':'n','age':'11'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'}]});
+});
+
 router.get('/data', function(req, res, next) {
     res.render('data', { title: '大数据共享'});
 });
