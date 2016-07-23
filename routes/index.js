@@ -25,9 +25,21 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/system', function(req, res, next) {
-    caseDao.queryAll(function(err, results) {
-        res.render('systems', { title: '系统' , page:2, tableData:results});
-    });
+    res.render('systems', { 
+        title: '系统' ,
+        page:2,
+        table:[{'name':'n','age':'11'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'}],
+        tableNames:{name: '姓名',
+                      age:'年龄'}});
 });
 
 router.get('/data', function(req, res, next) {

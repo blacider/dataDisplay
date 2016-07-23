@@ -1,13 +1,11 @@
 <% include head.html %>
-<script src="js/systems.js"></script>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
+<link rel="stylesheet" href="css/systems.css">
+            <!-- <div class="col-md-2">
               <ul class="nav nav-pills nav-stacked" id="systems-nav">
-                <!-- <li role="presentation" class="active"><a href="#" data-url="/aqjg">安监</a></li>
+                <li role="presentation" class="active"><a href="#" data-url="/aqjg">安监</a></li>
                 <li role="presentation"><a href="#" data-url="/ldjg">劳监</a></li>
                 <li role="presentation"><a href="#" data-url="/hbjg">环保</a></li>
-                <li role="presentation"><a href="#" data-url="/syjg">药监</a></li> -->
+                <li role="presentation"><a href="#" data-url="/syjg">药监</a></li>
                 <li role="presentation" class="active"><a href="#" data-url="/sp"><span class="glyphicon glyphicon-briefcase"></span> 工商</a></li>
                 <li role="presentation"><a href="#" data-url="/sp"><span class="glyphicon glyphicon-ok"></span> 审批</a></li>
                 <li role="presentation"><a href="#" data-url="/jg"><span class="glyphicon glyphicon-eye-open"></span> 监管</a></li>
@@ -16,36 +14,34 @@
                 <li role="presentation"><a href="#" data-url="/df"><span class="glyphicon glyphicon-flash"></span> 电费</a></li>
                 <li role="presentation"><a href="#" data-url="/df"><span class="glyphicon glyphicon-yen"></span> 税费</a></li>
               </ul>
-            </div>
-        
-            <div class="col-md-10">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <p class="panel-title default" id="table-title"></p>
-                        </div>
-                        <div class=" panel-body table-container" id="main-table">
-                            <div class="table-container">
-                                 <table class="table table-hover table-condensed">
-                                </table>
-                            </div>
-                            <div style="text-align:center">
-                                <ul class="pagination" id="pagination">
-                                  <li><a href="#">&laquo;</a></li>
-                                  <li class="active"><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li class="disabled"><a href="#">...</a></li>
-                                  <li><a href="#">385</a></li>
-                                  <li><a href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+            </div> -->
+<div class="content main">
+  <div class="thead-container">
+    <table class="thead" cellspacing="0" cellpadding="0">
+      <tr>
+          <td style="width:50px">序号</td>
+      <% for (items in tableNames) {
+          var item = tableNames[items];
+      %>
+              <td><%=item%></td>
+      <%}%>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="table-container">
+    <table class="tbody" cellspacing="0" cellpadding="0">
+          <%for (tableData in table) {%>
+          <tr>
+              <td style="width:50px"><%=Number(tableData)+1%></td>
+          <% for (items in tableNames) {
+              var item = table[tableData][items];
+          %>
+              <td><%=item%></td>
+          <%}%>
+          </tr>
+          <%}%>
+    </table>
+  </div>
+</div>
 <% include foot.html %>

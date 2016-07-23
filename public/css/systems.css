@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    border-collapse:collapse;
+    width: 97%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+.main {
+    margin-top: 30px;
+    border: 1px rgb(8, 132, 199) solid;
+    border-radius: 13px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    height: 370px;
+    overflow: none;
+    background: white;
+}
+table.thead {
+    font-weight: bold;
+    color: white;
+    height: 35px;
+    font-size: 13px;
+}
+table.tbody {
+    margin-top: 5px;
+    color: #898989;
+}
+table.tbody tr {
+    border-bottom: 1px #898989 solid;
+    height: 45px;
+}
+table td {
+    word-wrap:break-word;
+}
+div.thead-container {
+    background: url(/images/gr.png);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    border-radius: 100px;
+}
+div.table-container {
+    height: 292px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
