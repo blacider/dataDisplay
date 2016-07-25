@@ -11,8 +11,8 @@ body {
 }
 .block {
     margin: 0 auto;
-    width: 620px;
-    padding: 20px 0;
+    width: 900px;
+    padding: 30px 0;
     border-bottom: 1px dashed white;
 }
 .com-title {
@@ -24,7 +24,7 @@ body {
     height: 20px;
     line-height: 20px;
     color: white;
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 3px;
     text-shadow: 1px 1px 2px black;
 }
@@ -35,13 +35,13 @@ body {
 h1 {
     text-align:center;
     color:#05367c;
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
 .status {
     height: 20px;
-    margin: 15px auto 0;
-    width: 146px;
+    margin: 25px auto 0;
+    width: 150px;
 }
 .status li:first-child {
     margin-left: 0;
@@ -53,7 +53,7 @@ h1 {
 }
 .status li.active {
     color:#8fc31f;
-    font-size: 15px;
+    font-size: 17px;
 }
 .status li.active:before {
     content:'·';
@@ -65,7 +65,7 @@ h1 {
 .main > div {
     border: 1px dashed rgba(255,255,255,0.4);
     padding: 2px;
-    width: 139px;
+    width: 209px;
     border-radius: 7px;
     float: left;
     margin-left: 13px;
@@ -82,17 +82,17 @@ h1 {
 .com-item .title {
     background-size: 100% auto;
     text-align: center;
-    font-size: 11px;
-    line-height: 21px;
-    height: 23px;
+    font-size: 15px;
+    line-height: 30px;
+    height: 38px;
 }
 .content-item a {
     font-size: 10px;
     color: black;
 }
 .content-item p {
-    font-size: 9px;
-    width: 98px;
+    font-size: 13px;
+    width: 165px;
     float: right;
 }
 .content-item p:hover {
@@ -108,12 +108,12 @@ h1 {
     width: 10px;
     position: relative;
     height: 21px;
-    top: -10px;
+    top: -11px;
     left: 9px;
 }
 
 .content-item:nth-child(2):before {
-    height: 15px;
-    top: -4px;
+    height: 19px;
+    top: -9px;
 }
 

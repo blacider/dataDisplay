@@ -4,6 +4,7 @@
     margin-top: 20px;
     position: relative;
     height: 370px;
+    margin-left: 120px;
     border-right: 1px white dashed;
 }
 .right {
@@ -11,6 +12,7 @@
     width: 184px;
     margin-top: 20px;
     position: relative;
+    margin-right: 120px;
 }
 .left img, .right img {
     position: absolute;

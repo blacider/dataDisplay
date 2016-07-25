@@ -10,7 +10,7 @@ body {
 }
 .block {
     margin: 0 auto;
-    width: 620px;
+    width: 900px;
     padding: 20px 0;
     border-bottom: 1px dashed white;
 }
@@ -27,29 +27,30 @@ body {
     text-shadow: 1px 1px 2px black
 }
 .search-container {
-    margin-top: 20px;
-    margin-bottom: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     height: 20px;
 }
 .input {
-    height: 20px;
+    height: 25px;
     float: left;
-    width: 145px;
+    width: 215px;
     margin-right: 10px;
-    line-height: 20px;
+    line-height: 25px;
     border-radius: 10px;
     background: white;
-    padding: 2px 9px;
+    padding: 3px 9px;
     box-sizing: border-box;
 }
 .input input {
-    width: 106px;
-    line-height: 20px;
+    width: 174px;
+    line-height: 25px;
     border: none;
     /* border-radius: 10px; */
     padding: 0 5px;
     outline: none;
-    top: -4px;
+    top: -3px;
+    font-size: 13px;
     position: relative;
     box-sizing: border-box;
 }
@@ -107,18 +108,18 @@ div.table-container {
 }
 footer {
     position: relative;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .const {
-    margin-left: 30px;
     height: 200px;
-    margin-top: 20px;
+    width: 625px;
+    margin: 25px auto;
 }
 .const .const-item {
     position: relative;
     float: left;
     width: 125px;
-    margin-left: 15px;
+    margin-left: 25px;
     height: 100%;
 }
 .const-item img {

@@ -18,14 +18,14 @@ li {
 html {
     height: 100%;
     width: 100%;
-    min-width: 800px;
+    min-width: 1000px;
     min-height: 600px;
     background: white;
 }
 body {
     height: 100%;
     width: 100%;
-    min-width: 800px;
+    min-width: 1000px;
     min-height: 600px;
     position: absolute;
     background-image: url(../images/bg2.jpg);
@@ -91,7 +91,7 @@ header {
     padding-top:30px;
 }
 .content {
-    width: 750px;
+    width: 980px;
     margin:0 auto;
 }
 .logo img {
