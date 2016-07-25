@@ -83,21 +83,8 @@ router.get('/coms', function(req, res, next) {
 });
 
 router.get('/com', function(req, res, next) {
-    var current = 1;
-    var name = "";
-    dataDao.queryAllByConName(name,function(err,results) {
-        // results = test;
-        console.log(results);
-        var start = (current-1)*10;
-        var total = Math.ceil(results.length/10);
-        var data = results.slice(start, start+10);
-        res.render('com', {
-            title: '一企一档',
-            page: 3,
-            total: total,
-            current: current,
-            data:data
-        });
+    res.render('com', {
+        title: '总览'
     });
 });
 router.get('/comtable', function(req, res, next) {

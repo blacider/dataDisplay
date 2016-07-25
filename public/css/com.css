@@ -1,0 +1,119 @@
+html {
+    background-color: white;
+}
+body {
+    background-image:url(/images/coms-bg.png);
+    background-repeat: repeat-x;
+    background-size: inherit;
+    min-width: 900px;
+    min-height: 100%;
+    height: auto;
+}
+.block {
+    margin: 0 auto;
+    width: 620px;
+    padding: 20px 0;
+    border-bottom: 1px dashed white;
+}
+.com-title {
+    width: 270px;
+    text-align: center;
+    background-color: #17cee5;
+    border-radius: 18px;
+    margin: 0 auto;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px black;
+}
+/*footer {
+    position: relative;
+    margin-top: 20px;
+}*/
+h1 {
+    text-align:center;
+    color:#05367c;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.status {
+    height: 20px;
+    margin: 15px auto 0;
+    width: 146px;
+}
+.status li:first-child {
+    margin-left: 0;
+}
+.status li {
+    float: left;
+    color:#c9caca;
+    margin-left: 25px;
+}
+.status li.active {
+    color:#8fc31f;
+    font-size: 15px;
+}
+.status li.active:before {
+    content:'·';
+    margin-right: 5px;
+}
+.main {
+    overflow: hidden;
+}
+.main > div {
+    border: 1px dashed rgba(255,255,255,0.4);
+    padding: 2px;
+    width: 139px;
+    border-radius: 7px;
+    float: left;
+    margin-left: 13px;
+}
+.main > div:first-child {
+    margin-left: 0;
+}
+.com-item {
+    border-radius: 7px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.4);
+}
+.com-item .title {
+    background-size: 100% auto;
+    text-align: center;
+    font-size: 11px;
+    line-height: 21px;
+    height: 23px;
+}
+.content-item a {
+    font-size: 10px;
+    color: black;
+}
+.content-item p {
+    font-size: 9px;
+    width: 98px;
+    float: right;
+}
+.content-item p:hover {
+    color:blue;
+}
+.content-item:before {
+    content: ' ';
+    clear: both;
+    border-left: 1px #0c8ac2 solid;
+    border-bottom: 1px #0c8ac2 solid;
+    display: block;
+    float: left;
+    width: 10px;
+    position: relative;
+    height: 21px;
+    top: -10px;
+    left: 9px;
+}
+
+.content-item:nth-child(2):before {
+    height: 15px;
+    top: -4px;
+}
+

@@ -1,109 +1,119 @@
 <% include head.html %>
-    <div class="container" id="container-">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-2">
-                                <p class="panel-title default" style="padding-top: 6px;" id="table-title">
-                                    公司列表
-                                </p>
-                            </div>
-                            <div class="col-xs-6 col-xs-offset-4 col-md-6 col-md-offset-4">
-                                <div class="input-group">
-                                    <input id="search-text" type="text" class="form-control" placeholder="企业名">
-                                    <span class="input-group-btn">
-                                        <button id="search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> 搜索</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-container">
-                            <table class="table table-hover" id="main-table">
-                                <thead>
-                                    <tr>
-                                        <th>序号</th>
-                                        <th>企业名称</th>
-                                        <th>企业法人</th>
-                                        <th>企业地址</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <%for (var i = 0; i < data.length; i++) {%>
-                                     <tr>
-                                         <td><%=i+1%></td>
-                                         <td><%=data[i]["name"]%></td>
-                                         <td><%=data[i]["people"]%></td>
-                                         <td><%=data[i]["address"]%></td>
-                                         <td><button class="btn btn-default view-com" data-name="<%=data[i]["name"]%>">查看</button></td>
-                                     </tr>
-                                <%}%>
-                                 </tbody>
-                             </table>
-                          </div>
-                          <div style="text-align:center">
-                            <ul id="pagination" class="pagination">
-                              <li <%var current_ = current; if (current == 1) { %> class="disabled" <% } %> ><a data-url="<%=current-1%>" href="#">&laquo;</a></li>
-                              <li><a href="#" data-url="<%=1%>">首页</a></li>
-                              <% if (current != 1) {%>
-                                <li class="disabled"><a href="#">...</a></li>
-                              <% } %>
-                              <li class="active"><a href="#" data-url="<%=current%>"><%=current%></a></li>
-                              <%
-                                var end = current+3; 
-                                for (current = current+1; current < end && current <= total; current++) {%>
-                                <li><a data-url="<%=current%>" href="#"><%=current%></a></li>
-                              <%}%>
-                              <% if (current < total) {%>
-                                <li class="disabled"><a href="#">...</a></li>
-                              <% } %>
-                              <li><a href="#" data-url="<%=total%>">尾页(<%=total%>)</a></li>
-
-                              <li <% if (end == total+3) {%>class="disabled"<%}%>><a data-url="<%=current_+1%>" href="#">&raquo;</a></li>
-                            </ul>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-<script>
-var searchText = "";
-    $(document).ready(function() {
-        var getTable = function(p, name) {
-            showLoading();
-            $.ajax({
-                url: '/comtable',
-                type: 'GET',
-                dataType: 'html',
-                data: {name:name, p:p},
-            })
-            .done(function(res) {
-                $(".panel-body").replaceWith(res);
-                hideLoading();
-            });
-        };
-        $("#container-").delegate('#pagination a', 'click', function(event) {
-            event.preventDefault();
-            if ($(event.target).closest('li').hasClass('disabled')) return;
-            var p = $(event.target).data('url');
-            getTable(p, searchText);
-        });
-        $("#container-").delegate('.view-com', 'click', function(event) {
-            event.preventDefault();
-            var p = $(event.target).data('name');
-            window.location.href = "/view?name=" + p;
-        });
-        $("#search").click(function(event) {
-            var text = $("#search-text").val();
-            if (text)
-              getTable(1, text);
-            searchText = text;
-        });
-    });
-</script>
+<link rel="stylesheet" href="/css/com.css">
+<div class="block">
+  <h1>宝洁（中国）有限公司</h1>
+  <p class="com-title">440108600091452</p>
+  <ul class="status">
+    <li class="active">异常</li>
+    <li>正常</li>
+    <li>特殊</li>
+  </ul>
+</div>
+<div class="block main" style="margin-bottom:70px;">
+  <div>
+    <div class="com-item">
+      <p class="title" style="background-image: url(/images/com-title1.png);">基本信息</p>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="com-item">
+      <p class="title" style="background-image: url(/images/com-title2.png);">审批信息</p>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="com-item">
+      <p class="title" style="background-image: url(/images/com-title3.png);">监管信息</p>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="com-item">
+      <p class="title" style="background-image: url(/images/com-title4.png);">服务信息</p>
+      <div class="content-item">
+        <a href="/item">
+          <p>2016年5月6日注册登记</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 <% include foot.html %>
