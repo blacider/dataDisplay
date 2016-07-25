@@ -1,10 +1,9 @@
 .main img{
-    width: 380px;
+    width: 366px;
     position: relative;
     margin: 20px auto;
     display: block;
-    left: -15px;
-
+    left: -3px;
 }
 .main {
     position: relative;
@@ -36,30 +35,30 @@
 .main-list1 {
     left: 193px;
     top: 48px;
-    color: #888;
+    color: #145a6f;
 }
 .main-list2 {
     left: 462px;
     top: 11px;
-    color: #BDC21F;
+    color: #8bc31d;
 }
 .main-list3 {
     left: 562px;
     top: 129px;
-    color: #f29600;
+    color: #f29800;
 }
 .main-list4 {
     left: 527px;
     top: 281px;
-    color: #8ECAD3;
+    color: #19aabf;
 }
 .main-list5 {
     left: 266px;
     top: 358px;
-    color: #FCBF44;
+    color: #9aa53c;
 }
 .main-list6 {
     left: 145px;
     top: 222px;
-    color: #F2A9C7;
+    color: #538bad;
 }
