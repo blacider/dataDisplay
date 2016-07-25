@@ -18,7 +18,7 @@ router.get('/getComData', function(req, res, next) {
     };
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
-    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx order by ZCH) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {}, j;
@@ -36,4 +36,32 @@ router.get('/getComData', function(req, res, next) {
         });
     });
 });
+
+router.get('/sf', function(req, res, next) {
+    // [1,10]
+    var p = 1;
+    if (req.query.p) p = Number(req.query.p);
+    var end = p*10;
+    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    function(result) {
+        var table = result["rows"];
+        var tableData = [], tmp = {};
+        for (var i = 0; i <= 9; i++) {
+            tmp = {};
+            for (var j = 0; j < result["metaData"].length; j++) {
+                if (result["metaData"][j]["name"] == "MONTH") {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j].toLocaleDateString():"";
+                } else {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j]:"";
+                }
+            }
+            tableData.push(tmp);
+        }
+        console.log(JSON.stringify(tableData));
+        res.json({
+            table:tableData
+        });
+    });
+});
+
 module.exports = router;

@@ -77,7 +77,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/', users);
-app.use('/', table);
+// app.use('/', table);
 app.use('/', enterprise);
 app.use('/', oracleRoute);
 
