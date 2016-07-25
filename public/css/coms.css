@@ -1,0 +1,138 @@
+html {
+    background-color: white;
+}
+body {
+    background-image:url(/images/coms-bg.png);
+    background-repeat: repeat-x;
+    height: auto;
+    background-size: inherit;
+    min-width: 900px;
+}
+.block {
+    margin: 0 auto;
+    width: 620px;
+    padding: 20px 0;
+    border-bottom: 1px dashed white;
+}
+.com-title {
+    width: 172px;
+    text-align: center;
+    background-color: #17cee5;
+    border-radius: 18px;
+    margin: 0 auto;
+    height: 25px;
+    line-height: 25px;
+    color: white;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px black
+}
+.search-container {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    height: 20px;
+}
+.input {
+    height: 20px;
+    float: left;
+    width: 145px;
+    margin-right: 10px;
+    line-height: 20px;
+    border-radius: 10px;
+    background: white;
+    padding: 2px 9px;
+    box-sizing: border-box;
+}
+.input input {
+    width: 106px;
+    line-height: 20px;
+    border: none;
+    /* border-radius: 10px; */
+    padding: 0 5px;
+    outline: none;
+    top: -4px;
+    position: relative;
+    box-sizing: border-box;
+}
+.input img {
+    border-right: 1px #cecece solid;
+    padding-right: 4px;
+    height: 16px;
+}
+table {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    border-collapse:collapse;
+    width: 97%;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+.table-c {
+    margin-top: 30px;
+    border: 1px #b8e7f6 solid;
+    border-radius: 13px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    height: 370px;
+    overflow: none;
+    background: white;
+}
+table.thead {
+    font-weight: bold;
+    color: white;
+    height: 35px;
+    font-size: 13px;
+}
+table.tbody {
+    margin-top: 5px;
+    color: #898989;
+}
+table.tbody tr {
+    border-bottom: 1px #898989 solid;
+    height: 45px;
+}
+table td {
+    word-wrap:break-word;
+}
+div.thead-container {
+    background: url(/images/gr.png);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    border-radius: 100px;
+}
+div.table-container {
+    height: 292px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+footer {
+    position: relative;
+    margin-top: 20px;
+}
+.const {
+    margin-left: 30px;
+    height: 200px;
+    margin-top: 20px;
+}
+.const .const-item {
+    position: relative;
+    float: left;
+    width: 125px;
+    margin-left: 15px;
+    height: 100%;
+}
+.const-item img {
+    width: 125px;
+}
+.const-text img {
+    position: relative;
+    left: -7px;
+}
+.const-text p {
+    color: #036eb8;
+    font-size: 14px;
+    position: absolute;
+    bottom: 17px;
+    width: 100%;
+    text-align: center;
+}

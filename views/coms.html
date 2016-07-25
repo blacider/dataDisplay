@@ -1,2 +1,106 @@
 <% include head.html%>
+<link rel="stylesheet" href="css/coms.css">
+
+<div class="block content">
+    <p class="com-title">
+        企业专属档案
+    </p>
+    <div class="search-container">
+        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="统一社会信用代码"></label></div>
+        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="企业名称"></label></div>
+        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="注册地址"></label></div>
+        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="经营地址"></label></div>
+    </div>
+</div>
+<div class="block content">
+    <p class="com-title">
+        企业专属档案架构
+    </p>
+    <div class="const">
+        <div class="const-item">
+            <img src="/images/coms-item2.png" alt="">
+            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>企业基本信息</p></div>
+        </div>
+        <div class="const-item">
+            <img src="/images/coms-item1.png" alt="">
+            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>申请审批信息</p></div>
+        </div>
+        <div class="const-item">
+            <img src="/images/coms-item4.png" alt="">
+            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>事中事后监管</p></div>
+        </div>
+        <div class="const-item">
+            <img src="/images/coms-item3.png" alt="">
+            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>政策支持</p></div>
+        </div>
+    </div>
+</div>
+<div class="block content">
+    <p class="com-title">
+        广州开发区企业名录
+    </p>
+    <div class="table-c" data-name="sf">
+        <div class="thead-container">
+          <table class="thead" cellspacing="0" cellpadding="0">
+            <tr>
+                <td style="width:50px">序号</td>
+            <% for (items in tableNames) {
+                var item = tableNames[items];
+            %>
+                    <td><%=item%></td>
+            <%}%>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="table-container">
+          <table class="tbody" cellspacing="0" cellpadding="0">
+                <%for (tableData in table) {%>
+                <tr>
+                    <td style="width:50px"><%=Number(tableData)+1%></td>
+                <% for (items in tableNames) {
+                    var item = table[tableData][items];
+                %>
+                    <td><%=item%></td>
+                <%}%>
+                </tr>
+                <%}%>
+          </table>
+          <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function(window, undefined) {
+        jQuery(document).ready(function($) {
+            (function bendEvent() {
+                var current = 1, n = $(".table-c").data("name"), isGetData = false;
+                $("div.table-container").scroll(function(event) {
+                    if (!isGetData && this.scrollTop == this.scrollHeight-292) {
+                        isGetData = true;
+                        $.ajax({
+                            url: '/getData',
+                            type: 'GET',
+                            dataType: 'json',
+                            data: {n:n, p:current += 1},
+                        })
+                        .done(function(res) {
+                            var data = "";
+                            console.log(res.table);
+                            for (var i = 0; i < res.table.length; i++) {
+                                data += '<tr><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
+                                for (item in res.table[i]) {
+                                    data += '<td>' + res.table[i][item] + '</td>'
+                                }
+                                data += '</tr>';
+                            }
+                            $('.tbody').append(data);
+                            isGetData = false;
+                        });
+                    }
+                });
+            })();
+        });
+    })(window);
+</script>
 <% include foot.html%>

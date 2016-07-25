@@ -27,7 +27,6 @@ router.get('/', function(req, res, next) {
 router.get('/system', function(req, res, next) {
     res.render('systems', { 
         title: '系统' ,
-        page:2,
         table:[{'name':'n','age':'11'},
              {'name':'r','age':'12'},
              {'name':'r','age':'12'},
@@ -67,7 +66,19 @@ router.get('/view', function(req, res, next) {
 });
 router.get('/coms', function(req, res, next) {
     res.render('coms', {
-        title: '一企一档'
+        title: '一企一档',
+        table:[{'name':'n','age':'11'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'r','age':'12'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'},
+             {'name':'p','age':'13'}],
+        tableNames:{name: '姓名',
+                      age:'年龄'}
     });
 });
 
