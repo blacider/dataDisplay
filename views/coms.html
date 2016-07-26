@@ -6,10 +6,38 @@
         企业专属档案
     </p>
     <div class="search-container">
-        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="统一社会信用代码"></label></div>
-        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="企业名称"></label></div>
-        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="注册地址"></label></div>
-        <div class="input"><label for=""><img src="/images/search.png" alt="search"><input type="text" placeholder="经营地址"></label></div>
+        <div class="input">
+            <label for="">
+                <img src="/images/search.png" alt="search">
+                <input data-name="ZCH" type="text" placeholder="统一社会信用代码">
+            </label>
+            <ul class="search-result hide">
+            </ul>
+        </div>
+        <div class="input">
+            <label for="">
+                <img src="/images/search.png" alt="search">
+                <input data-name="MC" type="text" placeholder="企业名称">
+            </label>
+            <ul class="search-result hide">
+            </ul>
+        </div>
+        <div class="input">
+            <label for="">
+                <img src="/images/search.png" alt="search">
+                <input data-name="DZ" type="text" placeholder="注册地址">
+            </label>
+            <ul class="search-result hide">
+            </ul>
+        </div>
+        <div class="input">
+            <label for="">
+                <img src="/images/search.png" alt="search">
+                <input data-name="FDDBR" type="text" placeholder="法人">
+            </label>
+            <ul class="search-result hide">
+            </ul>
+        </div>
     </div>
 </div>
 <div class="block content">
@@ -101,6 +129,52 @@
                     if (!isGetData && this.scrollTop == this.scrollHeight-292) {
                         getData();
                     }
+                });
+            })();
+            (function searchEvent() {
+                $(".search-container").delegate('li', 'click', function(event) {
+                    var liDom = $(event.target),
+                        zch = liDom.data('zch');
+                    window.location.href = "/com?ZCH="+zch;
+                });
+                var timeoutId;
+                // $(".search-container input").focus(function(event) {
+                //     $(".search-result").addClass('hide');
+                // });
+                var showData = function(data, inputDom, value) {
+                    $(".search-result").addClass('hide');
+                    var ulDom = inputDom.closest('.input').find('ul');
+                    var text = "";
+                    for (var i = 0; i < 5; i++) {
+                        text += "<li data-ZCH='"+data.rows[i][0]+"'>"+data.rows[i][1].replace(value, "<span>"+value+"</span>")+"</li>"
+                    }
+                    ulDom.empty().append(text);
+                    ulDom.removeClass('hide');
+                }
+                var getComDataByAttr = function(name, value, inputDom) {
+                    if (!value) return;
+                    $.ajax({
+                        url: '/getComDataByAttr',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {
+                            n: name,
+                            v:value
+                        }
+                    })
+                    .done(function(res) {
+                        showData(res.data, inputDom, value);
+                        console.log(res.data);
+                    }); 
+                };
+                $(".search-container").delegate('input', 'input', function(event) {
+                    var inputDom = $(event.target),
+                        n = inputDom.data("name"),
+                        v = inputDom.val();
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(function() {
+                        getComDataByAttr(n, v, inputDom);
+                    }, 1000);
                 });
             })();
         });

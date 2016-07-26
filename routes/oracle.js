@@ -37,6 +37,16 @@ router.get('/getComData', function(req, res, next) {
     });
 });
 
+router.get('/getComDataByAttr', function(req, res, next) {
+    var n = req.query.n, v = req.query.v;
+    oracleDao.query("SELECT ZCH,"+n+" FROM exdb.ssdj_jbxx where "+n+" like '%"+v+"%' and rownum <= 5",
+    function(result) {
+        res.json({
+            data:result
+        });
+    });
+});
+
 router.get('/sf', function(req, res, next) {
     // [1,10]
     var p = 1;

@@ -40,10 +40,11 @@ body {
     border-radius: 10px;
     background: white;
     padding: 3px 9px;
+    position: relative;
     box-sizing: border-box;
 }
 .input input {
-    width: 174px;
+    width: 170px;
     line-height: 25px;
     border: none;
     /* border-radius: 10px; */
@@ -136,4 +137,30 @@ footer {
     bottom: 17px;
     width: 100%;
     text-align: center;
+}
+.search-result {
+    border: 1px solid #ccc;
+    background: white;
+    position: absolute;
+    right: 8px;
+    top: 25px;
+    z-index: 100;
+    box-shadow: 2px 2px 2px;
+    width: 176px;
+}
+.search-result li {
+    color: #000;
+    font-size: 12px;
+    line-height: 22px;
+    padding: 0 8px;
+}
+.search-result li:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.search-result li span {
+    color:red;
+}
+.hide {
+    display: none;
 }
