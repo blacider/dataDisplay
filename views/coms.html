@@ -138,8 +138,10 @@
                     window.location.href = "/com?ZCH="+zch;
                 });
                 var timeoutId;
-                $(".search-container input").focus(function(event) {
-                    $(".search-result").addClass('hide');
+                $(".search-container .input").blur(function(event) {
+                    setTimeout(function(){
+                        $(".search-result").addClass('hide');
+                    },0);
                 });
                 var showData = function(data, inputDom, value) {
                     $(".search-result").addClass('hide');
