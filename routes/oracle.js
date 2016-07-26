@@ -47,6 +47,16 @@ router.get('/getComDataByAttr', function(req, res, next) {
     });
 });
 
+router.get('/com', function(req, res, next) {
+    var zch = req.query.ZCH;
+    oracleDao.query("SELECT * FROM exdb.ssdj_jbxx where ZCH = '"+zch+"'", function(result) {
+        res.render('com', {
+            title: '总览',
+            data:result["rows"][0]
+        });
+    });
+});
+
 router.get('/sf', function(req, res, next) {
     // [1,10]
     var p = 1;

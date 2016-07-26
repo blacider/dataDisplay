@@ -80,11 +80,6 @@ router.get('/coms', function(req, res, next) {
     });
 });
 
-router.get('/com', function(req, res, next) {
-    res.render('com', {
-        title: '总览'
-    });
-});
 router.get('/comtable', function(req, res, next) {
     var current = Number(req.query['p']);
     var name = req.query['name'];

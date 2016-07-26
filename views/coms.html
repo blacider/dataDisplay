@@ -138,9 +138,9 @@
                     window.location.href = "/com?ZCH="+zch;
                 });
                 var timeoutId;
-                // $(".search-container input").focus(function(event) {
-                //     $(".search-result").addClass('hide');
-                // });
+                $(".search-container input").focus(function(event) {
+                    $(".search-result").addClass('hide');
+                });
                 var showData = function(data, inputDom, value) {
                     $(".search-result").addClass('hide');
                     var ulDom = inputDom.closest('.input').find('ul');
