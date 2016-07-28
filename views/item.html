@@ -1,0 +1,32 @@
+<% include head.html %>
+<link rel="stylesheet" href="css/systems.css">
+<div class="content main" data-name="<%=name%>">
+  <div class="thead-container">
+    <table class="thead" cellspacing="0" cellpadding="0">
+      <tr>
+          <td style="width:50px">序号</td>
+      <% for (items in tableNames) {
+          var item = tableNames[items];
+      %>
+              <td><%=item%></td>
+      <%}%>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="table-container">
+    <table class="tbody" cellspacing="0" cellpadding="0">
+          <%for (tableData in table) {%>
+          <tr>
+              <td style="width:50px"><%=Number(tableData)+1%></td>
+          <% for (items in tableNames) {
+              var item = table[tableData][items];
+          %>
+              <td><%=item%></td>
+          <%}%>
+          </tr>
+          <%}%>
+    </table>
+  </div>
+</div>
+<% include foot.html %>
