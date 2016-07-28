@@ -134,7 +134,7 @@
             (function searchEvent() {
                 $(".search-container").delegate('li', 'click', function(event) {
                     var liDom = $(event.target),
-                        zch = liDom.data('zch');
+                        zch = liDom.closest('li').data('zch');
                     window.location.href = "/com?ZCH="+zch;
                 });
                 var timeoutId;

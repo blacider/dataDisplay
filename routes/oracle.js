@@ -84,4 +84,13 @@ router.get('/sf', function(req, res, next) {
     });
 });
 
+router.get('/jbxx', function(req, res, next) {
+    oracleDao.query("select clrq, czsj from EXDB.EX_GONGSHANG_41V2_SSZTJCXX where zch = '"+req.query.zch+"'",
+    function(result) {
+        res.render('jbxx', {
+            data:result["rows"]
+        });
+    });
+});
+
 module.exports = router;
