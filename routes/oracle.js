@@ -117,5 +117,67 @@ router.get('/jwxx', function(req, res, next) {
         });
     });
 });
+var tableNames = {
+    'sa.T_YYYD_ZF_MAIN':{
+        "STARTDATE":"检查日期",
+        "UNDERTAKEDEPARTMENT":"监管部门",
+        "日常巡查":"监管类别",
+        "RESEARCHMAN":"执法人员",
+        "QDLX":"启动来源",
+        "ISREGISTER":"是否立案"
+    },
+    'sa.T_YYYD_LA_MAIN':{
+        "STARTTIME":"立案时间",
+        "UNDERTAKEMAN":"承办人",
+        "PARTY":"当事人",
+        "NAME":"案件来源",
+        "UNDERTAKEDEPART":"承办部门",
+        "CASEINTRODU":"安检介绍",
+        "PUNISHADVICE":"处罚建议"
+    },
+    'ldzf.QY_RCXC_REAL':{
+        "START_TIME":"检查时间",
+        "CONTENT":"检查内容",
+        "QUESTION":"存在问题",
+        "MEASURE":"监察措施",
+        "MAIN_MAN":"主办监察员",
+        "ASS_MAN":"协办监察员"
+    },
+    'lgsafe.site_check_record':{
+        "check_time_start":"检查时间",
+        "safety_dept_name":"检查部门",
+        "CHECK_MAN":"执法人员"
+    },
+    'LGYJ_CYJG.B_CY_RC_J_XCJC':{
+        "JCJSSJ":"检查日期",
+        "ZFRQM":"执法人员",
+        "SPJCJL":"检查结果"
+    }
+};
+router.get('/item', function(req, res, next) {
+    var table = req.query.t,
+        name = req.query.n,
+        id = req.query.id,
+        index = {};
 
+    oracleDao.query("select * from "+table+" where "+name+"= '"+id+"'",
+    function(result) {
+        for (var i = 0; i < result["metaData"].length; i++) {
+            index[result["metaData"][i]["name"]]=i;
+        }
+        var res_ = [], tmp;
+        for (var i = 0; i < result["rows"].length; i++) {
+            tmp = {};
+            for (item in tableNames[table]) {
+                tmp[item] = index[item] != undefined?result["rows"][i][index[item]]:item;
+            }
+            res_.push(tmp);
+        }
+        res.render('item', {
+             title:'详情',
+             table:res_,
+             tableNames:tableNames[table]
+        });
+    });
+});
 module.exports = router;

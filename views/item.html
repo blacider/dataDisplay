@@ -1,10 +1,13 @@
 <% include head.html %>
+<%function getDate(d) {
+  var dd = new Date(d);
+  return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
+}%>
 <link rel="stylesheet" href="css/systems.css">
-<div class="content main" data-name="<%=name%>">
+<div class="content main">
   <div class="thead-container">
     <table class="thead" cellspacing="0" cellpadding="0">
       <tr>
-          <td style="width:50px">序号</td>
       <% for (items in tableNames) {
           var item = tableNames[items];
       %>
@@ -16,11 +19,13 @@
   
   <div class="table-container">
     <table class="tbody" cellspacing="0" cellpadding="0">
-          <%for (tableData in table) {%>
+          <%for (tableData in table) {var flag = 0;%>
           <tr>
-              <td style="width:50px"><%=Number(tableData)+1%></td>
+          
           <% for (items in tableNames) {
               var item = table[tableData][items];
+              flag++;
+              if (flag == 1) item = getDate(item);
           %>
               <td><%=item%></td>
           <%}%>
