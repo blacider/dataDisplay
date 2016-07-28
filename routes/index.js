@@ -25,12 +25,12 @@ router.get('/', function(req, res, next) {
 
 var names = {
     sf:{
-        FN:"FN",
-        NAME:"名字",
-        MONTH:"日期",
-        SHORT:"SHORT",
-        CONSUMPTION:"CONSUMPTION",
-        INDUSTRY:"INDUSTRY"
+        FN:"档案号",
+        NAME:"客户名称",
+        MONTH:"抄表月份",
+        SHORT:"简称",
+        CONSUMPTION:"本月用水量",
+        INDUSTRY:"行业"
     }
 };
 router.get('/system', function(req, res, next) {

@@ -147,7 +147,7 @@
                     $(".search-result").addClass('hide');
                     var ulDom = inputDom.closest('.input').find('ul');
                     var text = "";
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < data.rows.length; i++) {
                         text += "<li data-ZCH='"+data.rows[i][0]+"'>"+data.rows[i][1].replace(value, "<span>"+value+"</span>")+"</li>"
                     }
                     ulDom.empty().append(text);

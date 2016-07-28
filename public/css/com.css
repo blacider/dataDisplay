@@ -87,14 +87,19 @@ h1 {
     line-height: 30px;
     height: 38px;
 }
+.content-item {
+    margin-bottom: 10px;
+}
 .content-item a {
     font-size: 10px;
     color: black;
 }
 .content-item p {
-    font-size: 13px;
+    font-size: 11px;
     width: 165px;
-    float: right;
+    border-left: 1px #0c8ac2 solid;
+    margin-left: 9px;
+    padding-left: 12px;
 }
 .content-item p:hover {
     color:blue;
@@ -112,7 +117,12 @@ h1 {
     top: -11px;
     left: 9px;
 }
-
+.jbxx .content-item {
+    cursor: default;
+}
+.content-item:last-child p {
+    border-left: none;
+}
 .content-item:nth-child(2):before {
     height: 19px;
     top: -9px;

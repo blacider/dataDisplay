@@ -92,5 +92,13 @@ router.get('/jbxx', function(req, res, next) {
         });
     });
 });
+router.get('/spxx', function(req, res, next) {
+    oracleDao.query("select a.ORIGINAl_SEQ, start_date, unit_name, approve_item, complete_date from lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ and a.cust_name = '"+req.query.name+"'",
+    function(result) {
+        res.render('spxx', {
+            data:result["rows"]
+        });
+    });
+});
 
 module.exports = router;
