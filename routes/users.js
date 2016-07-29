@@ -10,7 +10,7 @@ router.post('/signup', function(req, res, next) {
         pass:req.body.password
     });
     userDao.queryUserNumByName(req.body.name, function(err, result) {
-        if (result != 0) {
+        if (result[0]["count(*)"] != 0) {
             req.session.error = "用户名已存在,请重新注册";
             res.redirect("/login");
         } else {
