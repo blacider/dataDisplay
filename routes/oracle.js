@@ -110,6 +110,8 @@ router.get('/jwxx', function(req, res, next) {
     select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid' from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
     union all\
     select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
+    union all\
+    select uuid, create_date,'安检局', '行政处罚' ,'lgsafe.case', 'uuid' from lgsafe.case where case_member like '%"+req.query.name+"%'\
     ",
     function(result) {
         res.render('jwxx', {
@@ -118,6 +120,13 @@ router.get('/jwxx', function(req, res, next) {
     });
 });
 var tableNames = {
+    'lgsafe.case':{
+        'CREATE_DATE':"处罚日期",
+        'MAIN_PERSON':"执法人",
+        'CASE_NAME':"案件名",
+        'CASE_SITUATION':"案件结果",
+        'UNIT_PUNISH_MONEY':"处罚金额"
+    },
     'sa.T_YYYD_ZF_MAIN':{
         "STARTDATE":"检查日期",
         "UNDERTAKEDEPARTMENT":"监管部门",
@@ -132,7 +141,7 @@ var tableNames = {
         "PARTY":"当事人",
         "NAME":"案件来源",
         "UNDERTAKEDEPART":"承办部门",
-        "CASEINTRODU":"安检介绍",
+        "CASEINTRODU":"案件介绍",
         "PUNISHADVICE":"处罚建议"
     },
     'ldzf.QY_RCXC_REAL':{
