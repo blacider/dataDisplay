@@ -110,7 +110,7 @@ router.get('/case', function(req, res, next) {
 
 router.get('/other', function(req, res, next) {
     var n = Number(req.query.n);
-    // 1:环保  2：审批系统  3:安监
+    // 1:环保  2：审批系统  3:安监 4:劳动局
     if (n === 1) {
         request('http://172.16.55.74:8442/lgydzf/login_sso.jsp?user='+req.session.name, function(error, resp, body) {
             var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
@@ -125,6 +125,12 @@ router.get('/other', function(req, res, next) {
         request('http://kfqajj.gdd.gov.cn/khsafety/signature!getToken.action?account=ajtest', function(error, resp, body) {
             var token = crypto.createHash('md5').update('ajtest'+body.trim()).digest('hex');
             res.redirect('http://kfqajj.gdd.gov.cn/khsafety/signature!loginByToken.action?token=' + token);
+        });
+    } else if (n == 4) {
+        request('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!login.action?user=hum', function(error, resp, body) {
+            var t=JSON.parse(body)["result"];
+            t = JSON.parse(t)["code"];
+            res.redirect('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!checkValid.action?token='+t);
         });
     }
 });
