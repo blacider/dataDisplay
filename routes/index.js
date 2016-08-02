@@ -31,6 +31,13 @@ var names = {
         SHORT:"简称",
         CONSUMPTION:"本月用水量",
         INDUSTRY:"行业"
+    },
+    df:{
+        ID:"id",
+        NAME:"客户名称",
+        MONTH:"抄表月份",
+        TYPE:"类型",
+        CONSUMPTION:"本月用点量"
     }
 };
 router.get('/system', function(req, res, next) {
