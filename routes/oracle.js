@@ -153,8 +153,8 @@ var tableNames = {
         "ASS_MAN":"协办监察员"
     },
     'lgsafe.site_check_record':{
-        "check_time_start":"检查时间",
-        "safety_dept_name":"检查部门",
+        "CHECK_TIME_START":"检查时间",
+        "SAFETY_DEPT_NAME":"检查部门",
         "CHECK_MAN":"执法人员"
     },
     'LGYJ_CYJG.B_CY_RC_J_XCJC':{
@@ -178,10 +178,11 @@ router.get('/item', function(req, res, next) {
         for (var i = 0; i < result["rows"].length; i++) {
             tmp = {};
             for (item in tableNames[table]) {
-                tmp[item] = index[item] != undefined?result["rows"][i][index[item]]:item;
+                tmp[item] = (index[item] != undefined)?(result["rows"][i][index[item]]):(item);
             }
             res_.push(tmp);
         }
+        console.log(res_);
         res.render('item', {
              title:'详情',
              table:res_,
