@@ -135,6 +135,36 @@ router.get('/gs', function(req, res, next) {
         });
     });
 });
+router.get('/jg', function(req, res, next) {
+    // [1,10]
+    var p = 1;
+    if (req.query.p) p = Number(req.query.p);
+    var end = p*10;
+    oracleDao.query("select CREATE_DATE,ID,RISK_CONTAIN,BASIS FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM LGSAFE.check_record_item) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    function(result) {
+        var table = result["rows"];
+        var tableData = [], tmp = {};
+        for (var i = 0; i <= 9; i++) {
+            tmp = {};
+            for (var j = 0; j < result["metaData"].length; j++) {
+                if (result["metaData"][j]["name"] == "MONTH") {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j].toLocaleDateString():"";
+                } else {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j]:"";
+                }
+            }
+            tmp["CREATE_DATE"] = (function getDate(d) {
+                var dd = new Date(d);
+                return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
+                })(tmp["CREATE_DATE"]);
+            tableData.push(tmp);
+        }
+        console.log(JSON.stringify(tableData));
+        res.json({
+            table:tableData
+        });
+    });
+});
 
 router.get('/jbxx', function(req, res, next) {
     oracleDao.query("select clrq, czsj from EXDB.EX_GONGSHANG_41V2_SSZTJCXX where zch = '"+req.query.zch+"'",

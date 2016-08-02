@@ -46,6 +46,12 @@ var names = {
         ZYXMLB:"行业",
         DZ:"地址",
         CLRQ:"注册时间"
+    },
+    jg:{
+        CREATE_DATE:"创建日期",
+        ID:"id",
+        RISK_CONTAIN:"危险源",
+        BASIS:"法律依据"
     }
 };
 router.get('/system', function(req, res, next) {
