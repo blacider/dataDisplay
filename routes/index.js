@@ -114,7 +114,7 @@ router.get('/other', function(req, res, next) {
     if (n === 1) {
         request('http://172.16.55.74:8442/lgydzf/login_sso.jsp?user='+req.session.name, function(error, resp, body) {
             if (error) {
-                res.render("该系统内部系统错误");
+                res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
             var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
@@ -123,7 +123,7 @@ router.get('/other', function(req, res, next) {
     } else if (n == 2) {
         request('http://172.23.8.24/SingleLoginService/getRandom?user=zgh', function(error, resp, body) {
             if (error) {
-                res.render("该系统内部系统错误");
+                res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
             var token = crypto.createHash('md5').update('zgh'+body.trim()).digest('hex');
@@ -132,7 +132,7 @@ router.get('/other', function(req, res, next) {
     } else if (n == 3) {
         request('http://kfqajj.gdd.gov.cn/khsafety/signature!getToken.action?account=ajtest', function(error, resp, body) {
             if (error) {
-                res.render("该系统内部系统错误");
+                res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
             var token = crypto.createHash('md5').update('ajtest'+body.trim()).digest('hex');
@@ -141,7 +141,7 @@ router.get('/other', function(req, res, next) {
     } else if (n == 4) {
         request('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!login.action?user=hum', function(error, resp, body) {
             if (error) {
-                res.render("该系统内部系统错误");
+                res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
             var t=JSON.parse(body)["result"];
