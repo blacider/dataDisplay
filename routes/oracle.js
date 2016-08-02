@@ -109,6 +109,32 @@ router.get('/df', function(req, res, next) {
         });
     });
 });
+router.get('/gs', function(req, res, next) {
+    // [1,10]
+    var p = 1;
+    if (req.query.p) p = Number(req.query.p);
+    var end = p*10;
+    oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    function(result) {
+        var table = result["rows"];
+        var tableData = [], tmp = {};
+        for (var i = 0; i <= 9; i++) {
+            tmp = {};
+            for (var j = 0; j < result["metaData"].length; j++) {
+                if (result["metaData"][j]["name"] == "MONTH") {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j].toLocaleDateString():"";
+                } else {
+                    tmp[result["metaData"][j]["name"]] = (table[i][j] != null)?table[i][j]:"";
+                }
+            }
+            tableData.push(tmp);
+        }
+        console.log(JSON.stringify(tableData));
+        res.json({
+            table:tableData
+        });
+    });
+});
 
 router.get('/jbxx', function(req, res, next) {
     oracleDao.query("select clrq, czsj from EXDB.EX_GONGSHANG_41V2_SSZTJCXX where zch = '"+req.query.zch+"'",

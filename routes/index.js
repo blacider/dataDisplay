@@ -38,6 +38,14 @@ var names = {
         MONTH:"抄表月份",
         TYPE:"类型",
         CONSUMPTION:"本月用点量"
+    },
+    gs:{
+        ZCH:"企业代码",
+        MC:"企业名",
+        FDDBR:"法人",
+        ZYXMLB:"行业",
+        DZ:"地址",
+        CLRQ:"注册时间"
     }
 };
 router.get('/system', function(req, res, next) {
