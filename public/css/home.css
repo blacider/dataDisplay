@@ -54,7 +54,7 @@
 .left-title {
     position: absolute;
     color: white;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     cursor:pointer;
 }
@@ -78,7 +78,7 @@
 }
 .left-text {
     position: absolute;
-    font-size: 9px;
+    font-size: 10px;
     line-height: 18px;
 }
 .left-text1 {
