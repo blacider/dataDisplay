@@ -31,8 +31,12 @@ router.get('/getComData', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        res.json({
-            table:tableData
+        oracleDao.query('SELECT count(*) FROM exdb.ssdj_jbxx', function(data) {
+            total = data["rows"][0];
+            res.json({
+                table:tableData,
+                total:total
+            });
         });
     });
 });
@@ -62,6 +66,7 @@ router.get('/sf', function(req, res, next) {
     var p = 1;
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
+    var total = 10002;
     oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
@@ -77,9 +82,12 @@ router.get('/sf', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        console.log(JSON.stringify(tableData));
-        res.json({
-            table:tableData
+        oracleDao.query('SELECT count(*) FROM WEBLH.T_WATER_NRESIDENT', function(data) {
+            total = data["rows"][0];
+            res.json({
+                table:tableData,
+                total:total
+            });
         });
     });
 });
@@ -88,6 +96,7 @@ router.get('/df', function(req, res, next) {
     var p = 1;
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
+    var total = 10002;
     oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
@@ -104,8 +113,12 @@ router.get('/df', function(req, res, next) {
             tableData.push(tmp);
         }
         console.log(JSON.stringify(tableData));
-        res.json({
-            table:tableData
+        oracleDao.query('SELECT count(*) FROM WEBLH.T_ELECTRICITY', function(data) {
+            total = data["rows"][0];
+            res.json({
+                table:tableData,
+                total:total
+            });
         });
     });
 });
@@ -114,6 +127,7 @@ router.get('/gs', function(req, res, next) {
     var p = 1;
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
+    var total = 10002;
     oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
@@ -129,9 +143,12 @@ router.get('/gs', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        console.log(JSON.stringify(tableData));
-        res.json({
-            table:tableData
+        oracleDao.query('SELECT count(*) FROM exdb.ssdj_jbxx', function(data) {
+            total = data["rows"][0];
+            res.json({
+                table:tableData,
+                total:total
+            });
         });
     });
 });
@@ -140,6 +157,7 @@ router.get('/jg', function(req, res, next) {
     var p = 1;
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
+    var total = 10002;
     oracleDao.query("select CREATE_DATE,ID,RISK_CONTAIN,BASIS FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM LGSAFE.check_record_item) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
@@ -159,9 +177,12 @@ router.get('/jg', function(req, res, next) {
                 })(tmp["CREATE_DATE"]);
             tableData.push(tmp);
         }
-        console.log(JSON.stringify(tableData));
-        res.json({
-            table:tableData
+        oracleDao.query('SELECT count(*) FROM LGSAFE.check_record_item', function(data) {
+            total = data["rows"][0];
+            res.json({
+                table:tableData,
+                total:total
+            });
         });
     });
 });

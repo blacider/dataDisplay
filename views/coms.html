@@ -67,6 +67,7 @@
     <p class="com-title">
         广州开发区企业名录
     </p>
+    <p id="total" style="text-align: right;position: relative;top: 25px;">总项目数:</p>
     <div class="table-c" data-name="sf">
         <div class="thead-container">
           <table class="thead" cellspacing="0" cellpadding="0">
@@ -121,6 +122,8 @@
                             data += '</tr>';
                         }
                         $('.tbody').append(data);
+                        $('.tbody').append(data);
+                        $("#total").empty().append('总项目数:'+res.total);
                         isGetData = false;
                     });
                 }
