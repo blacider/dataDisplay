@@ -28,7 +28,7 @@ router.get('/login', function(req, res, next) {
         error = req.session["error"];
     }
     res.render('login', {
-        title: '登录',
+        title: '广州开发区审批监管大数据平台',
         page:1,
         error:error
     });
@@ -39,7 +39,7 @@ router.get('/signup', function(req, res, next) {
         error = req.session["error"];
     }
     res.render('signup', {
-        title: '注册',
+        title: '广州开发区审批监管大数据平台',
         page:1,
         error:error
     });

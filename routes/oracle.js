@@ -51,7 +51,7 @@ router.get('/com', function(req, res, next) {
     var zch = req.query.ZCH;
     oracleDao.query("SELECT * FROM exdb.ssdj_jbxx where ZCH = '"+zch+"'", function(result) {
         res.render('com', {
-            title: '总览',
+            title: '广州开发区审批监管大数据平台',
             data:result["rows"][0]
         });
     });
@@ -184,7 +184,7 @@ router.get('/item', function(req, res, next) {
         }
         console.log(res_);
         res.render('item', {
-             title:'详情',
+             title:'广州开发区审批监管大数据平台',
              table:res_,
              tableNames:tableNames[table]
         });

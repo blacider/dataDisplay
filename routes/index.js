@@ -18,7 +18,7 @@ var request = require('request');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('home', {
-        title: '总览',
+        title: '广州开发区审批监管大数据平台',
         page:1
     });
 });
@@ -37,7 +37,7 @@ router.get('/system', function(req, res, next) {
     var n = "sf";
     if (req.query.n) n = req.query.n;
     res.render('systems', {
-        title: '系统' ,
+        title: '广州开发区审批监管大数据平台' ,
         table:[],
         tableNames:names[n],
         name:n
@@ -59,17 +59,17 @@ router.get('/getData', function(req, res, next) {
 });
 
 router.get('/data', function(req, res, next) {
-    res.render('data', { title: '大数据共享'});
+    res.render('data', { title: '广州开发区审批监管大数据平台'});
 });
 
 router.get('/view', function(req, res, next) {
     var name = req.query.name;
-    res.render('viewcom', { title: '公司详情' ,name:name, page:3
+    res.render('viewcom', { title: '广州开发区审批监管大数据平台' ,name:name, page:3
     });
 });
 router.get('/coms', function(req, res, next) {
     res.render('coms', {
-        title: '一企一档',
+        title: '广州开发区审批监管大数据平台',
         table:[],
         tableNames : {
             ZCH: '统一社会信用代码<br>（组织结构代码）',
@@ -168,7 +168,7 @@ router.get('/table', function(req, res, next) {
     var current=Number(req.query.p);
     var total = 100;
     res.render('table', {
-        title: '总览',
+        title: '广州开发区审批监管大数据平台',
         table: table,
         page:1,
         total :total,
