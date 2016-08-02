@@ -113,21 +113,37 @@ router.get('/other', function(req, res, next) {
     // 1:环保  2：审批系统  3:安监 4:劳动局
     if (n === 1) {
         request('http://172.16.55.74:8442/lgydzf/login_sso.jsp?user='+req.session.name, function(error, resp, body) {
+            if (error) {
+                res.render("该系统内部系统错误");
+                return error;
+            }
             var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
             res.redirect('//172.16.55.74:8442/lgydzf/login_sso.jsp?token=' + token);
         });
     } else if (n == 2) {
         request('http://172.23.8.24/SingleLoginService/getRandom?user=zgh', function(error, resp, body) {
+            if (error) {
+                res.render("该系统内部系统错误");
+                return error;
+            }
             var token = crypto.createHash('md5').update('zgh'+body.trim()).digest('hex');
             res.redirect('//172.23.8.24/SingleLoginService/redirection?token=' + token);
         });
     } else if (n == 3) {
         request('http://kfqajj.gdd.gov.cn/khsafety/signature!getToken.action?account=ajtest', function(error, resp, body) {
+            if (error) {
+                res.render("该系统内部系统错误");
+                return error;
+            }
             var token = crypto.createHash('md5').update('ajtest'+body.trim()).digest('hex');
             res.redirect('http://kfqajj.gdd.gov.cn/khsafety/signature!loginByToken.action?token=' + token);
         });
     } else if (n == 4) {
         request('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!login.action?user=hum', function(error, resp, body) {
+            if (error) {
+                res.render("该系统内部系统错误");
+                return error;
+            }
             var t=JSON.parse(body)["result"];
             t = JSON.parse(t)["code"];
             res.redirect('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!checkValid.action?token='+t);
