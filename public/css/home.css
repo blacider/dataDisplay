@@ -1,34 +1,37 @@
+html, body {
+    min-height: 700px;
+}
 .left {
     float: left;
-    width: 525px;
+    width: 680px;
     margin-top: 20px;
     position: relative;
-    height: 370px;
-    margin-left: 120px;
+    height: 474px;
+    margin-left: 30px;
     border-right: 1px white dashed;
 }
 .right {
     float: right;
-    width: 184px;
-    margin-top: 20px;
+    width: 210px;
+    margin-top: 56px;
     position: relative;
-    margin-right: 120px;
+    margin-right: 30px;
 }
 .left img, .right img {
     position: absolute;
 }
 .right img {
-    width:176px;
+    width:200px;
 }
 .left img {
-    width: 500px;
+    width: 635px;
 }
 .right-item {
-    width: 85px;
-    margin-bottom: 8px;
-    margin-right: 7px;
+    width: 96px;
+    margin-bottom: 10px;
+    margin-right: 9px;
     float: left;
-    height: 84px;
+    height: 95px;
     box-sizing: border-box;
     z-index: 10;
     padding: 18px;
@@ -41,94 +44,79 @@
     height: 100%;
     border-radius: 24px;
     text-align: center;
-    font-size: 10px;
-    line-height: 11px;
+    font-size: 12px;
+    line-height: 14px;
     padding: 14px 2px 0px 3px;
     box-sizing: border-box;
     color: white;
-    cursor: pointer;
-}
-.right-item p:hover {
-    font-size: 11px;
 }
 .left-title {
     position: absolute;
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
-    cursor:pointer;
-}
-.left-title:hover {
-    font-size: 12px;
 }
 .left-title1 {
-    width: 144px;
+    width: 179px;
     top: 0px;
-    left: 170px;
-    line-height: 35px;
+    left: 218px;
+    line-height: 43px;
 }
 .left-title2 {
-    width: 100px;
-    bottom: -2px;
-    left: 192px;
-    line-height: 30px;
-}
-.left-text li:hover {
-    font-size: 10px;
+    width: 126px;
+    bottom: 0px;
+    left: 244px;
+    line-height: 43px;
 }
 .left-text {
     position: absolute;
-    font-size: 10px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 24px;
 }
 .left-text1 {
-    left: 176px;
-    top: 66px;
+    left: 221px;
+    top: 83px;
 }
 .left-text2 {
-    left: 290px;
-    top: 84px;
+    left: 366px;
+    top: 107px;
 }
 .left-text3 {
-    left: 399px;
-    top: 84px;
+    left: 504px;
+    top: 106px;
 }
 .left-text4 {
-    left: 176px;
-    top: 239px;
+    left: 221px;
+    top: 303px;
 }
 .left-text5 {
-    left: 290px;
-    top: 239px;
+    left: 366px;
+    top: 302px;
 }
 .left-text6 {
-    left: 399px;
-    top: 239px;
+    left: 504px;
+    top: 301px;
 }
 .left-text a {
     color: black;
 }
-.left-item:hover {
-    font-size: 12px;
-    line-height: 13px;
-}
 .left-item {
-    padding: 13px 43px 15px 14px;
+    padding: 13px 54px 15px 14px;
     box-sizing: border-box;
     float: left;
-    width: 111.5px;
-    height: 85px;
+    width: 142px;
+    height: 102px;
     position: relative;
-    top: 137px;
-    left: 16px;
-    font-size: 11px;
-    line-height: 12px;
+    top: 175px;
+    left: 22px;
+    font-size: 15px;
+    line-height: 15px;
 }
 .left-item p {
     height: 100%;
     border-radius: 35px;
     color: #036eb7;
     text-align: center;
-    padding: 17px 0;
+    padding: 23px 0;
     box-sizing: border-box;
 }
