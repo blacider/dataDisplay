@@ -128,13 +128,13 @@
                             data += '</tr>';
                         }
                         $('.tbody').append(data);
-                        $('.tbody').append(data);
                         $("#total").empty().append('总数:'+res.total);
                         isGetData = false;
                     });
                 }
                 getData();
                 $("#comStatusSelect").change(function(event) {
+                    isGetData = true;
                     ztzt = this.value;
                     current = 0;
                     $('.tbody').empty();
@@ -143,6 +143,7 @@
                 });
                 $("div.table-container").scroll(function(event) {
                     if (!isGetData && this.scrollTop == this.scrollHeight-292) {
+                        isGetData = true;
                         getData();
                     }
                 });
