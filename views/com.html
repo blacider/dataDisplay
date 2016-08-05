@@ -47,8 +47,9 @@
       })
       .done(function(data) {
         dom.replaceWith(data);
-        var maxHeight = 0;
-        $(".com-item").each(function(index, el) {
+        var maxHeight = 0, dom_ = $(".com-item");
+        dom_.removeAttr('style');
+        dom_.each(function(index, el) {
           var h = $(el).height();
           if (h > maxHeight) maxHeight = h;
         });
