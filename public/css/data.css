@@ -3,6 +3,7 @@
     position: relative;
     margin: 20px auto;
     display: block;
+    z-index: 100;
 }
 .main {
     position: relative;
@@ -15,6 +16,7 @@
     font-size: 16px;
     font-weight: bold;
     position: absolute;
+    z-index: 101;
     text-shadow: white 0px 1px 0px, white 0px -1px 0px, white -1px 0px 0px, white 1px 0px 0px;
 }
 .main-list {
@@ -24,13 +26,11 @@
     height: 100%;
     top: 0;
 }
-.main-list li:hover {
-    font-size: 20px;
-}
 .main-list li {
     position: absolute;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: bold;
+    z-index: 102;
 }
 .main-list1 {
     left: 193px;
