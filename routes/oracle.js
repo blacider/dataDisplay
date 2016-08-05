@@ -18,7 +18,7 @@ router.get('/getComData', function(req, res, next) {
     };
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
-    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx where ztzt like '%"+ req.query.ztzt +"%') A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {}, j;
@@ -31,7 +31,7 @@ router.get('/getComData', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        oracleDao.query('SELECT count(*) FROM exdb.ssdj_jbxx', function(data) {
+        oracleDao.query("SELECT count(*) FROM exdb.ssdj_jbxx where ztzt like '%"+ req.query.ztzt +"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,

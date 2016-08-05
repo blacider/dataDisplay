@@ -73,11 +73,17 @@
           <table class="thead" cellspacing="0" cellpadding="0">
             <tr>
                 <td style="width:50px">序号</td>
-            <% for (items in tableNames) {
-                var item = tableNames[items];
-            %>
-                    <td><%-item%></td>
-            <%}%>
+                <td>统一社会信用代码<br>（组织结构代码）</td>
+                <td>企业名称</td>
+                <td>地址</td>
+                <td>
+                    <select id="comStatusSelect">
+                        <option value="">经营状态</option>
+                        <option value="经营正常">经营正常</option>    
+                        <option value="注销">注销</option>
+                        <option value="吊销">吊销</option>
+                    </select>
+                </td>
             </tr>
           </table>
         </div>
@@ -103,13 +109,13 @@
     (function(window, undefined) {
         jQuery(document).ready(function($) {
             (function bendEvent() {
-                var current = 0, n = $(".table-c").data("name"), isGetData = false;
+                var current = 0, n = $(".table-c").data("name"), isGetData = false, ztzt = '';
                 var getData = function() {
                     $.ajax({
                         url: '/getComData',
                         type: 'GET',
                         dataType: 'json',
-                        data: {n:n, p:current += 1},
+                        data: {n:n, p:current += 1,ztzt:ztzt},
                     })
                     .done(function(res) {
                         var data = "";
@@ -128,6 +134,13 @@
                     });
                 }
                 getData();
+                $("#comStatusSelect").change(function(event) {
+                    ztzt = this.value;
+                    current = 0;
+                    $('.tbody').empty();
+                    console.log(ztzt);
+                    getData();
+                });
                 $("div.table-container").scroll(function(event) {
                     if (!isGetData && this.scrollTop == this.scrollHeight-292) {
                         getData();
