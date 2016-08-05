@@ -4,9 +4,9 @@
   <h1><%=data[1]%></h1>
   <p class="com-title"><%=data[0]%></p>
   <ul class="status">
-    <li>异常</li>
-    <li class="active">正常</li>
-    <li>特殊</li>
+    <!-- <li>异常</li> -->
+    <li class="active">企业状态:<%=data[15]%></li>
+    <!-- <li>特殊</li> -->
   </ul>
 </div>
 <div class="block main" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-bottom:70px;">
@@ -29,9 +29,8 @@
     </div>
   </div>
   <div>
-    <div class="com-item" data-url="/jbxx">
+    <div class="com-item">
       <p class="title" style="background-image: url(/images/com-title4.png);">服务信息</p>
-      <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
     </div>
   </div>
 </div>
@@ -48,10 +47,16 @@
       })
       .done(function(data) {
         dom.replaceWith(data);
+        var maxHeight = 0;
+        $(".com-item").each(function(index, el) {
+          var h = $(el).height();
+          if (h > maxHeight) maxHeight = h;
+        });
+        $(".com-item").height(maxHeight);
       });
     }
     $(".com-item").each(function(index, el) {
-      getData($(el).data("url"), $(el).find('.load'));
+      if ($(el).data("url")) getData($(el).data("url"), $(el).find('.load'));
     });
   });
 </script>

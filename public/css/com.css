@@ -5,7 +5,7 @@ body {
     background-image:url(/images/coms-bg.png);
     background-repeat: repeat-x;
     background-size: inherit;
-    min-width: 900px;
+    min-width: 1000px;
     min-height: 100%;
     height: auto;
 }
@@ -54,10 +54,6 @@ h1 {
 .status li.active {
     color:#8fc31f;
     font-size: 17px;
-}
-.status li.active:before {
-    content:'·';
-    margin-right: 5px;
 }
 .main {
     overflow: hidden;

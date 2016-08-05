@@ -6,7 +6,7 @@ body {
     background-repeat: repeat-x;
     height: auto;
     background-size: inherit;
-    min-width: 900px;
+    min-width: 1000px;
 }
 .block {
     margin: 0 auto;
