@@ -10,6 +10,9 @@ html, body {
     margin-left: 30px;
     border-right: 1px white dashed;
 }
+li {
+    color: white;
+}
 .right {
     float: right;
     width: 210px;

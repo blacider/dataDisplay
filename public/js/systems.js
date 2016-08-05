@@ -21,7 +21,7 @@
                         data += '</tr>';
                     }
                     $('.tbody').append(data);
-                    $("#total").empty().append('总项目数:'+res.total);
+                    $("#total").empty().append('总数:'+res.total);
                     isGetData = false;
                 });
             }
