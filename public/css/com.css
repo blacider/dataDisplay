@@ -9,6 +9,10 @@ body {
     min-height: 100%;
     height: auto;
 }
+.content-container {
+    max-height: 600px;
+    overflow-y: scroll;
+}
 .block {
     margin: 0 auto;
     width: 900px;
