@@ -96,7 +96,8 @@ router.get('/coms', function(req, res, next) {
             ZCH: '统一社会信用代码<br>（组织结构代码）',
             MC: '企业名称',
             DZ: '地址',
-            ZTZT: '经营状态'
+            ZTZT: '经营状态',
+            SUPERVISE_RANK: '监管等级'
         }
     });
 });

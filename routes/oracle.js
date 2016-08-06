@@ -14,11 +14,12 @@ router.get('/getComData', function(req, res, next) {
         ZCH: '统一社会信用代码<br>（组织结构代码）',
         MC: '企业名称',
         DZ: '地址',
-        ZTZT: '经营状态'
+        ZTZT: '经营状态',
+        SUPERVISE_RANK: '监管等级'
     };
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
-    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx where ztzt like '%"+ req.query.ztzt +"%') A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT, SUPERVISE_RANK FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM (select * from exdb.ssdj_jbxx aa left join lgsafe.corp bb on aa.zch = bb.business_num) where ztzt like '%"+ req.query.ztzt +"%') A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {}, j;
@@ -29,6 +30,8 @@ router.get('/getComData', function(req, res, next) {
                 tmp[item] = table[i][j];
                 j++;
             }
+            if (!tmp['SUPERVISE_RANK']) tmp['SUPERVISE_RANK'] = "无";
+            else tmp['SUPERVISE_RANK'] = "安监："+tmp['SUPERVISE_RANK'];
             tableData.push(tmp);
         }
         oracleDao.query("SELECT count(*) FROM exdb.ssdj_jbxx where ztzt like '%"+ req.query.ztzt +"%'", function(data) {
