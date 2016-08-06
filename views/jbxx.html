@@ -3,6 +3,7 @@
   return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
 }%>
 <div class="content-container">
+<div>
 <div class="content-item">
     <p><%=getDate(data[0][0])%>注册登记</p>
 </div>
@@ -11,4 +12,5 @@
     <p><%=getDate(data[i][1])%>变更登记</p>
 </div>
 <%}%>
+</div>
 </div>
