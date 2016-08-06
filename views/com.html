@@ -36,6 +36,7 @@
 </div>
 <script type="text/javascript">
   $(function() {
+    var contentHight = $(window).height()-488;
     var name = $(".main").data("name"),
         zch = $(".main").data("zch");
     function getData(url, dom) {
@@ -47,6 +48,7 @@
       })
       .done(function(data) {
         dom.replaceWith(data);
+        $(".content-container > div").css('max-height', contentHight+'px');
         var maxHeight = 0, dom_ = $(".com-item");
         dom_.removeAttr('style');
         dom_.each(function(index, el) {
