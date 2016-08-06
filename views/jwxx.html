@@ -1,13 +1,26 @@
 <%function getDate(d) {
   var dd = new Date(d);
   return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
-}%>
+}
+var name = '';
+%>
 <div class="content-container">
 <%for (var i = 0; i < data.length; i++) {%>
-<div class="content-item">
-    <a href="/item?id=<%=data[i][0]%>&t=<%=data[i][4]%>&n=<%=data[i][5]%>">
-        <p><%=getDate(data[i][1])%><%=data[i][2]%>进行<%=data[i][3]%></p>
-    </a>
-</div>
+    <% if (name != data[i][2]) {
+        name = data[i][2];
+    %>
+        <div class="content-first">
+            <p class="first-title"><%=name%></p>
+            <div>
+    <%}%>
+    <div class="content-second">
+        <a href="/item?id=<%=data[i][0]%>&t=<%=data[i][4]%>&n=<%=data[i][5]%>">
+            <p><%=getDate(data[i][1])%><%=data[i][2]%>进行<%=data[i][3]%></p>
+        </a>
+    </div>
+    <% if (i+1 == data.length || name != data[i+1][2]) {%>
+            </div>
+        </div>
+    <%}%>
 <%}%>
 </div>
