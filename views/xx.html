@@ -34,17 +34,20 @@
     .xxtable td {
         word-wrap: break-word;
         word-break:break-all;
-        width: 500px;
+        width: 700px;
         font-size: 13px;
         padding: 8px 10px;
         background-color: rgb(227,245,255);
+    }
+    .ytable td {
+        width: 300px;
     }
     tbody {
         max-height: 516px;
     }
     .xxtable td:first-child {
         border-left:1px solid rgb(193,193,193);
-        width:200px;
+        width:300px;
         background-color: rgb(200,233,255);
     }
     .ytable td:first-child {
@@ -61,6 +64,15 @@
         overflow-x: hidden;
         overflow-y:scroll;
     }
+    .ttable .ttable-head td {
+        background-color: rgb(200,233,255);
+    }
+    .ttable .ttable-head td:first-child {
+        border-left:1px solid rgb(193,193,193);
+    }
+    .ttable tr td:first-child, .ttable .ttable-head td  {
+        border-left:none;
+    }
 </style>
 <%index = 0%>
 <ul id="tableNames">
@@ -68,6 +80,7 @@
     <li class="<%=index?'':'active'%>" data-id="<%=index++%>">股东信息</li>
     <li class="<%=index?'':'active'%>" data-id="<%=index++%>">组织结构</li>
     <li class="<%=index?'':'active'%>" data-id="<%=index++%>">用水用电</li>
+    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">特定属性</li>
     <%
     index = 0;
     %>
@@ -134,3 +147,66 @@
             <%}%>
         </tbody>
     </table>
+    <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+        <tr class="ttable-head">
+            <td rowspan="<%=data['项目环评'].length+1%>">项目环评</td>
+            <td>项目名称</td>
+            <td>地表水等级</td>
+            <td>地下水等级</td>
+            <td>海水等级</td>
+            <td>环境空气等级</td>
+            <td>建设前生物量</td>
+            <td>建设后生物量</td>
+            <td>生物治理</td>
+            <td>施工期废水</td>
+            <td>土壤等级</td>
+            <td>噪音等级</td>
+        </tr>
+        <%for (item of data['项目环评']){%>
+        <tr>
+             <%for (item1 of item){%>
+                <td><%=item1%></td>
+             <%}%>
+        </tr>
+        <%}%>
+    </table>
+    <!-- <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+        <tr class="ttable-head">
+            <td rowspan="2">l</td>
+             <td>huan1</td>
+             <td>huan2</td>
+             <td>huan3</td>
+        </tr>
+        <tr>
+             <td>huan1_</td>
+             <td>huan2_</td>
+             <td>huan3_</td>
+        </tr>
+    </table>
+    <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+        <tr class="ttable-head">
+            <td rowspan="2">a</td>
+             <td>huan1</td>
+             <td>huan2</td>
+             <td>huan3</td>
+        </tr>
+        <tr>
+             <td>huan1_</td>
+             <td>huan2_</td>
+             <td>huan3_</td>
+        </tr>
+    </table>
+    <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+        <tr class="ttable-head">
+            <td rowspan="2">t</td>
+             <td>huan1</td>
+             <td>huan2</td>
+             <td>huan3</td>
+        </tr>
+        <tr>
+             <td>huan1_</td>
+             <td>huan2_</td>
+             <td>huan3_</td>
+        </tr>
+    </table>
+ -->

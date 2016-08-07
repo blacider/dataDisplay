@@ -19,7 +19,7 @@ router.get('/xx', function(req, res, next) {
         res.render('xx',{data:resultsData});
     }
     if (req.query.n == 'jb') {
-        total = 4;
+        total = 5;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
         from exdb.ssdj_jbxx where zch = '"+zch+"'\
         ", function(result) {
@@ -82,6 +82,13 @@ router.get('/xx', function(req, res, next) {
                     '用水量':data[i][2],
                 })
             }
+            if (++index == total) renderData();
+        });
+        oracleDao.query("select xmmc, dbsdj,dxsdj,hsdj,hjkqdj, jsqswl,jshswl, swzl, sgqfs, trdj, zsdj from sa.T_YYYD_HBSP_LGHPZL\
+        where jsdwmc = '"+name+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['项目环评'] = data;
             if (++index == total) renderData();
         });
     }
