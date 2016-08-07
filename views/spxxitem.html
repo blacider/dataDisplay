@@ -1,0 +1,37 @@
+<% include head.html %>
+<%function getDate(d) {
+  var dd = new Date(d);
+  return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
+}%>
+<link rel="stylesheet" href="css/systems.css">
+<div class="content main">
+  <div class="thead-container">
+    <table class="thead" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>事项名称</td>
+        <td>联系人</td>
+        <td>联系方式</td>
+        <td>联系人地址</td>
+        <td>联系人手机号</td>
+        <td>受理人</td>
+        <td>受理日期</td>
+        <td>受理部门</td>
+        <td>批准人</td>
+        <td>批准日期</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="table-container">
+    <table class="tbody" cellspacing="0" cellpadding="0">
+          <% for (item1 of data) {%>
+              <tr>
+                  <% for (item of item1) {%>
+                      <td><%=item%></td>
+                  <%}%>
+              </tr>
+          <%}%>
+    </table>
+  </div>
+</div>
+<% include foot.html %>

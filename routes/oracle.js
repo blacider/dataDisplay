@@ -312,6 +312,25 @@ router.get('/spxx', function(req, res, next) {
         });
     });
 });
+router.get('/spxxitem', function(req, res, next) {
+    var id = req.query.id;
+    oracleDao.query("select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,ACCEPT_MAN,ACCEPT_DATE,UNIT_NAME,PZ_MAN_NAME,PZ_DATE from\
+    (select * from lg_base.V_SP_SHOULI@TO_QYXX) aa,\
+    (select * from lg_base.V_SP_SHENPIGUOCHENG_PZ@TO_QYXX) bb,\
+    (select * from lg_base.V_SP_SHENPIFISH@TO_QYXX) cc\
+    where aa.original_seq = '"+id+"' and aa.original_seq=bb.original_seq and bb.original_seq=cc.original_seq\
+    ", function(result) {
+        var data = result["rows"];
+        for (item of data) {
+            item[6] = getDate(item[6]);
+            item[9] = getDate(item[9]);
+        }
+        res.render('spxxitem', {
+            title:'广州开发区审批监管大数据平台',
+            data:data
+        });
+    });
+});
 router.get('/jwxx', function(req, res, next) {
     oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
     union all\
