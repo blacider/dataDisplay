@@ -41,8 +41,6 @@
     }
     tbody {
         max-height: 516px;
-        overflow: auto;
-        display: block;
     }
     .xxtable td:first-child {
         border-left:1px solid rgb(193,193,193);
@@ -57,6 +55,11 @@
     }
     .xxtable.active {
         display: block;
+    }
+    thead,tbody {
+        display: block;
+        overflow-x: hidden;
+        overflow-y:scroll;
     }
 </style>
 <%index = 0%>
