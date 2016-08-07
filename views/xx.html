@@ -1,0 +1,109 @@
+
+<style>
+    #tableNames li{
+        cursor: pointer;
+        color: white;
+        float: left;
+        list-style: none;
+        display: block;
+        background-color: rgb(62,166,243);
+        padding: 10px 15px;
+        /* margin-left: 1px; */
+        border-top-left-radius: 6px;
+        border: 1px solid rgb(56,156,249);
+        border-top-right-radius: 6px;
+        font-size: 14px;
+    }
+    #tableNames li.active {
+        background-color: rgb(30,100,200);
+        cursor: default;
+    }
+    #tableNames {
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 0;
+        border-bottom:1px solid rgb(193,193,193);
+    }
+    .xxtable {
+        display: none;
+    }
+    .xxtable td {
+        border-right: 1px solid rgb(193,193,193);
+        border-bottom:1px solid rgb(193,193,193);
+    }
+    .xxtable td {
+        word-wrap: break-word;
+        word-break:break-all;
+        width: 500px;
+        font-size: 13px;
+        padding: 8px 10px;
+        background-color: rgb(227,245,255);
+    }
+
+    .xxtable td:first-child {
+        border-left:1px solid rgb(193,193,193);
+        width:200px;
+        background-color: rgb(200,233,255);
+    }
+    .ytable td:first-child {
+        background-color: rgb(227,245,255);
+    }
+    .ytable thead td {
+        background-color: rgb(200,233,255)!important;
+    }
+    .xxtable.active {
+        display: block;
+    }
+</style>
+<%index = 0%>
+<ul id="tableNames">
+    <% for (item in data) {%>
+        <li class="<%=index?'':'active'%>" data-id="<%=index++%>"><%=item%></li>
+    <%}
+    index = 0;
+    %>
+</ul>
+    <table class="xxtable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+        <% for (item1 in data['基本信息']) {%>
+            <tr>
+                <td><%=item1%></td>
+                <td><%=data['基本信息'][item1]%></td>
+            </tr>
+        <%}%>
+    </table>
+    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+    <thead>
+        <tr>
+            <%for (item in data['股东信息'][0]){%>
+                <td><%=item%></td>
+            <%}%>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (item1 in data['股东信息']) {%>
+            <tr>
+                <% for (item in data['股东信息'][item1]) {%>
+                    <td><%=data['股东信息'][item1][item]%></td>
+                <%}%>
+            </tr>
+        <%}%>
+    </tbody> 
+    </table>
+    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <%for (item in data['组织结构'][0]){%>
+                    <td><%=item%></td>
+                <%}%>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (item1 in data['组织结构']) {%>
+                <tr>
+                    <% for (item in data['组织结构'][item1]) {%>
+                        <td><%=data['组织结构'][item1][item]%></td>
+                    <%}%>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>

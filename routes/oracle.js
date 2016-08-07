@@ -8,6 +8,63 @@ router.get('/oracle', function(req, res, next) {
         res.json(JSON.stringify(result));
     });
 });
+
+router.get('/xx', function(req, res, next) {
+    var resultsData = {}, index = 0, zch = req.query.zch;
+    var renderData = function() {
+        console.log(resultsData);
+        res.render('xx',{data:resultsData});
+    }
+    if (req.query.n == 'jb') {
+        oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
+        from exdb.ssdj_jbxx where zch = '"+zch+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['基本信息'] = {
+                '注册号':data[0][0],
+                '名称':data[0][1],
+                '法定代表人':data[0][2],
+                '主经营类别':data[0][3],
+                '经营类别':data[0][4],
+                '许可经营范围':data[0][5],
+                '注册地址':data[0][6]
+            };
+            if (++index == 3) renderData();
+        });
+        oracleDao.query("select gdmc, gdlx, gdgj, rjcze, rjbl\
+        from exdb.ssdj_gdxx\
+        where zch = '"+zch+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['股东信息'] = [];
+            for (var i = 0; i < data.length; i++) {
+                resultsData['股东信息'].push({
+                    '股东名称':data[i][0],
+                    '股东类型':data[i][1],
+                    '股东国籍':data[i][2],
+                    '金额':data[i][3],
+                    '比例':data[i][4]
+                })
+            }
+            if (++index == 3) renderData();
+        });
+        oracleDao.query("select xm,zw,xb from exdb.ssdj_zzjg\
+        where zch = '"+zch+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['组织结构'] = [];
+            for (var i = 0; i < data.length; i++) {
+                resultsData['组织结构'].push({
+                    '姓名':data[i][0],
+                    '职位':data[i][1],
+                    '性别':data[i][2],
+                })
+            }
+            if (++index == 3) renderData();
+        });
+    }
+    
+});
 router.get('/getComData', function(req, res, next) {
     // [1,10]
     var p = 1, tableNames = {

@@ -12,13 +12,13 @@
 <div class="block main" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-bottom:70px;">
   <div>
     <div class="com-item jbxx" data-url="/jbxx">
-      <p class="title" style="background-image: url(/images/com-title1.png);">基本信息</p>
+      <p class="title-able title" data-name="jb" style="background-image: url(/images/com-title1.png);">基本信息</p>
       <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
     </div>
   </div>
   <div>
     <div class="com-item" data-url="/spxx">
-      <p class="title" style="background-image: url(/images/com-title2.png);">审批信息</p>
+      <p class="title title-able" data-name="sp" style="background-image: url(/images/com-title2.png);">审批信息</p>
       <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
     </div>
   </div>
@@ -34,11 +34,95 @@
     </div>
   </div>
 </div>
+<style>
+  .modal {
+      z-index: 100;
+      position: absolute;
+      position: fixed;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 700px;
+      height: 500px;
+      margin: auto;
+      animation-name:modal;
+      animation-duration:600ms;
+      animation-timing-function: ease-in-out;
+       -webkit-transition: .3s ease-out; 
+      transition: .3s ease-out;
+      border-radius: 8px;
+      box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+      background-color: white;
+      opacity: 1;
+      display: none;
+      border: 1px solid #cbcbcb;
+  }
+  @keyframes modal{
+
+      0% {transform-origin: 50% 50%;transform: rotate3d(0, 1, 0, 720deg) rotateZ(45deg) scale(0);}
+
+      100% {transform: rotate3d(0, 1, 0, 0) rotateZ(0) scale(1);}
+
+  }
+  .icon {
+      background-position: -37px -76px;
+      width: 16px;
+      height: 16px;
+      background-image: url(../images/icons.png);
+  }
+  .close {
+      right: 10px;
+      opacity: .2;
+      position: absolute;
+      top: 10px;
+      cursor: pointer;
+      -webkit-transition: opacity .2s ease-out;
+      transition: opacity .2s ease-out;
+  }
+  .close:hover {
+      opacity: .3;
+  }
+
+</style>
+<div class="modal">
+    <div class="close icon">
+    </div>
+    <div></div>
+</div>
 <script type="text/javascript">
   $(function() {
+    $(".modal").delegate('li', 'click', function(event) {
+      $(".modal table").removeClass('active');
+      $(".modal li").removeClass('active');
+      $(event.target).addClass('active');
+      $(".modal #table_"+$(event.target).data('id')).addClass('active');
+      $(".modal").height($(".close").next().height());
+    });
+    $('.close').click(function(event) {
+      /* Act on the event */
+      $('.modal').hide();
+    });
     var contentHight = $(window).height()-488;
     var name = $(".main").data("name"),
-        zch = $(".main").data("zch");
+        zch = $(".main").data("zch"), isClickP = false;
+    $("p.title-able").css('cursor', 'pointer').click(function(event) {
+      if (isClickP) return;
+      isClickP = true;
+      showLoading();
+      $.ajax({
+        url: '/xx',
+        type: 'GET',
+        dataType: 'html',
+        data: {zch: zch,n:$(event.target).data('name')},
+      })
+      .done(function(data) {
+        $(".close").next().empty().append(data).closest('.modal').show();
+        isClickP = false;
+        hideLoading();
+      });
+      
+    });
     function getData(url, dom) {
       $.ajax({
         url: url,
