@@ -8,14 +8,18 @@ router.get('/oracle', function(req, res, next) {
         res.json(JSON.stringify(result));
     });
 });
-
+function getDate(d) {
+  var dd = new Date(d);
+  return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日";
+}
 router.get('/xx', function(req, res, next) {
-    var resultsData = {}, index = 0, zch = req.query.zch;
+    var resultsData = {},total, name=req.query.name, index = 0, zch = req.query.zch, addr = req.query.addr;
     var renderData = function() {
         console.log(resultsData);
         res.render('xx',{data:resultsData});
     }
     if (req.query.n == 'jb') {
+        total = 4;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
         from exdb.ssdj_jbxx where zch = '"+zch+"'\
         ", function(result) {
@@ -29,7 +33,7 @@ router.get('/xx', function(req, res, next) {
                 '许可经营范围':data[0][5],
                 '注册地址':data[0][6]
             };
-            if (++index == 3) renderData();
+            if (++index == total) renderData();
         });
         oracleDao.query("select gdmc, gdlx, gdgj, rjcze, rjbl\
         from exdb.ssdj_gdxx\
@@ -46,7 +50,7 @@ router.get('/xx', function(req, res, next) {
                     '比例':data[i][4]
                 })
             }
-            if (++index == 3) renderData();
+            if (++index == total) renderData();
         });
         oracleDao.query("select xm,zw,xb from exdb.ssdj_zzjg\
         where zch = '"+zch+"'\
@@ -60,7 +64,25 @@ router.get('/xx', function(req, res, next) {
                     '性别':data[i][2],
                 })
             }
-            if (++index == 3) renderData();
+            if (++index == total) renderData();
+        });
+        oracleDao.query("select aa.month, aa.consumption, bb.consumption  from\
+        (select * from WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0') aa\
+        left join\
+        (select * from WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0') bb\
+        on aa.month = bb.month\
+        order by aa.month\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['用水用电'] = [];
+            for (var i = 0; i < data.length; i++) {
+                resultsData['用水用电'].push({
+                    '月份':getDate(data[i][0]),
+                    '用电量':data[i][1],
+                    '用水量':data[i][2],
+                })
+            }
+            if (++index == total) renderData();
         });
     }
     

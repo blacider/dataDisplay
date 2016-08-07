@@ -9,7 +9,7 @@
     <!-- <li>特殊</li> -->
   </ul>
 </div>
-<div class="block main" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-bottom:70px;">
+<div class="block main" data-addr="<%=data[8]%>" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-bottom:70px;">
   <div>
     <div class="com-item jbxx" data-url="/jbxx">
       <p class="title-able title" data-name="jb" style="background-image: url(/images/com-title1.png);">基本信息</p>
@@ -41,6 +41,8 @@
       position: fixed;
       top:0;
       left: 0;
+      max-height: 600px;
+      overflow: hidden;
       right: 0;
       bottom: 0;
       width: 700px;
@@ -105,6 +107,7 @@
     });
     var contentHight = $(window).height()-488;
     var name = $(".main").data("name"),
+        addr = $(".main").data("addr"),
         zch = $(".main").data("zch"), isClickP = false;
     $("p.title-able").css('cursor', 'pointer').click(function(event) {
       if (isClickP) return;
@@ -114,10 +117,11 @@
         url: '/xx',
         type: 'GET',
         dataType: 'html',
-        data: {zch: zch,n:$(event.target).data('name')},
+        data: {zch: zch,n:$(event.target).data('name'),name:name},
       })
       .done(function(data) {
         $(".close").next().empty().append(data).closest('.modal').show();
+        $(".modal").height($(".close").next().height());
         isClickP = false;
         hideLoading();
       });

@@ -39,7 +39,11 @@
         padding: 8px 10px;
         background-color: rgb(227,245,255);
     }
-
+    tbody {
+        max-height: 516px;
+        overflow: auto;
+        display: block;
+    }
     .xxtable td:first-child {
         border-left:1px solid rgb(193,193,193);
         width:200px;
@@ -57,9 +61,11 @@
 </style>
 <%index = 0%>
 <ul id="tableNames">
-    <% for (item in data) {%>
-        <li class="<%=index?'':'active'%>" data-id="<%=index++%>"><%=item%></li>
-    <%}
+    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">基本信息</li>
+    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">股东信息</li>
+    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">组织结构</li>
+    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">用水用电</li>
+    <%
     index = 0;
     %>
 </ul>
@@ -102,6 +108,24 @@
                 <tr>
                     <% for (item in data['组织结构'][item1]) {%>
                         <td><%=data['组织结构'][item1][item]%></td>
+                    <%}%>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <%for (item in data['用水用电'][0]){%>
+                    <td><%=item%></td>
+                <%}%>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (item1 in data['用水用电']) {%>
+                <tr>
+                    <% for (item in data['用水用电'][item1]) {%>
+                        <td><%=data['用水用电'][item1][item]%></td>
                     <%}%>
                 </tr>
             <%}%>
