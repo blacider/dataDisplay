@@ -18,6 +18,10 @@ router.get('/xx', function(req, res, next) {
         console.log(resultsData);
         res.render('xx',{data:resultsData});
     }
+    var renderDataY = function() {
+        console.log(resultsData);
+        res.render('yy',{data:resultsData});
+    }
     if (req.query.n == 'jb') {
         total = 5;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
@@ -90,6 +94,22 @@ router.get('/xx', function(req, res, next) {
             var data = result["rows"];
             resultsData['项目环评'] = data;
             if (++index == total) renderData();
+        });
+    } else {
+        total = 1;
+        oracleDao.query("select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,ACCEPT_MAN,ACCEPT_DATE,UNIT_NAME,PZ_MAN_NAME,PZ_DATE from\
+        (select * from lg_base.V_SP_SHOULI@TO_QYXX where cust_name like '%"+name+"%') aa,\
+        (select * from lg_base.V_SP_SHENPIGUOCHENG_PZ@TO_QYXX) bb,\
+        (select * from lg_base.V_SP_SHENPIFISH@TO_QYXX) cc\
+        where aa.original_seq=bb.original_seq and bb.original_seq=cc.original_seq\
+        ", function(result) {
+            var data = result["rows"];
+            for (item of data) {
+                item[6] = getDate(item[6]);
+                item[9] = getDate(item[9]);
+            }
+            resultsData['监管信息'] = data;
+            if (++index == total) renderDataY();
         });
     }
     
