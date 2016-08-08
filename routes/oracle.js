@@ -23,7 +23,7 @@ router.get('/xx', function(req, res, next) {
         res.render('yy',{data:resultsData});
     }
     if (req.query.n == 'jb') {
-        total = 5;
+        total = 6;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
         from exdb.ssdj_jbxx where zch = '"+zch+"'\
         ", function(result) {
@@ -93,6 +93,14 @@ router.get('/xx', function(req, res, next) {
         ", function(result) {
             var data = result["rows"];
             resultsData['项目环评'] = data;
+            if (++index == total) renderData();
+        });
+        oracleDao.query("select LZFZRLXDH,SBZH,RSZY,CYRS,BSHJZGRS,FBSSNGZRS,WGJCYRS,SYGZZE,SYZDGZ,FQRZYGZDSX,SYRJGZ,SYZFGZRS\
+        from ldzf.ldzf_qyygjcxx\
+        where dwmc = '"+name+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['用工信息'] = data;
             if (++index == total) renderData();
         });
     } else {

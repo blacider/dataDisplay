@@ -170,20 +170,32 @@
         </tr>
         <%}%>
     </table>
-    <!-- <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
-        <tr class="ttable-head">
-            <td rowspan="2">l</td>
-             <td>huan1</td>
-             <td>huan2</td>
-             <td>huan3</td>
-        </tr>
-        <tr>
-             <td>huan1_</td>
-             <td>huan2_</td>
-             <td>huan3_</td>
-        </tr>
-    </table>
     <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+        <tr class="ttable-head">
+            <td rowspan="2">用工信息</td>
+            <td>劳资负责人联系电话</td>
+            <td>社保证号</td>
+            <td>人事专员</td>
+            <td>从业人数（不含劳务人员）</td>
+            <td>本市户籍职工人数</td>
+            <td>非本市省内职工人数</td>
+            <td>外国籍从业人数</td>
+            <td>上月工资总额（元）</td>
+            <td>上月最低工资（元）</td>
+            <td>非全日制用工最低时薪</td>
+            <td>上月人均工资（元）</td>
+            <td>上月支付工资人数</td>
+
+        </tr>
+        <%for (item of data['用工信息']){%>
+        <tr>
+             <%for (item1 of item){%>
+                <td><%=item1%></td>
+             <%}%>
+        </tr>
+        <%}%>
+    </table>
+<!--     <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
         <tr class="ttable-head">
             <td rowspan="2">a</td>
              <td>huan1</td>
@@ -195,8 +207,8 @@
              <td>huan2_</td>
              <td>huan3_</td>
         </tr>
-    </table>
-    <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+    </table> -->
+<!--     <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
         <tr class="ttable-head">
             <td rowspan="2">t</td>
              <td>huan1</td>
@@ -208,5 +220,4 @@
              <td>huan2_</td>
              <td>huan3_</td>
         </tr>
-    </table>
- -->
+    </table> -->
