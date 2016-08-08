@@ -104,7 +104,7 @@ router.get('/xx', function(req, res, next) {
             if (++index == total) renderData();
         });
     } else {
-        total = 1;
+        total = 2;
         oracleDao.query("select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,ACCEPT_MAN,ACCEPT_DATE,UNIT_NAME,PZ_MAN_NAME,PZ_DATE from\
         (select * from lg_base.V_SP_SHOULI@TO_QYXX where cust_name like '%"+name+"%') aa,\
         (select * from lg_base.V_SP_SHENPIGUOCHENG_PZ@TO_QYXX) bb,\
@@ -117,6 +117,13 @@ router.get('/xx', function(req, res, next) {
                 item[9] = getDate(item[9]);
             }
             resultsData['监管信息'] = data;
+            if (++index == total) renderDataY();
+        });
+        oracleDao.query("select '环保许可证', LICENSENUMBER, POLLUTIONTYPE, '广州开发区建设和环境保护局',  REGEXP_SUBSTR(LICENSEVALIDITY,'[^至]+',1,1,'i'),REGEXP_SUBSTR(LICENSEVALIDITY,'[^至]+',1,2,'i'),'',''\
+        from SA.T_YYYD_XKZ_MAIN where entername = '"+name+"'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['环保'] = data;
             if (++index == total) renderDataY();
         });
     }

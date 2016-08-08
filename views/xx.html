@@ -25,29 +25,31 @@
         border-bottom:1px solid rgb(193,193,193);
     }
     .xxtable {
+        width: 100%;
         display: none;
     }
     .xxtable td {
+        text-align: center;
+        padding: 7px 0;
         border-right: 1px solid rgb(193,193,193);
         border-bottom:1px solid rgb(193,193,193);
     }
     .xxtable td {
         word-wrap: break-word;
-        word-break:break-all;
-        width: 700px;
         font-size: 13px;
-        padding: 8px 10px;
         background-color: rgb(227,245,255);
     }
     .ytable td {
-        width: 300px;
+    }
+    table {
+        table-layout: fixed;
+        width: 100%;
     }
     tbody {
         max-height: 516px;
     }
     .xxtable td:first-child {
         border-left:1px solid rgb(193,193,193);
-        width:300px;
         background-color: rgb(200,233,255);
     }
     .ytable td:first-child {
@@ -57,10 +59,10 @@
         background-color: rgb(200,233,255)!important;
     }
     .xxtable.active {
-        display: block;
+        display: inline-table;
     }
     thead,tbody {
-        display: block;
+        width: 100%;
         overflow-x: hidden;
         overflow-y:scroll;
     }
@@ -88,7 +90,7 @@
     <table class="xxtable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
         <% for (item1 in data['基本信息']) {%>
             <tr>
-                <td><%=item1%></td>
+                <td style="width: 200px;"><%=item1%></td>
                 <td><%=data['基本信息'][item1]%></td>
             </tr>
         <%}%>

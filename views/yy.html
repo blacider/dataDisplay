@@ -25,31 +25,31 @@
         border-bottom:1px solid rgb(193,193,193);
     }
     .xxtable {
+        width: 100%;
         display: none;
-        table-layout: fixed;
     }
     .xxtable td {
+        text-align: center;
+        padding: 7px 0;
         border-right: 1px solid rgb(193,193,193);
         border-bottom:1px solid rgb(193,193,193);
     }
     .xxtable td {
         word-wrap: break-word;
-        word-break:break-all;
-        width: 700px;
         font-size: 13px;
-        padding: 8px 10px;
         background-color: rgb(227,245,255);
     }
     .ytable td {
-        width: 300px;
+    }
+    table {
+        table-layout: fixed;
+        width: 100%;
     }
     tbody {
         max-height: 516px;
-        table-layout: fixed;
     }
     .xxtable td:first-child {
         border-left:1px solid rgb(193,193,193);
-        width:300px;
         background-color: rgb(200,233,255);
     }
     .ytable td:first-child {
@@ -59,10 +59,10 @@
         background-color: rgb(200,233,255)!important;
     }
     .xxtable.active {
-        display: block;
+        display: inline-table;
     }
     thead,tbody {
-        display: block;
+        width: 100%;
         overflow-x: hidden;
         overflow-y:scroll;
     }
@@ -109,4 +109,26 @@
             <%}%>
         </tbody>
     </table>
- 
+    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <td>许可证名称</td>
+                <td>许可证号</td>
+                <td>许可内容</td>
+                <td>许可机关</td>
+                <td>起始期限</td>
+                <td>截止期限</td>
+                <td>附件</td>
+                <td>备注</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (item1 of data['环保']) {%>
+                <tr>
+                    <% for (item of item1) {%>
+                        <td><%=item%></td>
+                    <%}%>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
