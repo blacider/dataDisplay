@@ -4,13 +4,13 @@
     <img src="images/data.png" usemap="#planetmap" alt="data">
     <p class="title">大数据共享</p>
     <ul class="main-list">
-        <a href="/system?n=sif">
+        <a href="javascript:findError();">
             <li class="main-list1">税费</li>
         </a>
         <a href="/system?n=gs">
             <li class="main-list2">工商</li>
         </a>
-        <a href="/system?n=sp">
+        <a href="javascript:findError();">
             <li class="main-list3">审批</li>
         </a>
         <a href="/system?n=jg">
@@ -24,12 +24,19 @@
         </a>
     </ul>
     <map name="planetmap">
-      <area href="/system?n=sif" shape="circle" title="税费" coords="84,69,36">
+      <area href="javascript:findError();" shape="circle" title="税费" coords="84,69,36">
       <area href="/system?n=gs" shape="circle" title="工商" coords="228,39,36">
-      <area href="/system?n=sp" shape="circle" title="审批" coords="331,140,36">
+      <area href="javascript:findError();" shape="circle" title="审批" coords="331,140,36">
       <area href="/system?n=jg" shape="circle" title="监管" coords="298,291,36">
       <area href="/system?n=sf" shape="circle" title="水费" coords="156,343,36">
       <area href="/system?n=df" shape="circle" title="电费" coords="37,235,36">
     </map>
 </div>
+<script>
+function findError() {
+   $.jGrowl('该系统建设中！', {
+       life: 3000
+   });
+}
+</script>
 <% include foot.html %>
