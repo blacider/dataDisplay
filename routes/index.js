@@ -48,10 +48,13 @@ var names = {
         CLRQ:"注册时间"
     },
     jg:{
-        CREATE_DATE:"创建日期",
-        ID:"id",
-        RISK_CONTAIN:"危险源",
-        BASIS:"法律依据"
+        CASE_MEMBER:"违法公司",
+        MAIN_PERSON:"执法人",
+        CREATE_DATE:"日期",
+        CASE_NAME:"案件名",
+        CASE_SITUATION:"案件描述",
+        UNIT_PUNISH_MONEY:"罚款金额",
+        LEGAL_NAME:"责任人"
     }
 };
 router.get('/system', function(req, res, next) {

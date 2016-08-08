@@ -267,7 +267,7 @@ router.get('/jg', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("select CREATE_DATE,ID,RISK_CONTAIN,BASIS FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM LGSAFE.check_record_item) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("select case_member,main_person,create_date,case_name,case_situation,unit_punish_money,legal_name FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM lgsafe.case order by create_date desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
