@@ -55,6 +55,13 @@ var names = {
         CASE_SITUATION:"案件描述",
         UNIT_PUNISH_MONEY:"罚款金额",
         LEGAL_NAME:"责任人"
+    },
+    sp:{
+        approve_item:"事项名称",
+        cust_name :"企业名称",
+        start_date:"申请日期",
+        complete_date:"批准时间",
+        '批准':'审批结果'
     }
 };
 router.get('/system', function(req, res, next) {
@@ -146,12 +153,12 @@ router.get('/other', function(req, res, next) {
             res.redirect('//172.16.55.74:8442/lgydzf/login_sso.jsp?token=' + token);
         });
     } else if (n == 2) {
-        request('http://172.23.8.24/SingleLoginService/getRandom?user=zgh', function(error, resp, body) {
+        request('http://172.23.8.24/SingleLoginService/getRandom?user=qiujx', function(error, resp, body) {
             if (error) {
                 res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
-            var token = crypto.createHash('md5').update('zgh'+body.trim()).digest('hex');
+            var token = crypto.createHash('md5').update('qiujx'+body.trim()).digest('hex');
             res.redirect('//172.23.8.24/SingleLoginService/redirection?token=' + token);
         });
     } else if (n == 3) {
