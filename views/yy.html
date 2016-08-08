@@ -119,11 +119,17 @@
                 <td>起始期限</td>
                 <td>截止期限</td>
                 <td>附件</td>
-                <td>备注</td>
             </tr>
         </thead>
         <tbody>
             <% for (item1 of data['环保']) {%>
+                <tr>
+                    <% for (item of item1) {%>
+                        <td><%=item%></td>
+                    <%}%>
+                </tr>
+            <%}%>
+            <% for (item1 of data['市场']) {%>
                 <tr>
                     <% for (item of item1) {%>
                         <td><%=item%></td>
