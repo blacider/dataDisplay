@@ -104,7 +104,7 @@ router.get('/xx', function(req, res, next) {
             if (++index == total) renderData();
         });
     } else {
-        total = 3;
+        total = 5;
         oracleDao.query("select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,ACCEPT_MAN,ACCEPT_DATE,UNIT_NAME,PZ_MAN_NAME,PZ_DATE from\
         (select * from lg_base.V_SP_SHOULI@TO_QYXX where cust_name like '%"+name+"%') aa,\
         (select * from lg_base.V_SP_SHENPIGUOCHENG_PZ@TO_QYXX) bb,\
@@ -131,6 +131,20 @@ router.get('/xx', function(req, res, next) {
         ", function(result) {
             var data = result["rows"];
             resultsData['市场'] = data;
+            if (++index == total) renderDataY();
+        });
+        oracleDao.query("select '化妆品许可',xkzbh,pzscxm,'市场局',to_char(create_time,'yyyy-mm-dd'),to_char(yxq,'yyyy-mm-dd'),'' from lgyj_xdr.b_xdr_hzp_fac_zsxx\
+        where qymc like '%"+name+"%'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['化妆'] = data;
+            if (++index == total) renderDataY();
+        });
+        oracleDao.query("select credentials_name,credentials_code,licenses_range,award_unit, to_char(award_date,'yyyy-mm-dd'),to_char(valid_end,'yyyy-mm-dd') ,'' from lgsafe.corp_credentials\
+        where CORP_NAME like '%"+name+"%'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['安'] = data;
             if (++index == total) renderDataY();
         });
     }
