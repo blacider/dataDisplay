@@ -176,7 +176,7 @@ router.get('/sf', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT order by month desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
@@ -206,7 +206,7 @@ router.get('/df', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY order by month desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
@@ -237,7 +237,7 @@ router.get('/gs', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx order by clrq desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
