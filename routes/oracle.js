@@ -402,17 +402,23 @@ router.get('/spxxitem', function(req, res, next) {
     });
 });
 router.get('/jwxx', function(req, res, next) {
-    oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
+    oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
+    order by startdate desc)\
     union all\
-    select to_char(ywid), starttime, undertakedepart, '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid' from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
+    select to_char(ywid), starttime, undertakedepart, '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid' from (select * from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
+    order by starttime desc)\
     union all\
-    select to_char(id), start_time , '劳动局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
+    select to_char(id), start_time , '劳动局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
+    order by start_time desc)\
     union all\
-    select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid' from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
+    select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid' from (select * from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
+    order by check_time_start desc)\
     union all\
-    select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
+    select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' from (select * from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
+    order by jcjssj desc)\
     union all\
-    select uuid, create_date,'安检局', '行政处罚' ,'lgsafe.case', 'uuid' from lgsafe.case where case_member like '%"+req.query.name+"%'\
+    select uuid, create_date,'安检局', '行政处罚' ,'lgsafe.case', 'uuid' from (select * from lgsafe.case where case_member like '%"+req.query.name+"%'\
+    order by create_date desc)\
     ",
     function(result) {
         res.render('jwxx', {

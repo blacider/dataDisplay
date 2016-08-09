@@ -1,4 +1,5 @@
 <%function getDate(d) {
+if (d == '') return '';
   var dd = new Date(d);
   return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
 }
