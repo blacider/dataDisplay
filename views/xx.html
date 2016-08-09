@@ -197,19 +197,26 @@
         </tr>
         <%}%>
     </table>
-<!--     <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
+    <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
         <tr class="ttable-head">
-            <td rowspan="2">a</td>
-             <td>huan1</td>
-             <td>huan2</td>
-             <td>huan3</td>
+            <td rowspan="2">安监</td>
+            <td>危险货物编号</td>
+            <td>年生产、储存、经营、使用量（吨/年）</td>
+            <td>危险品名称</td>
+            <td>危险特性</td>
+            <td>职业病危害因素名称</td>
+            <td>职业病危害因素名称</td>
+            <td>职业病危害来源</td>
+            <td>操作方式</td>
         </tr>
+        <%for (item of data['危险品']){%>
         <tr>
-             <td>huan1_</td>
-             <td>huan2_</td>
-             <td>huan3_</td>
+             <%for (item1 of item){%>
+                <td><%=item1%></td>
+             <%}%>
         </tr>
-    </table> -->
+        <%}%>
+    </table>
 <!--     <table class="xxtable ytable ttable <%=index?'':'active'%>" id="table_<%=index%>" cellspacing="0" cellpadding="0">
         <tr class="ttable-head">
             <td rowspan="2">t</td>

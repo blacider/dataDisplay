@@ -23,7 +23,7 @@ router.get('/xx', function(req, res, next) {
         res.render('yy',{data:resultsData});
     }
     if (req.query.n == 'jb') {
-        total = 6;
+        total = 7;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
         from exdb.ssdj_jbxx where zch = '"+zch+"'\
         ", function(result) {
@@ -101,6 +101,13 @@ router.get('/xx', function(req, res, next) {
         ", function(result) {
             var data = result["rows"];
             resultsData['用工信息'] = data;
+            if (++index == total) renderData();
+        });
+        oracleDao.query("select b.COMMODITY_NUM,b.USAGE_NUM, b.NAME, b.DANGER_FEATURE,c.HARM_NAME,c.OPERATION_NAME,c.SOURCE_NAME,c.OPERATION from LGSAFE.corp_basic_info a, LGSAFE.corp_chemical_product b, LGSAFE.harm_data_info c where c.corp_uuid = a.uuid and b.corp_uuid = a.uuid and \
+            a.corp_name like '%+name+%'\
+        ", function(result) {
+            var data = result["rows"];
+            resultsData['危险品'] = data;
             if (++index == total) renderData();
         });
     } else {
