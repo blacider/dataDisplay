@@ -409,22 +409,28 @@ router.get('/spxxitem', function(req, res, next) {
     });
 });
 router.get('/jwxx', function(req, res, next) {
-    oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
+    oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' ,'0'\
+        from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
     order by startdate desc)\
     union all\
-    select to_char(ywid), starttime, undertakedepart, '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid' from (select * from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
+    select to_char(ywid), starttime, undertakedepart, '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid','1' \
+    from (select * from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
     order by starttime desc)\
     union all\
-    select to_char(id), start_time , '劳动局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
+    select to_char(id), start_time , '劳动局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' ,'0' \
+    from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
     order by start_time desc)\
     union all\
-    select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid' from (select * from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
+    select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid', '0' \
+    from (select * from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
     order by check_time_start desc)\
     union all\
-    select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' from (select * from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
+    select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' ,'0' from (select * \
+    from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
     order by jcjssj desc)\
     union all\
-    select uuid, create_date,'安检局', '行政处罚' ,'lgsafe.case', 'uuid' from (select * from lgsafe.case where case_member like '%"+req.query.name+"%'\
+    select uuid, create_date,'安全生产监督管理局', '行政处罚' ,'lgsafe.case', 'uuid' ,'1'\
+    from (select * from lgsafe.case where case_member like '%"+req.query.name+"%'\
     order by create_date desc)\
     ",
     function(result) {
@@ -433,74 +439,35 @@ router.get('/jwxx', function(req, res, next) {
         });
     });
 });
+// 完成：环保日常，安监日常
 var tableNames = {
-    'lgsafe.case':{
-        'CREATE_DATE':"处罚日期",
-        'MAIN_PERSON':"执法人",
-        'CASE_NAME':"案件名",
-        'CASE_SITUATION':"案件结果",
-        'UNIT_PUNISH_MONEY':"处罚金额"
-    },
-    'sa.T_YYYD_ZF_MAIN':{
-        "STARTDATE":"检查日期",
-        "UNDERTAKEDEPARTMENT":"监管部门",
-        "日常巡查":"监管类别",
-        "RESEARCHMAN":"执法人员",
-        "QDLX":"启动来源",
-        "ISREGISTER":"是否立案"
-    },
-    'sa.T_YYYD_LA_MAIN':{
-        "STARTTIME":"立案时间",
-        "UNDERTAKEMAN":"承办人",
-        "PARTY":"当事人",
-        "NAME":"案件来源",
-        "UNDERTAKEDEPART":"承办部门",
-        "CASEINTRODU":"案件介绍",
-        "PUNISHADVICE":"处罚建议"
-    },
-    'ldzf.QY_RCXC_REAL':{
-        "START_TIME":"检查时间",
-        "CONTENT":"检查内容",
-        "QUESTION":"存在问题",
-        "MEASURE":"监察措施",
-        "MAIN_MAN":"主办监察员",
-        "ASS_MAN":"协办监察员"
-    },
-    'lgsafe.site_check_record':{
-        "CHECK_TIME_START":"检查时间",
-        "SAFETY_DEPT_NAME":"检查部门",
-        "CHECK_MAN":"执法人员"
-    },
-    'LGYJ_CYJG.B_CY_RC_J_XCJC':{
-        "JCJSSJ":"检查日期",
-        "ZFRQM":"执法人员",
-        "SPJCJL":"检查结果"
-    }
+    'lgsafe.case':"legal_name,case_name,'安全生产监督管理局',case_source,to_char(case_time,'yyyy-mm-dd'),MAIN_PERSON,MAIN_PERSON_PAPER,'','','','','','',UNIT_PUNISH_MONEY,''",
+    'sa.T_YYYD_ZF_MAIN':"to_char(startdate,'yyyy-mm-dd'), undertakedepartment, QDLX, researchman, '', zflx, '', ''",
+    'sa.T_YYYD_LA_MAIN':"party, '', UNDERTAKEDEPART, NAME, to_char(STARTTIME,'yyyy-mm-dd'), UNDERTAKEMAN, '','','','','',PUNISHADVICE,'',PUNISHCONTENT,''",
+    'ldzf.QY_RCXC_REAL':"to_char(start_time,'yyyy-mm-dd'), '劳动局', '日常巡查', main_man||','||ass_man, '', to_char(CONTENT), to_char(question),''",
+    'lgsafe.site_check_record':"to_char(a.check_time_start,'yyyy-mm-dd'),a.SAFETY_DEPT_NAME,'日常检查', a.check_man, a.CHECK_MAN1_CODE, b.risk_contain, '' ,''",
+    'LGYJ_CYJG.B_CY_RC_J_XCJC':"to_char(JCJSSJ,'yyyy-mm-dd'), '市场局', '日常巡查', zfrqm,jcqy_ssxq,'卫生',to_char(spjcjl),''"
 };
+var tableDict = {
+    "lgsafe.site_check_record":"lgsafe.site_check_record a \
+                                left join \
+                                lgsafe.check_record_item b\
+                                on a.uuid = b.check_uuid"
+}
 router.get('/item', function(req, res, next) {
     var table = req.query.t,
         name = req.query.n,
         id = req.query.id,
+        type = req.query.type,
         index = {};
 
-    oracleDao.query("select * from "+table+" where "+name+"= '"+id+"'",
+    oracleDao.query("select "+tableNames[table]+" from "+(tableDict[table]?tableDict[table]:table)+" where "+(tableDict[table]?"a.":"")+name+"= '"+id+"'",
     function(result) {
-        for (var i = 0; i < result["metaData"].length; i++) {
-            index[result["metaData"][i]["name"]]=i;
-        }
-        var res_ = [], tmp;
-        for (var i = 0; i < result["rows"].length; i++) {
-            tmp = {};
-            for (item in tableNames[table]) {
-                tmp[item] = (index[item] != undefined)?(result["rows"][i][index[item]]):(item);
-            }
-            res_.push(tmp);
-        }
-        console.log(res_);
+        
         res.render('item', {
              title:'广州开发区审批监管大数据平台',
-             table:res_,
-             tableNames:tableNames[table]
+             table:result["rows"][0],
+             type:type
         });
     });
 });

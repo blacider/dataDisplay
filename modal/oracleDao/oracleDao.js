@@ -4,6 +4,7 @@ var $util = require('../util/util');
 
 module.exports = {
     query: function(sql, callback) {
+        console.log(sql);
         oracledb.getConnection(
             $util.extend({}, dbConfig.oracle),
             function(err, connection) {
@@ -17,7 +18,6 @@ module.exports = {
                     return;
                 }
                 doRelease(connection);
-                console.log(JSON.stringify(result));
                 callback(result);
             });
           });

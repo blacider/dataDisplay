@@ -8,10 +8,47 @@
   <div class="thead-container">
     <table class="thead" cellspacing="0" cellpadding="0">
       <tr>
-      <% for (items in tableNames) {
-          var item = tableNames[items];
-      %>
-              <td><%=item%></td>
+      <%if (type == '0'){%>
+        <td>检查日期</td>
+        <td>监管部门</td>
+        <td>监管类别</td>
+        <td>执法人员</td>
+        <td>执法证号</td>
+        <td>监管内容</td>
+        <td>监管结果</td>
+        <td>执法文书</td>
+      <%} else if (type == '1') {%>
+        <td>行政处罚对象</td>
+        <td>案件名/案由</td>
+        <td>行政处罚实施机关</td>
+        <td>案件来源</td>
+        <td>立案日期</td>
+        <td>案件承办人姓名</td>
+        <td>执法证号</td>
+        <td>送达行政处罚告知书日期</td>
+        <td>行政处罚决定书文号</td>
+        <td>送达行政处罚决定书日期</td>
+        <td>结案日期</td>
+        <td>认定违法行为的依据</td>
+        <td>处罚依据</td>
+        <td>处罚内容</td>
+        <td>听证</td>
+      <%} else {%>
+        <td>事故日期</td>
+        <td>事故时间</td>
+        <td>事故类别</td>
+        <td>事故等级</td>
+        <td>事故基本情况</td>
+        <td>死亡（人）</td>
+        <td>重伤</td>
+        <td>（人）</td>
+        <td>轻伤</td>
+        <td>（人）</td>
+        <td>经济损失</td>
+        <td>（万元）</td>
+        <td>是否负有责任</td>
+        <td>是否进行行政处罚</td>
+        <td>行政处罚对象</td>
       <%}%>
       </tr>
     </table>
@@ -19,18 +56,11 @@
   
   <div class="table-container">
     <table class="tbody" cellspacing="0" cellpadding="0">
-          <%for (tableData in table) {var flag = 0;%>
           <tr>
-          
-          <% for (items in tableNames) {
-              var item = table[tableData][items];
-              flag++;
-              if (flag == 1) item = getDate(item);
-          %>
+          <%for (item of table) {%>
               <td><%=item%></td>
           <%}%>
           </tr>
-          <%}%>
     </table>
   </div>
 </div>
