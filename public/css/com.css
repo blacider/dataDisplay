@@ -147,7 +147,10 @@ h1 {
 .content-second:last-child:before {
     left: 0px;
 }
-.content-second:last-child,.content-first:last-child {
+.content-first:last-child {
+    border-left: 1px solid rgba(0,0,0,0);
+}
+.content-second:last-child {
     border: none;
 }
 .content-second:before {
@@ -167,6 +170,8 @@ p.noneBorder:before {
     position: relative;
     left: 14px;
     cursor: pointer;
+    height: 40px;
+    width: 152px;
 }
 .content-first {
     position: relative;
