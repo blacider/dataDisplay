@@ -166,6 +166,9 @@ footer {
     font-size: 13px;
     font-weight: bold;
 }
+#comStatusSelect option {
+    color: black;
+}
 .search-result li span {
     color:red;
 }
