@@ -45,3 +45,14 @@ div.table-container {
     overflow: scroll;
     overflow-x: hidden;
 }
+#comStatusSelect {
+    background-color: rgba(255,255,255,0);
+    border: 0;
+    outline: none;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+#comStatusSelect option {
+    color: black;
+}

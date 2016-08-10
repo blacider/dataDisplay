@@ -1,0 +1,78 @@
+<% include head.html %>
+<link rel="stylesheet" href="css/systems.css">
+<p class="content" id="total" style="text-align: right;position: relative;top: 25px;">总数:</p>
+<div class="content main" data-name="<%=name%>">
+  <div class="thead-container">
+    <table class="thead" cellspacing="0" cellpadding="0">
+      <tr>
+          <td width="50px">
+              <select id="comStatusSelect">
+                  <option value="aj">安监</option>
+                  <option value="sc">市场</option>    
+                  <option value="lj">劳监</option>
+                  <option value="hb">环保</option>
+              </select>
+          </td>
+          <td>检查日期</td>
+          <td>监管部门</td>
+          <td>监管类别</td>
+          <td>执法人员</td>
+          <td>执法证号</td>
+          <td>监管内容</td>
+          <td>监管结果</td>
+          <td>执法文书</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="table-container">
+    <table class="tbody" cellspacing="0" cellpadding="0">
+    </table>
+    <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+  </div>
+</div>
+<script>
+  jQuery(document).ready(function($) {
+      (function bendEvent() {
+          var current = 0, n='aj', isGetData = false;
+          var getData = function () {
+              isGetData = true;
+              $.ajax({
+                  url: '/jgs',
+                  type: 'GET',
+                  dataType: 'json',
+                  data: {p:current += 1,n:n},
+              })
+              .done(function(res) {
+                  var data = "";
+                  console.log(res.table);
+                  for (var i = 0; i < res.table.length; i++) {
+                      data += '<tr><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
+                      for (item in res.table[i]) {
+                          data += '<td>' + (res.table[i][item]?res.table[i][item]:'无') + '</td>'
+                      }
+                      data += '</tr>';
+                  }
+                  $('.tbody').append(data);
+                  $("#total").empty().append('总数:'+res.total);
+                  isGetData = false;
+              });
+          }
+          getData();
+          $("#comStatusSelect").change(function(event) {
+              isGetData = true;
+              n = this.value;
+              current = 0;
+              $('.tbody').empty();
+              console.log(n);
+              getData();
+          });
+          $("div.table-container").scroll(function(event) {
+              if (!isGetData && this.scrollTop == this.scrollHeight-292) {
+                  getData();
+              }
+          });
+      })();
+  });
+</script>
+<% include foot.html %>
