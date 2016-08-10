@@ -158,6 +158,14 @@ footer {
     background-color: #f0f0f0;
     cursor: pointer;
 }
+#comStatusSelect {
+    background-color: rgba(255,255,255,0);
+    border: 0;
+    outline: none;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
 .search-result li span {
     color:red;
 }
