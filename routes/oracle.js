@@ -75,7 +75,7 @@ router.get('/xx', function(req, res, next) {
         left join\
         (select * from WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0') bb\
         on aa.month = bb.month\
-        order by aa.month\
+        order by aa.month desc\
         ", function(result) {
             var data = result["rows"];
             resultsData['用水用电'] = [];
