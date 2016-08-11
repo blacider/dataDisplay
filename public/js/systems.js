@@ -15,7 +15,8 @@
                     console.log(res.table);
                     for (var i = 0; i < res.table.length; i++) {
                         data += '<tr><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
-                        for (item in res.table[i]) {
+                        for (var item in res.table[i]) {
+                            console.log(item);
                             data += '<td>' + res.table[i][item] + '</td>'
                         }
                         data += '</tr>';
