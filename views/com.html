@@ -31,6 +31,10 @@
   <div>
     <div class="com-item">
       <p class="title" style="background-image: url(/images/com-title4.png);">服务信息</p>
+      <div class="content-container">
+        <div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -136,14 +140,7 @@
       })
       .done(function(data) {
         dom.replaceWith(data);
-        $(".content-container > div").css('max-height', contentHight+'px');
-        var maxHeight = 0, dom_ = $(".com-item");
-        dom_.removeAttr('style');
-        dom_.each(function(index, el) {
-          var h = $(el).height();
-          if (h > maxHeight) maxHeight = h;
-        });
-        $(".com-item").height(maxHeight);
+        $(".content-container > div").css('height', contentHight+'px');
       });
     }
     $(".com-item").each(function(index, el) {
