@@ -23,10 +23,10 @@ html {
 body {
     height: 100%;
     width: 100%;
-    overflow: hidden;
     position: absolute;
-    background-image: url(../images/bg2.jpg);
-    background-size: 100% 109%;
+    overflow: hidden;
+    background-image: url(/images/coms-bg.png);
+    background-size: 100% 100%;
     font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
     color: #333;
     font-size: 14px;
