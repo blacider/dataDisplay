@@ -18,15 +18,12 @@ li {
 html {
     height: 100%;
     width: 100%;
-    min-width: 1000px;
-    min-height: 600px;
     background: white;
 }
 body {
     height: 100%;
     width: 100%;
-    min-width: 1000px;
-    min-height: 600px;
+    overflow: hidden;
     position: absolute;
     background-image: url(../images/bg2.jpg);
     background-size: 100% 109%;
@@ -129,4 +126,17 @@ header {
 .gohome img {
     width: 16px;
     vertical-align: text-bottom;
+}
+
+#total_page {
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+    transform: scale(1.4);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 1000px;
+    height: 626px;
+    margin: auto;
 }
