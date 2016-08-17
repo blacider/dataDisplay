@@ -25,7 +25,7 @@ body {
     width: 100%;
     position: absolute;
     overflow: hidden;
-    background-image: url(/images/coms-bg.png);
+    background-image: url(/images/home-bg.png);
     background-size: 100% 100%;
     font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
     color: #333;
@@ -85,46 +85,47 @@ footer {
     width: 50px;
 }
 header {
-    padding-top:30px;
+    margin-top: 60px;
 }
 .content {
     width: 980px;
     margin:0 auto;
 }
 .logo img {
-    width: 355px;
+    height: 53px;
 }
 .nav {
     font-size: 16px;
-    margin-top: 15px;
-    height: 34px;
+    margin-top: 48px;
+    height: 45px;
     border: 1px white solid;
     border-radius: 20px;
-    background-color: #0884c7;
+    background-color: #1e68a8;
 }
 .nav li {
     text-decoration: none;
     list-style: none;
     color: white;
     float: left;
-    line-height: 33px;
+    line-height: 45px;
     margin-left: 27px;
 }
 .nav li:hover {
     opacity:0.8;
 }
 .gohome a {
-    color: #19597c;
-    font-size: 13px;
+    color: #144081;
+    font-size: 19px;
 }
 .gohome {
     float: right;
     position: relative;
-    top: 12px;
-    right: 20px;
+    top: 27px;
+    right: 0px;
 }
 .gohome img {
-    width: 16px;
+    width: 26px;
+    height: 26px;
     vertical-align: text-bottom;
 }
 
@@ -132,11 +133,11 @@ header {
     top: 0;
     position: absolute;
     overflow: hidden;
-    transform: scale(1.4);
+    transform: scale(0.6);
     left: 0;
     right: 0;
     bottom: 0;
-    width: 1000px;
-    height: 626px;
+    width: 1280px;
+    height: 980px;
     margin: auto;
 }
