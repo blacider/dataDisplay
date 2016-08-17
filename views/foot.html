@@ -6,17 +6,17 @@
 </div>
 
 <script type="text/javascript">
-    // if (['/', '/data', '/system'].indexOf(window.location.pathname) != -1) {
-    //     $("#total_page").css("transform", "scale("+$("body").height()/655+")");
-    //     $(document).ready(function() {
-    //         $(window).resize(function(event) {
-    //             /* Act on the event */
-    //             $("#total_page").css("transform", "scale("+$("body").height()/655+")");
-    //         });
-    //     });
-    // } else {
-    //     $("#total_page")[0].id = '';
-    // }
+    if (['/', '/data', '/system'].indexOf(window.location.pathname) != -1) {
+        $("#total_page").css("transform", "scale("+$("body").height()/980+")");
+        $(document).ready(function() {
+            $(window).resize(function(event) {
+                /* Act on the event */
+                $("#total_page").css("transform", "scale("+$("body").height()/980+")");
+            });
+        });
+    } else {
+        $("#total_page")[0].id = '';
+    }
 </script>
 
 </body>

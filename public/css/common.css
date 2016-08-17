@@ -35,15 +35,14 @@ body {
     font-family:"Helvetica Neue",Helvetica,Microsoft Yahei;
 }
 .footer p {
-    color: #3c638f;
+    color: white;
     text-align: center;
     font-size: 11px;
     margin: 0;
+    padding-top: 45px;
 }
 footer {
     width: 100%;
-    position: absolute;
-    bottom: 5px;
 }
 
 
@@ -88,7 +87,7 @@ header {
     margin-top: 60px;
 }
 .content {
-    width: 980px;
+    width: 1084px;
     margin:0 auto;
 }
 .logo img {
@@ -97,6 +96,7 @@ header {
 .nav {
     font-size: 16px;
     margin-top: 48px;
+    margin-bottom: 46px;
     height: 45px;
     border: 1px white solid;
     border-radius: 20px;
