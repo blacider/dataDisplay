@@ -1,7 +1,7 @@
 .main img{
-    width: 366px;
+    width: 562px;
     position: relative;
-    margin: 50px auto;
+    margin: -16px auto 32px;
     display: block;
     z-index: 100;
 }
@@ -11,9 +11,9 @@
 
 .main p {
     color: #036eb7;
-    top: 195px;
-    left: 450px;
-    font-size: 16px;
+    top: 310px;
+    left: 483px;
+    font-size: 24px;
     font-weight: bold;
     position: absolute;
     z-index: 101;
@@ -28,37 +28,37 @@
 }
 .main-list li {
     position: absolute;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: bold;
     z-index: 102;
 }
 .main-list1 {
-    left: 193px;
-    top: 48px;
+    left: 146px;
+    top: 79px;
     color: #145a6f;
 }
 .main-list2 {
-    left: 462px;
-    top: 11px;
+    left: 567px;
+    top: 29px;
     color: #8bc31d;
 }
 .main-list3 {
-    left: 562px;
-    top: 129px;
+    left: 714px;
+    top: 204px;
     color: #f29800;
 }
 .main-list4 {
-    left: 527px;
-    top: 281px;
+    left: 669px;
+    top: 437px;
     color: #19aabf;
 }
 .main-list5 {
-    left: 266px;
-    top: 358px;
+    left: 263px;
+    top: 553px;
     color: #9aa53c;
 }
 .main-list6 {
-    left: 145px;
-    top: 222px;
+    left: 78px;
+    top: 354px;
     color: #538bad;
 }
