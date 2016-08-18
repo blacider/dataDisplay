@@ -6,12 +6,21 @@
 </div>
 
 <script type="text/javascript">
+    var scale_ = $("body").height() > 980?$("body").height()/980:1;
+    if (scale_ == 1) {
+        $("body").css({
+            width:"auto",
+            height:"auto"
+        });
+        $("#total_page").css('position', 'relative');
+    }
     if (['/', '/data', '/system'].indexOf(window.location.pathname) != -1) {
-        $("#total_page").css("transform", "scale("+$("body").height()/980+")");
+        $("#total_page").css("transform", "scale("+scale_+")");
         $(document).ready(function() {
             $(window).resize(function(event) {
                 /* Act on the event */
-                $("#total_page").css("transform", "scale("+$("body").height()/980+")");
+                scale_ = $("body").height() > 980?$("body").height()/980:1;
+                $("#total_page").css("transform", "scale("+scale_+")");
             });
         });
     } else {
