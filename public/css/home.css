@@ -1,7 +1,7 @@
 .left {
     float: left;
     width: 790px;
-    height: 566px;
+    height: 589px;
     position: relative;
 }
 li {
@@ -10,9 +10,9 @@ li {
 .right {
     float: right;
     width: 265px;
-    margin-top: 22px;
+    margin-top: 41px;
     position: relative;
-    right: -15px;
+    right: 13px;
 }
 .left img, .right img {
     position: absolute;
@@ -21,7 +21,6 @@ li {
     width:250px;
 }
 .left img {
-    width: 100%;
 }
 .right-item {
     width: 119px;
@@ -41,9 +40,9 @@ li {
     height: 100%;
     border-radius: 24px;
     text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    padding: 21px 2px 0px 3px;
+    font-size: 17.2px;
+    line-height: 20px;
+    padding: 17px 2px 0px 3px;
     box-sizing: border-box;
     color: white;
 }
@@ -56,55 +55,55 @@ li {
 .left-title1 {
     width: 214px;
     top: 0px;
-    left: 261px;
-    line-height: 49px;
+    left: 427px;
+    line-height: 52px;
 }
 .left-title2 {
     width: 149px;
     bottom: 2px;
-    left: 293px;
+    left: 460px;
     line-height: 47px;
 }
 .left-text {
     position: absolute;
-    font-size: 14px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 31px;
 }
 .left-text li:hover {
-    font-size: 15px;
+    font-size: 17px;
 }
 .left-text1 {
     left: 268px;
-    top: 101px;
+    top: 100px;
 }
 .left-text2 {
-    left: 440px;
-    top: 129px;
+    left: 455px;
+    top: 133px;
 }
 .left-text3 {
-    left: 602px;
-    top: 129px;
+    left: 636px;
+    top: 133px;
 }
 .left-text4 {
     left: 268px;
     top: 363px;
 }
 .left-text5 {
-    left: 440px;
+    left: 455px;
     top: 363px;
 }
 .left-text6 {
-    left: 602px;
+    left: 636px;
     top: 363px;
 }
 .left-text a {
     color: black;
 }
 .left-item {
-    padding: 19px 63px 17px 18px;
+    padding: 19px 88px 17px 18px;
     box-sizing: border-box;
     float: left;
-    width: 169px;
+    width: 179px;
     height: 122px;
     position: relative;
     top: 208px;
@@ -122,5 +121,5 @@ li {
 }
 .main {
     overflow: hidden;
-    margin-bottom: 35px;
+    margin-bottom:39px;
 }
