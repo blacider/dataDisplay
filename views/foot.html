@@ -18,7 +18,7 @@
         $(document).ready(function() {
             $(window).resize(function(event) {
                 /* Act on the event */
-                scale_ = $("body").height() > 980?$("body").height()/933:1;
+                scale_ = $("body").height() > 933?$("body").height()/933:1;
                 $("#total_page").css("transform", "scale("+scale_+")");
             });
         });
