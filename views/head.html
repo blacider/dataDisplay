@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
+    <base target="_blank">
     <title><%=title%></title>
     <link rel="stylesheet" href="css/common.css">
     <script src="js/jquery.min.js"></script>    
@@ -11,22 +12,20 @@
     <script src="js/loading.js"></script>
 </head>
 <body>
+<div id="total_page" class="common">
     <header>
         <div class="logo content">
-            <img src="images/2015_logo.png" alt="logo">
+            <img src="images/login-logo.png" alt="logo">
             <div class="gohome">
-                <a href="/">
-                    <img src="images/home.png" alt="home">
-                    返回主界面
-                </a>
-                <a href="/logout" style="margin-left:10px;">
-                    登出
+                <a target="_self" href="/logout" style="margin-left:10px;">
+                    <img src="images/exit.png" alt="exit">
+                    退出
                 </a>
             </div>
         </div>
     </header>
     <ul class="content nav">
-        <a href="/"><li style="margin-left: 40px;">主界面</li></a>
+        <a target="_self" href="/"><li style="margin-left: 31px;">主界面</li></a>
         <li>|</li>
         <a  target="_Blank" href="/other?n=5"><li>权责清单</li></a>
         <li>|</li>
@@ -34,7 +33,7 @@
         <li>|</li>
         <li>行政监督</li>
         <li>|</li>
-        <li>政府服务</li>
+        <a href="http://zcdx.gdd.gov.cn/"><li>政府服务</li></a>
         <li>|</li>
         <a href="/coms"><li>企业档案</li></a>
         <li>|</li>

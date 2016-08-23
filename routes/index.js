@@ -151,12 +151,12 @@ router.get('/other', function(req, res, next) {
     var n = Number(req.query.n);
     // 1:环保  2：审批系统  3:安监 4:劳动局 5 权责
     if (n === 1) {
-        request('http://172.16.55.74:8442/lgydzf/login_byuser_sso.jsp?user='+req.session.name, function(error, resp, body) {
+        request('http://172.16.55.74:8442/lgydzf/login_byuser_sso.jsp?user=test', function(error, resp, body) {
             if (error) {
                 res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
-            var token = crypto.createHash('md5').update(req.session.name+body.trim()).digest('hex');
+            var token = crypto.createHash('md5').update('test'+body.trim()).digest('hex');
             res.redirect('http://172.16.55.74:8442/lgydzf/login_byuser_sso.jsp?token=' + token);
         });
     } else if (n == 2) {
@@ -188,12 +188,12 @@ router.get('/other', function(req, res, next) {
             res.redirect('http://172.23.8.25:8089/ldzf_lg/ldzf-dddl!checkValid.action?token='+t);
         });
     } else if (n === 5) {
-        request('http://172.23.2.33/admin/ssoServlet?user=SPJD001', function(error, resp, body) {
+        request('http://172.23.2.33/admin/ssoServlet?user=admin', function(error, resp, body) {
             if (error) {
                 res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
-            var token = crypto.createHash('md5').update('SPJD001'+body.trim()).digest('hex');
+            var token = crypto.createHash('md5').update('admin'+body.trim()).digest('hex');
             res.redirect('http://172.23.2.33/admin/ssoServlet?token=' + token);
         });
     }

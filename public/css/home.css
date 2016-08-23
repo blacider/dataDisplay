@@ -1,44 +1,64 @@
-html, body {
-    min-height: 680px;
-}
 .left {
     float: left;
-    width: 680px;
-    margin-top: 20px;
+    width: 790px;
+    height: 589px;
     position: relative;
-    height: 474px;
-    margin-left: 30px;
-    border-right: 1px white dashed;
 }
 li {
-    color: white;
+    color: black;
 }
 .right {
     float: right;
-    width: 210px;
-    margin-top: 56px;
+    width: 265px;
+    margin-top: 75px;
     position: relative;
-    margin-right: 30px;
+    right: 3px;
 }
-.left img, .right img {
+.main > img,.left img, .right img {
     position: absolute;
 }
 .right img {
-    width:200px;
+    width:250px;
 }
 .left img {
-    width: 635px;
 }
 .right-item {
-    width: 96px;
-    margin-bottom: 10px;
-    margin-right: 9px;
+    background: url(/images/c0.png);
+    width: 111px;
+    margin-bottom: 12px;
+    margin-right: 11px;
+    background-repeat: no-repeat;
     float: left;
-    height: 95px;
+    height: 109px;
     box-sizing: border-box;
     z-index: 10;
-    padding: 18px;
+    padding: 13px;
     position: relative;
+}
+.left-item:hover img.circle {
+    width: 100%;
+}
+.circle-container {
+    height: 118px;
+    width: 117px;
+    position: absolute;
+    left: 0px;
+    top: 4px;
+    z-index: 2;
+}
+.right-item:hover img.circle {
+    width: 100%;
+}
+.right img.circle, .left img.circle {
+    width: 85px;
+    top: 0;
+    transition: width .5s;
+    left: 0;
+    background-repeat: no-repeat;
+    right: 0;
+    bottom: 0;
+    margin:auto;    
+    z-index: -1;
 }
 .right-item a {
     text-decoration: none;
@@ -47,79 +67,88 @@ li {
     height: 100%;
     border-radius: 24px;
     text-align: center;
-    font-size: 12px;
-    line-height: 14px;
-    padding: 14px 2px 0px 3px;
+    font-size: 15.2px;
+    line-height: 20px;
+    padding: 17px 2px 0px 3px;
     box-sizing: border-box;
     color: white;
 }
 .left-title {
     position: absolute;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
     text-align: center;
 }
 .left-title1 {
-    width: 179px;
+    width: 185px;
     top: 0px;
-    left: 218px;
-    line-height: 43px;
+    left: 444px;
+    line-height: 36px;
 }
 .left-title2 {
-    width: 126px;
-    bottom: 0px;
-    left: 244px;
-    line-height: 43px;
+    width: 151px;
+    bottom: 2px;
+    left: 460px;
+    line-height: 40px;
 }
 .left-text {
     position: absolute;
-    font-size: 12px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 31px;
+}
+.left-text li:hover {
+    font-size: 17px;
 }
 .left-text1 {
-    left: 221px;
-    top: 83px;
+    left: 268px;
+    top: 97px;
 }
 .left-text2 {
-    left: 366px;
-    top: 107px;
+    left: 455px;
+    top: 97px;
 }
 .left-text3 {
-    left: 504px;
-    top: 106px;
+    left: 636px;
+    top: 97px;
 }
 .left-text4 {
-    left: 221px;
-    top: 303px;
+    left: 268px;
+    top: 361px;
 }
 .left-text5 {
-    left: 366px;
-    top: 302px;
+    left: 455px;
+    top: 361px;
 }
 .left-text6 {
-    left: 504px;
-    top: 301px;
+    left: 636px;
+    top: 361px;
 }
 .left-text a {
     color: black;
 }
 .left-item {
-    padding: 13px 54px 15px 14px;
+    padding: 19px 88px 17px 18px;
     box-sizing: border-box;
     float: left;
-    width: 142px;
-    height: 102px;
+    width: 178px;
+    height: 122px;
     position: relative;
-    top: 175px;
-    left: 22px;
-    font-size: 15px;
-    line-height: 15px;
+    top: 208px;
+    left: 25px;
+    font-size: 18px;
+    line-height: 23px;
 }
 .left-item p {
     height: 100%;
     border-radius: 35px;
     color: #036eb7;
     text-align: center;
+    position: relative;
+    z-index: 22;
     padding: 23px 0;
     box-sizing: border-box;
+}
+.main {
+    overflow: hidden;
+    margin-bottom:34px;
 }

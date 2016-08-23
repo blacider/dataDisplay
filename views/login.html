@@ -28,11 +28,11 @@
  </style>
     <div id="main">
         <div class="logo">
-            <img src="images/2015_logo.png" alt="">
+            <img src="images/login-logo.png" alt="">
         </div>
         <div class="login">
             <div class="left">
-                <h2 style="margin: 0px auto 25px 58px;">登录系统 | Login System</h2>
+                <h2 style="    margin: 0px auto 43px 81px;">登录系统 | Login System</h2>
                 <form id="login-form" action="/login" method="post">
                     <div class="border-wrap">
                         <label for="name">
@@ -42,21 +42,53 @@
                     </div>
                     <div class="border-wrap">
                         <label for="password">
-                            密码:
+                            密<span style="visibility:hidden">占</span>码:
                         </label>
                         <input id="password" type="password" placeholder="请输入密码" required name="password">                        
                     </div>
-                    <input style="margin-left: 124px;" type="checkbox" id="r_n" name="r_n">
+                    <div class="border-wrap">
+                        <label for="password">
+                            验证码:
+                        </label>
+                        <img src="/images/code.png" style="float: right;margin: -8px 61px auto auto;width: 100px;height: 47px;" alt="code">   
+                        <input type="text" style="    width: 124px;margin-right: 20px;" placeholder="请输入验证码" required name="code">
+
+                    </div>
+                    <input style="    margin-left: 190px;" type="checkbox" id="r_n" name="r_n">
                     <label for="r_n">记住我</label>
 
                     <input style="margin-left: 28px;" class="button" type="submit" value="登录">
                 </form>
             </div>
             <div class="right">
-                <h3>登录说明</h3>
-                <p>广州开发区成立于1984年，成立之初仅9.6平方公里。2002年，广州经济技术开发区、广州高新技术产业开发区、广州保税区和广州出口加工区实行合署办公。</p>
-                <a href="/signup"><input style="margin-left: 133px;" class="button" type="submit" value="注册"></a>
+                <h3>平台说明</h3>
+                <p>广州开发区审批监管大数据平台是广州开发区政府职能部门审批、监管、服务数据信息互联共享平台，是支持广州开发区行政审批制度试点改革各项创新举措的重要技术支撑，该平台运用互联网+概念，打通政府部门间的数据孤岛，实现审批部门的高效审批和监管部门的精准监管。</p>
+                <!-- <a href="/signup"><input style="margin-left: 133px;" class="button" type="submit" value="注册"></a> -->
             </div>
         </div>
     </div>
-<% include foot.html%>
+<footer>
+    <div class="container footer">
+        <p>版权所有：广州开发区推进政府职能转变和深化行政审批制度改革试点工作领导小组办公室<br>
+技术支持：广州开发区大数据管理中心   领航动力信息系统有限公司<br>  最佳浏览器：谷歌;      兼容浏览器：IE9  遨游  火狐 </p>
+    </div>
+</footer>
+<script type="text/javascript">
+    var scale_ = $("body").height() > 935?$("body").height()/935:1;
+    if (scale_ == 1) {
+        $("body").css({
+            height:"auto"
+        });
+        $("#main").css('position', 'relative');
+    }
+        $("#main").css("transform", "scale("+scale_+")");
+        $(document).ready(function() {
+            $(window).resize(function(event) {
+                /* Act on the event */
+                scale_ = $("body").height() > 935?$("body").height()/935:1;
+                $("#total_page").css("transform", "scale("+scale_+")");
+            });
+        });
+</script>
+</body>
+</html>

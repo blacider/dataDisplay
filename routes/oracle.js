@@ -168,11 +168,11 @@ router.get('/getComData', function(req, res, next) {
     };
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
-    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT, SUPERVISE_RANK FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM (select * from exdb.ssdj_jbxx aa left join lgsafe.corp bb on aa.zch = bb.business_num) where ztzt like '%"+ req.query.ztzt +"%') A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH, MC, DZ, ZTZT, SUPERVISE_RANK FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM (select * from exdb.ssdj_jbxx aa left join lgsafe.corp bb on aa.zch = bb.business_num order by clrq desc) where ztzt like '%"+ req.query.ztzt +"%') A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-9),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {}, j;
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             j = 0;
             tmp = {};
             for (item in tableNames) {
@@ -183,7 +183,7 @@ router.get('/getComData', function(req, res, next) {
             else tmp['SUPERVISE_RANK'] = "安监："+tmp['SUPERVISE_RANK'];
             tableData.push(tmp);
         }
-        oracleDao.query("SELECT count(*) FROM exdb.ssdj_jbxx where ztzt like '%"+ req.query.ztzt +"%'", function(data) {
+        oracleDao.query("SELECT count(*) FROM exdb.ssdj_jbxx aa left join lgsafe.corp bb on aa.zch = bb.business_num where ztzt like '%"+ req.query.ztzt +"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
@@ -219,7 +219,7 @@ router.get('/sf', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT order by month desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
@@ -249,7 +249,7 @@ router.get('/df', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY order by month desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};

@@ -10,34 +10,37 @@ body {
 }
 .block {
     margin: 0 auto;
-    width: 900px;
+    width: 1084px;
     padding: 20px 0;
-    border-bottom: 1px dashed white;
+}
+.block2 {
+    border: 1px dashed white;
+    border-radius:8px;
+    padding:0;
 }
 .com-title {
-    width: 172px;
-    text-align: center;
-    background-color: #17cee5;
+    width: 343px;
+    background-color: #5eb3dd;
     border-radius: 18px;
     margin: 0 auto;
-    height: 25px;
-    line-height: 25px;
+    height: 39px;
+    text-align: center;
+    line-height: 39px;
     color: white;
-    font-size: 14px;
-    text-shadow: 1px 1px 2px black
+    font-size: 29px;
+    text-shadow: 1px 1px 2px black;
 }
 .search-container {
-    margin-top: 30px;
+    margin-top: -30px;
     margin-bottom: 20px;
     height: 20px;
 }
 .input {
-    height: 25px;
     float: left;
-    width: 215px;
+    width: 260px;
     margin-right: 10px;
-    line-height: 25px;
-    height: 25px;
+    line-height: 44px;
+    height: 44px;
     border-radius: 10px;
     background: white;
     padding: 3px 9px;
@@ -45,15 +48,15 @@ body {
     box-sizing: border-box;
 }
 .input input {
-    width: 170px;
-    line-height: 25px;
-    height: 25px;
+    width: 210px;
+    line-height: 44px;
+    height: 44px;
     border: none;
     /* border-radius: 10px; */
     padding: 0 5px;
     outline: none;
     top: -3px;
-    font-size: 13px;
+    font-size: 18px;
     position: relative;
     box-sizing: border-box;
 }
@@ -61,6 +64,21 @@ body {
     border-right: 1px #cecece solid;
     padding-right: 4px;
     height: 16px;
+}
+td:nth-child(2) {
+    width: 53px;
+}
+td:nth-child(3) {
+    width: 90px;
+}
+td:nth-child(4) {
+    width: 180px;
+}
+td:nth-child(5) {
+    width: 32px;
+}
+td:nth-child(6) {
+    width: 25px;
 }
 table {
     width: 100%;
@@ -71,13 +89,45 @@ table {
     margin: 0 auto;
     table-layout: fixed;
 }
+tr {
+   cursor: pointer; 
+}
+.tbody tr:hover {
+    background: #f2fefc;
+}
+#pagination {
+    width: auto;
+    height: 72px;
+    float: right;
+    padding: 21px 16px;
+}
+#pagination a , #pagination span.active, #pagination span, #pagination input{
+    border-radius: 8px;
+    padding: 6px 10px;
+    border: 1px solid #eaeaea;
+    margin-left: 11px;
+    color: #6094bf;
+    box-sizing: border-box;
+}
+#pagination input {
+    width: 50px;
+}
+#pagination a:hover,
+#pagination span.active {
+    background-color:#6094bf;
+    color: white;
+    border:1px solid white;
+}
+#pagination span {
+    border:none;
+}
 .table-c {
-    margin-top: 30px;
+    margin-top: 10px;
     border: 1px #b8e7f6 solid;
     border-radius: 13px;
     padding: 20px 15px;
     box-sizing: border-box;
-    height: 370px;
+    height: 585px;
     overflow: none;
     background: white;
 }
@@ -89,7 +139,7 @@ table.thead {
 }
 table.tbody {
     margin-top: 5px;
-    color: #898989;
+    color: black;
 }
 table.tbody tr {
     border-bottom: 1px #898989 solid;
@@ -105,7 +155,7 @@ div.thead-container {
     border-radius: 100px;
 }
 div.table-container {
-    height: 292px;
+    height: 458px;
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -114,45 +164,55 @@ footer {
     margin-top: 30px;
 }
 .const {
-    height: 200px;
-    width: 625px;
-    margin: 25px auto;
+    width: 100%;
+    margin-top: 35px;
+    overflow: hidden;
+    position: relative;
+    left: 2px;
 }
 .const .const-item {
     position: relative;
     float: left;
-    width: 125px;
-    margin-left: 25px;
-    height: 100%;
+    width: 240px;
+    height: 83px;
+    margin-left: 29px;
+    border-right: 1px solid white;
 }
 .const-item img {
-    width: 125px;
-}
-.const-text img {
-    position: relative;
-    left: -7px;
+    width: 92px;
+    float: left;
 }
 .const-text p {
-    color: #036eb8;
-    font-size: 14px;
-    position: absolute;
-    bottom: 17px;
-    width: 100%;
-    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-top: 27px;
+    width: 135px;
+    float: right;
+    text-align: left;
+}
+.block2-text {
+    overflow: hidden;
+    padding: 30px;
+}
+.block2-text p:first-child {
+    float: left;
+}
+.block2-text p {
+    float: right;
 }
 .search-result {
     border: 1px solid #ccc;
     background: white;
     position: absolute;
     right: 8px;
-    top: 25px;
+    top: 44px;
     z-index: 100;
     box-shadow: 2px 2px 2px;
-    width: 176px;
+    width: 220px;
 }
 .search-result li {
     color: #000;
-    font-size: 12px;
+    font-size: 17px;
     line-height: 22px;
     padding: 0 8px;
 }

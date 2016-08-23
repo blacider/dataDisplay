@@ -2,6 +2,7 @@ html {
     background-color: white;
 }
 body {
+    overflow: auto;
     background-image:url(/images/coms-bg.png);
     background-repeat: repeat-x;
     background-size: inherit;

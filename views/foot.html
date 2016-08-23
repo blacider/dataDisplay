@@ -1,3 +1,32 @@
+<footer>
+    <div class="container footer">
+        <p>版权所有：广州开发区推进政府职能转变和深化行政审批制度改革试点工作领导小组办公室<br>
+技术支持：广州开发区大数据管理中心   领航动力信息系统有限公司</p>
+    </div>
+</footer>
+</div>
+
+<script type="text/javascript">
+    var scale_ = $("body").height() > 933?$("body").height()/933:1;
+    if (scale_ == 1) {
+        $("body").css({
+            height:"auto"
+        });
+        $("#total_page").css('position', 'relative');
+    }
+    if (['/', '/data', '/system'].indexOf(window.location.pathname) != -1) {
+        $("#total_page").css("transform", "scale("+scale_+")");
+        $(document).ready(function() {
+            $(window).resize(function(event) {
+                /* Act on the event */
+                scale_ = $("body").height() > 933?$("body").height()/933:1;
+                $("#total_page").css("transform", "scale("+scale_+")");
+            });
+        });
+    } else {
+        $("#total_page")[0].id = '';
+    }
+</script>
 
 </body>
 </html>
