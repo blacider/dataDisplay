@@ -35,13 +35,24 @@ li {
     padding: 13px;
     position: relative;
 }
+.left-item:hover img.circle {
+    width: 100%;
+}
+.circle-container {
+    height: 118px;
+    width: 117px;
+    position: absolute;
+    left: 0px;
+    top: 4px;
+    z-index: 2;
+}
 .right-item:hover img.circle {
     width: 100%;
-    transition: width .5s;
 }
-.right img.circle {
+.right img.circle, .left img.circle {
     width: 85px;
     top: 0;
+    transition: width .5s;
     left: 0;
     background-repeat: no-repeat;
     right: 0;
@@ -119,7 +130,7 @@ li {
     padding: 19px 88px 17px 18px;
     box-sizing: border-box;
     float: left;
-    width: 179px;
+    width: 178px;
     height: 122px;
     position: relative;
     top: 208px;
@@ -132,6 +143,8 @@ li {
     border-radius: 35px;
     color: #036eb7;
     text-align: center;
+    position: relative;
+    z-index: 22;
     padding: 23px 0;
     box-sizing: border-box;
 }
