@@ -2,9 +2,6 @@
 <link rel="stylesheet" href="css/coms.css">
 
 <div class="block content">
-    <p class="com-title">
-        企业专属档案
-    </p>
     <div class="search-container">
         <div class="input">
             <label for="">
@@ -40,40 +37,41 @@
         </div>
     </div>
 </div>
-<div class="block content">
-    <p class="com-title">
-        企业专属档案架构
-    </p>
+<div class="block content block2">
     <div class="const">
         <div class="const-item">
             <img src="/images/coms-item2.png" alt="">
-            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>企业基本信息</p></div>
+            <div class="const-text"><p>企业基本信息</p></div>
         </div>
         <div class="const-item">
             <img src="/images/coms-item1.png" alt="">
-            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>申请审批信息</p></div>
+            <div class="const-text"><p>申请审批信息</p></div>
         </div>
         <div class="const-item">
             <img src="/images/coms-item4.png" alt="">
-            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>事中事后监管</p></div>
+            <div class="const-text"><p>事中事后监管</p></div>
         </div>
-        <div class="const-item">
+        <div class="const-item" style="border:none">
             <img src="/images/coms-item3.png" alt="">
-            <div class="const-text"><img src="/images/coms-item.png" alt=".."><p>政策支持</p></div>
+            <div class="const-text"><p>政策支持信息</p></div>
         </div>
+    </div>
+    <div class="block2-text">
+        <p>基本信息：包括企业注册登记、股东信息、用水用电和特定属性信息。<br>审批信息：包括企业向我区申请的各类行政许可备案及公共服务事项。</p>
+        <p>监管信息：各审批监管部门对该企业的行政检查、行政处罚信息实施共享。<br>服务信息：企业向我区申请的政策兑现、奖励扶持等人财物信息数据共享。</p>
     </div>
 </div>
 <div class="block content">
     <p class="com-title">
         广州开发区企业名录
     </p>
-    <p id="total" style="text-align: right;position: relative;top: 25px;">总数:</p>
+    <p id="total" style="    text-align: center;font-size: 18px;color: #4687ba;margin-top: 10px;">更新日期:<%=new Date().toLocaleDateString()%> 总数:30000</p>
     <div class="table-c" data-name="sf">
         <div class="thead-container">
           <table class="thead" cellspacing="0" cellpadding="0">
             <tr>
                 <td style="width:50px">序号</td>
-                <td>统一社会信用代码<br>（组织结构代码）</td>
+                <td>统一社会信用代码</td>
                 <td>企业名称</td>
                 <td>地址</td>
                 <td>
@@ -91,8 +89,9 @@
         
         <div class="table-container">
           <table class="tbody" cellspacing="0" cellpadding="0">
+                <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
                 <%for (tableData in table) {%>
-                <tr>
+                <a href="/com?zch=<%=table[tableData]['ZCH']%>"><tr>
                     <td style="width:50px"><%=Number(tableData)+1%></td>
                 <% for (items in tableNames) {
                     var item = table[tableData][items];
@@ -100,53 +99,70 @@
                     <td><%=item%></td>
                 <%}%>
                 </tr>
+                </a>
                 <%}%>
           </table>
-          <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
         </div>
+        <div id="pagination"></div>
     </div>
 </div>
+<script type="text/javascript" src="/js/pagination.min.js"></script>
 <script type="text/javascript">
     (function(window, undefined) {
         jQuery(document).ready(function($) {
             (function bendEvent() {
+                $(".tbody").delegate('tr', 'click', function(event) {
+                    window.location.href = '/com?ZCH=' + $(this).data('zch');
+                });
                 var current = 0, n = $(".table-c").data("name"), isGetData = false, ztzt = '';
-                var getData = function() {
+                var showPagination = function(total) {
+                    $("#pagination").pagination({
+                        pageCount:total,
+                        jump:true,
+                        current:current,
+                        coping:true,
+                        prevContent:' < ',
+                        nextContent:' > ',
+                        callback:function(pag) {
+                            showLoading();
+                            getData(pag.getCurrent());
+                        }
+                    });
+                }
+                function getData(page) {
+                    current = page;
                     $.ajax({
                         url: '/getComData',
                         type: 'GET',
                         dataType: 'json',
-                        data: {n:n, p:current += 1,ztzt:ztzt},
+                        data: {n:n, p:page,ztzt:ztzt},
                     })
                     .done(function(res) {
                         var data = "";
-                        console.log(res.table);
+                        
                         for (var i = 0; i < res.table.length; i++) {
-                            data += '<tr><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
+                            data += '<tr data-zch="'+res.table[i]['ZCH']+'"><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
                             for (var item in res.table[i]) {
                                 data += '<td>' + res.table[i][item] + '</td>'
                             }
                             data += '</tr>';
                         }
-                        $('.tbody').append(data);
-                        $("#total").empty().append('总数:'+res.total);
+                        $('.tbody').empty().append(data).parent().find('img').remove();
+                        $("#total").empty().append('更新日期:'+ new Date().toLocaleDateString() +' 总数:'+res.total);
+                        showPagination(Math.ceil(res.total/10));
                         isGetData = false;
+                        hideLoading();
                     });
                 }
-                getData();
+                getData(1);
                 $("#comStatusSelect").change(function(event) {
                     isGetData = true;
+                    showLoading();
                     ztzt = this.value;
                     current = 0;
                     $('.tbody').empty();
                     console.log(ztzt);
-                    getData();
-                });
-                $("div.table-container").scroll(function(event) {
-                    if (!isGetData && this.scrollTop == this.scrollHeight-292) {
-                        isGetData = true;
-                        getData();
-                    }
+                    getData(1);
                 });
             })();
             (function searchEvent() {
