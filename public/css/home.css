@@ -10,11 +10,11 @@ li {
 .right {
     float: right;
     width: 265px;
-    margin-top: 41px;
+    margin-top: 75px;
     position: relative;
-    right: 13px;
+    right: 3px;
 }
-.left img, .right img {
+.main > img,.left img, .right img {
     position: absolute;
 }
 .right img {
@@ -23,15 +23,31 @@ li {
 .left img {
 }
 .right-item {
-    width: 119px;
+    background: url(/images/c0.png);
+    width: 111px;
     margin-bottom: 12px;
     margin-right: 11px;
+    background-repeat: no-repeat;
     float: left;
-    height: 119px;
+    height: 109px;
     box-sizing: border-box;
     z-index: 10;
-    padding: 18px;
+    padding: 13px;
     position: relative;
+}
+.right-item:hover img.circle {
+    width: 100%;
+    transition: width .5s;
+}
+.right img.circle {
+    width: 85px;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    right: 0;
+    bottom: 0;
+    margin:auto;    
+    z-index: -1;
 }
 .right-item a {
     text-decoration: none;
@@ -40,7 +56,7 @@ li {
     height: 100%;
     border-radius: 24px;
     text-align: center;
-    font-size: 17.2px;
+    font-size: 15.2px;
     line-height: 20px;
     padding: 17px 2px 0px 3px;
     box-sizing: border-box;
@@ -49,20 +65,20 @@ li {
 .left-title {
     position: absolute;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
 }
 .left-title1 {
-    width: 214px;
+    width: 185px;
     top: 0px;
-    left: 427px;
-    line-height: 52px;
+    left: 444px;
+    line-height: 36px;
 }
 .left-title2 {
-    width: 149px;
+    width: 151px;
     bottom: 2px;
     left: 460px;
-    line-height: 47px;
+    line-height: 40px;
 }
 .left-text {
     position: absolute;
@@ -74,27 +90,27 @@ li {
 }
 .left-text1 {
     left: 268px;
-    top: 100px;
+    top: 97px;
 }
 .left-text2 {
     left: 455px;
-    top: 133px;
+    top: 97px;
 }
 .left-text3 {
     left: 636px;
-    top: 133px;
+    top: 97px;
 }
 .left-text4 {
     left: 268px;
-    top: 363px;
+    top: 361px;
 }
 .left-text5 {
     left: 455px;
-    top: 363px;
+    top: 361px;
 }
 .left-text6 {
     left: 636px;
-    top: 363px;
+    top: 361px;
 }
 .left-text a {
     color: black;
@@ -121,5 +137,5 @@ li {
 }
 .main {
     overflow: hidden;
-    margin-bottom:39px;
+    margin-bottom:34px;
 }

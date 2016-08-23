@@ -18,7 +18,7 @@ body {
     font-size: 14px;
     margin:0;
     background-color:#fdfdfd;
-    font-family: Microsoft Yahei;
+    font-family: "Microsoft Yahei";
 }
 .footer p {
     color: #3c638f;
@@ -51,11 +51,10 @@ footer {
     width: 854px;
     margin:0 auto;
     height: 377px;
-    border-radius: 20px;
-    box-shadow:2px 2px 3px black;
-    background-color: rgba(0,156,238, .6);
-        padding: 50px;
+    padding: 50px;
     box-sizing: border-box;
+    background: url(/images/login-bg.png);
+    background-size: cover;
 }
 .button {
     background: rgb(12, 73, 120);
