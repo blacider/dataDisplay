@@ -134,8 +134,7 @@ div.table-container {
     overflow-x: hidden;
 }
 footer {
-    position: relative;
-    margin-top: 30px;
+    bottom: 1%;
 }
 .const {
     width: 100%;

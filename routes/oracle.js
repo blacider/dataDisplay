@@ -215,15 +215,15 @@ router.get('/com', function(req, res, next) {
 
 router.get('/sf', function(req, res, next) {
     // [1,10]
-    var p = 1;
+    var p = 1, search = req.query.search.trim().split('').join("%");
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT FN, NAME, MONTH, SHORT, CONSUMPTION, INDUSTRY FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_WATER_NRESIDENT where name like '%"+search+"%' order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             tmp = {};
             for (var j = 0; j < result["metaData"].length; j++) {
                 if (result["metaData"][j]["name"] == "MONTH") {
@@ -234,7 +234,7 @@ router.get('/sf', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        oracleDao.query('SELECT count(*) FROM WEBLH.T_WATER_NRESIDENT', function(data) {
+        oracleDao.query("SELECT count(*) FROM WEBLH.T_WATER_NRESIDENT where name like '%"+search+"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
@@ -245,15 +245,15 @@ router.get('/sf', function(req, res, next) {
 });
 router.get('/df', function(req, res, next) {
     // [1,10]
-    var p = 1;
+    var p = 1, search = req.query.search.trim().split('').join("%");
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ID,NAME,MONTH,TYPE,CONSUMPTION FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM WEBLH.T_ELECTRICITY where name like '%"+search+"%' order by month desc,id) A WHERE ROWNUM <= " + end + ") WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             tmp = {};
             for (var j = 0; j < result["metaData"].length; j++) {
                 if (result["metaData"][j]["name"] == "MONTH") {
@@ -265,7 +265,7 @@ router.get('/df', function(req, res, next) {
             tableData.push(tmp);
         }
         console.log(JSON.stringify(tableData));
-        oracleDao.query('SELECT count(*) FROM WEBLH.T_ELECTRICITY', function(data) {
+        oracleDao.query("SELECT count(*) FROM WEBLH.T_ELECTRICITY where name like '%"+search+"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
@@ -306,19 +306,19 @@ router.get('/gs', function(req, res, next) {
 });
 router.get('/sp', function(req, res, next) {
     // [1,10]
-    var p = 1;
+    var p = 1, search = req.query.search.trim().split('').join("%");
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
     oracleDao.query("SELECT approve_item,cust_name , start_date,  complete_date, '批准' \
                     FROM (SELECT aa.*,b.*, ROWNUM RN FROM lg_base.V_SP_SHENQIN@TO_QYXX aa,\
                     lg_base.V_SP_SHENPIFISH@TO_QYXX b  \
-                    WHERE aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ and ROWNUM <= " + end + ") \
-                    WHERE RN >= " + (end-10),
+                    WHERE aa.cust_name like '%"+search+"%' and aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ and ROWNUM <= " + end + ") \
+                    WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             tmp = {};
             for (var j = 0; j < result["metaData"].length; j++) {
                 if (result["metaData"][j]["name"] == "START_DATE" || result["metaData"][j]["name"] == "COMPLETE_DATE") {
@@ -329,7 +329,7 @@ router.get('/sp', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        oracleDao.query('SELECT count(*) FROM lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ', function(data) {
+        oracleDao.query("SELECT count(*) FROM lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.cust_name like '%"+search+"%' and a.ORIGINAl_SEQ = b.ORIGINAl_SEQ", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
@@ -340,15 +340,15 @@ router.get('/sp', function(req, res, next) {
 });
 router.get('/jg', function(req, res, next) {
     // [1,10]
-    var p = 1;
+    var p = 1, search = req.query.search.trim().split('').join("%");
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("select case_member,main_person,create_date,case_name,case_situation,unit_punish_money,legal_name FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM lgsafe.case order by create_date desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("select case_member,main_person,create_date,case_name,case_situation,unit_punish_money,legal_name FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM lgsafe.case where case_member like '%"+search+"%' order by create_date desc) A WHERE ROWNUM <= " + end + ") WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             tmp = {};
             for (var j = 0; j < result["metaData"].length; j++) {
                 if (result["metaData"][j]["name"] == "MONTH") {
@@ -363,7 +363,7 @@ router.get('/jg', function(req, res, next) {
                 })(tmp["CREATE_DATE"]);
             tableData.push(tmp);
         }
-        oracleDao.query('SELECT count(*) FROM LGSAFE.check_record_item', function(data) {
+        oracleDao.query("SELECT count(*) FROM lgsafe.case where case_member like '%"+search+"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
