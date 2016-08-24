@@ -1,7 +1,21 @@
 <% include head.html %>
 <link rel="stylesheet" href="css/systems.css">
-<p class="content" id="total" style="text-align: right;position: relative;top: 25px;">总数:</p>
-<div class="content main" data-name="<%=name%>">
+<p class="com-title">
+    <%=titleName%>
+</p>
+<p id="total" style="    text-align: center;font-size: 15px;color: white;margin-top: 10px;">更新日期:<%=new Date().toLocaleDateString()%> 总数:30000</p>
+<div id="search">
+  <div class="input">
+      <label for="">
+          <img src="/images/search.png" alt="search">
+          <input data-name="FDDBR" type="text" placeholder="企业名">
+      </label>
+      <ul class="search-result hide">
+      </ul>
+  </div>
+  <button>搜索</button>
+</div>
+<div class="content main <%=name%>" data-name="<%=name%>">
   <div class="thead-container">
     <table class="thead" cellspacing="0" cellpadding="0">
       <tr>
@@ -30,47 +44,68 @@
     </table>
     <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
   </div>
+  <div id="pagination"></div>
 </div>
+<script type="text/javascript" src="/js/pagination.min.js"></script>
 <script>
   jQuery(document).ready(function($) {
       (function bendEvent() {
-          var current = 0, n='aj', isGetData = false;
-          var getData = function () {
+          var current = 0, n='aj', isGetData = false, searchText = '';
+          var showPagination = function(total) {
+              $("#pagination").pagination({
+                  pageCount:total,
+                  jump:true,
+                  current:current,
+                  coping:true,
+                  prevContent:' < ',
+                  nextContent:' > ',
+                  callback:function(pag) {
+                      showLoading();
+                      getData(pag.getCurrent());
+                  }
+              });
+          }
+          $("#search button").click(function(event) {
+              if (searchText != $(this).closest('#search').find('input').val()) {
+                  showLoading();
+                  searchText = $(this).closest('#search').find('input').val();
+                  getData(1);
+              }
+          });
+          function getData (page) {
               isGetData = true;
+              current = page;
               $.ajax({
                   url: '/jgs',
                   type: 'GET',
                   dataType: 'json',
-                  data: {p:current += 1,n:n},
+                  data: {p:page,n:n, search:searchText},
               })
               .done(function(res) {
                   var data = "";
                   console.log(res.table);
                   for (var i = 0; i < res.table.length; i++) {
-                      data += '<tr><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
+                      data += '<tr><td>' + String((current-1)*10+i+1) +'</td>';
                       for (var item in res.table[i]) {
                           data += '<td>' + (res.table[i][item]?res.table[i][item]:'无') + '</td>'
                       }
                       data += '</tr>';
                   }
-                  $('.tbody').append(data);
-                  $("#total").empty().append('总数:'+res.total);
+                  $('.tbody').empty().append(data).parent().find('img').remove();
+                  $("#total").empty().append('更新日期:'+new Date().toLocaleDateString() + ' 总数:'+res.total);
+                  showPagination(Math.ceil(res.total/10));
                   isGetData = false;
+                  hideLoading();
               });
           }
-          getData();
+          getData(1);
           $("#comStatusSelect").change(function(event) {
               isGetData = true;
               n = this.value;
               current = 0;
               $('.tbody').empty();
               console.log(n);
-              getData();
-          });
-          $("div.table-container").scroll(function(event) {
-              if (!isGetData && this.scrollTop == this.scrollHeight-292) {
-                  getData();
-              }
+              getData(1);
           });
       })();
   });

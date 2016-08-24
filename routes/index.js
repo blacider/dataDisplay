@@ -74,6 +74,14 @@ var titles = {
 router.get('/system', function(req, res, next) {
     var n = "sf";
     if (req.query.n) n = req.query.n;
+    if (n == 'jg') {
+        res.render('jianguan', {
+            title: '广州开发区审批监管大数据平台' ,
+            name:n,
+            titleName:titles[n]
+        });
+        return;
+    }
     res.render('systems', {
         title: '广州开发区审批监管大数据平台' ,
         table:[],

@@ -473,6 +473,7 @@ router.get('/item', function(req, res, next) {
 });
 router.get('/jgs', function(req, res, next) {
     var p = req.query.p,
+        search = req.query.search.trim().split('').join("%"),
         resultData = {
             table:undefined,
             total:undefined
