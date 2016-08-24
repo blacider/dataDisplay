@@ -133,7 +133,32 @@ header {
     top: 5px;
     left: -5px;
 }
-
+#pagination {
+    width: auto;
+    height: 72px;
+    float: right;
+    padding: 21px 16px;
+}
+#pagination a , #pagination span.active, #pagination span, #pagination input{
+    border-radius: 8px;
+    padding: 6px 10px;
+    border: 1px solid #eaeaea;
+    margin-left: 11px;
+    color: #6094bf;
+    box-sizing: border-box;
+}
+#pagination input {
+    width: 50px;
+}
+#pagination a:hover,
+#pagination span.active {
+    background-color:#6094bf;
+    color: white;
+    border:1px solid white;
+}
+#pagination span {
+    border:none;
+}
 #total_page {
     top: 0;
     position: absolute;

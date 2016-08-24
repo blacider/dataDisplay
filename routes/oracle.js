@@ -276,15 +276,15 @@ router.get('/df', function(req, res, next) {
 });
 router.get('/gs', function(req, res, next) {
     // [1,10]
-    var p = 1;
+    var p = 1, search = req.query.search.trim().split('').join("%");
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx order by clrq desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
+    oracleDao.query("SELECT ZCH,MC,FDDBR,ZYXMLB,DZ,CLRQ FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM exdb.ssdj_jbxx where mc like '%"+search+"%' order by clrq desc) A WHERE ROWNUM <= " + end + ") WHERE RN >= " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
-        for (var i = 0; i <= 9; i++) {
+        for (var i = 0; i < table.length; i++) {
             tmp = {};
             for (var j = 0; j < result["metaData"].length; j++) {
                 if (result["metaData"][j]["name"] == "MONTH") {
@@ -295,7 +295,7 @@ router.get('/gs', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        oracleDao.query('SELECT count(*) FROM exdb.ssdj_jbxx', function(data) {
+        oracleDao.query("SELECT count(*) FROM exdb.ssdj_jbxx where mc like '%"+search+"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,

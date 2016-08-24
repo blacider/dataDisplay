@@ -8,24 +8,24 @@ table {
     table-layout: fixed;
 }
 .main {
-    margin-top: 30px;
+    margin-top: 10px;
     border: 1px rgb(8, 132, 199) solid;
     border-radius: 13px;
-    padding: 20px 15px;
+    padding: 10px;
     box-sizing: border-box;
-    height: 370px;
+    height: 545px;
     overflow: none;
     background: white;
 }
 table.thead {
     font-weight: bold;
     color: white;
-    height: 35px;
-    font-size: 13px;
+    height: 34px;
+    font-size: 14px;
 }
 table.tbody {
-    margin-top: 5px;
-    color: #898989;
+    margin-top: -1px;
+    color: black;
 }
 table.tbody tr {
     border-bottom: 1px #898989 solid;
@@ -41,9 +41,8 @@ div.thead-container {
     border-radius: 100px;
 }
 div.table-container {
-    height: 292px;
-    overflow: scroll;
-    overflow-x: hidden;
+    height: 455px;
+    overflow: auto;
 }
 #comStatusSelect {
     background-color: rgba(255,255,255,0);
@@ -55,4 +54,86 @@ div.table-container {
 }
 #comStatusSelect option {
     color: black;
+}
+.com-title {
+    width: 247px;
+    background-color: #5eb3dd;
+    border-radius: 18px;
+    margin: -10px auto 0;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 25px;
+    text-shadow: 1px 1px 2px black;
+}
+.input {
+        float: left;
+    width: 184px;
+    margin-right: 10px;
+    line-height: 23px;
+    height: 23px;
+    border-radius: 10px;
+    background: white;
+    padding: 3px 9px;
+    position: relative;
+    box-sizing: border-box;
+}
+.input input {
+    width: 138px;
+    line-height: 22px;
+    height: 22px;
+    border: none;
+    /* border-radius: 10px; */
+    padding: 0 5px;
+    outline: none;
+    top: -3px;
+    font-size: 14px;
+    position: relative;
+    box-sizing: border-box;
+}
+.input img {
+    border-right: 1px #cecece solid;
+    padding-right: 4px;
+    height: 16px;
+}
+#search button {
+        height: 24px;
+    width: 48px;
+    line-height: 24px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+}
+#search {
+    position: absolute;
+    right: 8%;
+    top: 28.8%;
+}
+.gs td:nth-child(1) {
+    width: 37px;
+}
+.gs td:nth-child(2) {
+    width: 116px;
+}
+.gs td:nth-child(3) {
+    width: 207px;
+}
+.gs td:nth-child(4) {
+    width: 48px;
+}
+.gs td:nth-child(5) {
+    width: 123px;
+}
+.gs td:nth-child(6) {
+
+}
+.gs td:nth-child(7) {
+    width: 68px;
+}
+#pagination {
+    padding: 9px 16px;
 }
