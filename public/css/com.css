@@ -2,7 +2,7 @@ html {
     background-color: white;
 }
 .content-container > div{
-    height: 300px;
+    height: 285px;
     margin-right: -17px;
     margin-top: 9px;
     overflow-x: hidden;
@@ -103,6 +103,7 @@ h1 {
 .com-item {
     border-radius: 7px;
     padding: 10px;
+    height: 354px;
     position: relative;
     overflow: hidden;
     background-color: rgba(255,255,255,0.4);
@@ -223,4 +224,10 @@ p.noneBorder:before,p.noItem:before {
     height: 19px;
     top: -9px;
 }
-
+.items {
+    color: blue;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}

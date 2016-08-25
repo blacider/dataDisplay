@@ -14,14 +14,16 @@
 <div class="block main" data-addr="<%=data[8]%>" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-top:30px;">
   <div>
     <div class="com-item jbxx" data-url="/jbxx">
-      <p class="title-able title" data-name="jb" style="background-image: url(/images/com-title1.png);">基本信息</p>
+      <p class="title-able title" style="background-image: url(/images/com-title1.png);">基本信息</p>
       <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+      <p class="items" data-name="jb">详细信息>></p>
     </div>
   </div>
   <div>
     <div class="com-item" data-url="/spxx">
       <p class="title title-able" data-name="sp" style="background-image: url(/images/com-title2.png);">审批信息</p>
       <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+      <p class="items spxx_" data-name="sp">详细信息>></p>
     </div>
   </div>
   <div>
@@ -115,7 +117,7 @@
     var name = $(".main").data("name"),
         addr = $(".main").data("addr"),
         zch = $(".main").data("zch"), isClickP = false;
-    $("p.title-able").css('cursor', 'pointer').click(function(event) {
+    $("p.items").css('cursor', 'pointer').click(function(event) {
       if (isClickP) return;
       isClickP = true;
       showLoading();
@@ -154,5 +156,8 @@
       }
     });
   });
+  function showXKZ() {
+    $(".spxx_").click();
+  }
 </script>
 <% include foot.html %>

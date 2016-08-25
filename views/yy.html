@@ -78,13 +78,13 @@
 </style>
 <%index = 0%>
 <ul id="tableNames">
-    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">审批信息</li>
-    <li class="<%=index?'':'active'%>" data-id="<%=index++%>">许可证台账</li>
+    <li data-id="<%=index++%>">审批信息</li>
+    <li class="active" data-id="<%=index++%>">许可证台账</li>
     <%
     index = 0;
     %>
 </ul>
-    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+    <table class="xxtable ytable" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
         <thead>
             <tr>
                <td>事项名称</td>
@@ -109,7 +109,7 @@
             <%}%>
         </tbody>
     </table>
-    <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
+    <table class="xxtable ytable active" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
         <thead>
             <tr>
                 <td>许可证名称</td>
