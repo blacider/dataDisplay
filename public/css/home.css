@@ -91,6 +91,19 @@ li {
     left: 460px;
     line-height: 40px;
 }
+.left-title3 {
+    width: 185px;
+    top: 23px;
+    left: -34px;
+    font-size: 18px;
+}
+.left-title4 {
+    width: 151px;
+    top: 15px;
+    right: -127px;
+    font-size: 18px;
+    line-height: 40px;
+}
 .left-text {
     position: absolute;
     font-size: 16px;
