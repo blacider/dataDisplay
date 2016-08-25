@@ -131,3 +131,158 @@ footer p {
 .block3 ul li:first-child {
     margin-left:0;
 }
+
+
+
+
+body {
+    margin: 0 0 0 0;
+    font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+}
+
+p {
+    margin: 0 0 0 0;
+}
+
+.content {
+    width: 100%;
+}
+
+.uppest-bar {
+    color: #f5f3f1;
+    font-size: 14px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background-color: #005CA0;
+
+}
+
+.uppest-bar-center {
+    width: 1080px;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.time {
+    margin-left: 39px;
+    display:inline-block;
+    float:left;
+}
+
+.govern-entrance {
+    margin-left: 353px;
+    display:inline-block;
+    float:left;
+}
+a {
+    color: white;
+}
+.welcome-words {
+    width: 205px;
+    text-align: right;
+    margin-left: 96px;
+    display:inline-block;
+    float:left;
+}
+
+.big-title-bg {
+    width:100%;
+    height:54px;
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#8cd0ee), to(rgba(255, 255, 255, 0.5)));
+    background:-moz-linear-gradient(top, #8cd0ee, rgba(255, 255, 255, 0.5)); 
+    background:gradient(top, #8cd0ee, rgba(255, 255, 255, 0.5)); 
+}
+
+.flower {
+    float: right;
+    width: 500px;
+    height: 200px;
+    background: url(/qy-image/flower.png);
+    background-repeat: no-repeat;
+    background-position-y: -35px;
+}
+
+.title {
+    height: 100px;
+    width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(/qy-image/title.png);
+    background-repeat: no-repeat;
+}
+
+.upper-bar {
+    color: #f5f3f1;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+    line-height: 35px;
+    background-color: #11A3D2;
+    margin-top: 54px;
+}
+
+.upper-bar-center {
+    width: 1080px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upper-bar-center ul {
+    list-style:none;
+    padding: 0 0 0 0;
+}
+
+.upper-bar-center li {
+    width: 118px;
+    height: 43px;
+    padding-top: 7px;
+    float: left;
+    text-align: center;
+}
+
+.home-logo {
+    width: 30px;
+    height: 20px;
+    background: url(/qy-image/home.png);
+    background-repeat: no-repeat;
+    float: left;
+    margin-top: 7px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.home-logo-words {
+    text-align: initial;
+}
+
+.button-vivid {
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(hsla(194, 35%, 53%, 0.9333333333333333)), to(rgba(25, 77, 152, 0.5)));
+    background:-moz-linear-gradient(top, hsla(194, 35%, 53%, 0.9333333333333333), rgba(25, 77, 152, 0.5)); 
+    background:gradient(top, hsla(194, 35%, 53%, 0.9333333333333333), rgba(25, 77, 152, 0.5)); 
+}
+
+.search {
+    float: right;
+    margin-top: 5px;
+}
+
+.search input {
+    width: 224px;
+    height: 24px;
+}
+#search-button {
+    margin-top: 5px;
+    margin-left: 2px;
+    width: 30px;
+    height: 30px;
+    background: url(/qy-image/search.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+    background-color: white;
+    float: right;
+}
