@@ -29,9 +29,14 @@ var name = '';
             <div class="hide">
     <%
     } else {
+        if (index == 0) {
     %>
-
+        
+        <div class="content-first">
+                <p class="first-title noneBorder"><span><%=name%></span></p>
+            <div class="hide">
     <%
+        }
     }
     %>
     <div class="content-second">
