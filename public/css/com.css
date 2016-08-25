@@ -185,7 +185,7 @@ h1 {
     top: 10px;
     height: 40px;
 }
-p.noneBorder:before {
+p.noneBorder:before,p.noItem:before {
     border:none;
 }
 .first-title {
@@ -207,6 +207,7 @@ p.noneBorder:before {
 }
 .content-first p span {
     border: 1px #0c8ac2 solid;
+    padding: 0px 5px;
 }
 .content-first a {
     font-size: 14px;

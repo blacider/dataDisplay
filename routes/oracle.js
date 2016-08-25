@@ -409,29 +409,29 @@ router.get('/spxxitem', function(req, res, next) {
     });
 });
 router.get('/jwxx', function(req, res, next) {
-    oracleDao.query("select to_char(ywid), startdate, undertakedepartment, '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' ,'0'\
+    oracleDao.query("select to_char(ywid), startdate, '区建设和环境保护局', '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' ,'0'\
         from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
     order by startdate desc)\
     union all\
-    select to_char(ywid), starttime, undertakedepart, '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid','1' \
+    select to_char(ywid), starttime, '区建设和环境保护局', '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid','1' \
     from (select * from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
     order by starttime desc)\
     union all\
-    select to_char(id), start_time , '劳动局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' ,'0' \
+    select to_char(id), start_time , '区劳动和社会保障局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' ,'0' \
     from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
     order by start_time desc)\
     union all\
-    select uuid, check_time_start,safety_dept_name, '日常巡查', 'lgsafe.site_check_record', 'uuid', '0' \
+    select uuid, check_time_start,'区安全生产监督管理局', '日常巡查', 'lgsafe.site_check_record', 'uuid', '0' \
     from (select * from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
     order by check_time_start desc)\
     union all\
-    select id, jcjssj, '市场局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' ,'0' from (select * \
-    from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
-    order by jcjssj desc)\
-    union all\
-    select uuid, create_date,'安全生产监督管理局', '行政处罚' ,'lgsafe.case', 'uuid' ,'1'\
+    select uuid, create_date,'区安全生产监督管理局', '行政处罚' ,'lgsafe.case', 'uuid' ,'1'\
     from (select * from lgsafe.case where case_member like '%"+req.query.name+"%'\
     order by create_date desc)\
+    union all\
+    select id, jcjssj, '区市场质量监督管理局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' ,'0' from (select * \
+    from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
+    order by jcjssj desc)\
     ",
     function(result) {
         res.render('jwxx', {

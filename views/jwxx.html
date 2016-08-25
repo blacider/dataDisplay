@@ -7,14 +7,33 @@ var name = '';
 %>
 <div class="content-container">
 <div>
+<%
+    names = ['区建设和环境保护局', '区劳动和社会保障局', '区安全生产监督管理局', '区市场质量监督管理局'];
+    name = names[0];
+    var index = 0;
+%>
 <%for (var i = 0; i < data.length; i++) {%>
-    <% if (name != data[i][2]) {
-        name = data[i][2];
+    <%
+    if (name != data[i][2]) {
+        while (name != data[i][2] && name != undefined) {
     %>
-        <div class="content-first">
-            <p class="first-title noneBorder"><span><%=name%></span></p>
+            <div class="content-first">
+                <p class="first-title noItem noneBorder"><span><%=name%></span></p>
+            </div> 
+    <% 
+            name = names[++index];
+        }
+    %>
+            <div class="content-first">
+                <p class="first-title noneBorder"><span><%=name%></span></p>
             <div class="hide">
-    <%}%>
+    <%
+    } else {
+    %>
+
+    <%
+    }
+    %>
     <div class="content-second">
         <a href="/item?id=<%=data[i][0]%>&t=<%=data[i][4]%>&type=<%=data[i][6]%>&n=<%=data[i][5]%>">
             <p><%=getDate(data[i][1])%><%=data[i][2]%>进行<%=data[i][3]%></p>
