@@ -1,42 +1,63 @@
 html {
     background-color: white;
 }
-body {
-    overflow: auto;
-    background-image:url(/images/coms-bg.png);
-    background-repeat: repeat-x;
-    background-size: inherit;
-    min-width: 1000px;
-    min-height: 100%;
-    height: auto;
-}
-.content-container {
-    overflow: hidden;
-}
 .content-container > div{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-height: 300px;
+    height: 300px;
     margin-right: -17px;
+    margin-top: 9px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.com-titles {
+    height: auto;
 }
 .block {
     margin: 0 auto;
-    width: 900px;
-    padding: 30px 0;
+    width: 1080px;
+}
+.title-p p {
+    position: relative;
+    width: 114px;
+    background: #21619b;
+    height: 42px;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.title-p p:after {
+    content: ' ';
+    clear: both;
+    display: block;
     border-bottom: 1px dashed white;
+    float: left;
+    width: 934px;
+    position: absolute;
+    height: 21px;
+    top: -3px;
+    left: 144px;
+}
+.com-titles {
+    padding: 30px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.com-title:first-child {
+    border-left: 4px solid white;
 }
 .com-title {
-    width: 270px;
+    width: 472px;
+    font-weight: bolder;
     text-align: center;
-    background-color: #17cee5;
-    border-radius: 18px;
-    margin: 0 auto;
+    float: left;
     height: 20px;
     line-height: 20px;
     color: white;
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 2px black;
+    font-size: 20px;
+    border-right: 4px solid white;
 }
 /*footer {
     position: relative;
@@ -71,7 +92,7 @@ h1 {
 .main > div {
     border: 1px dashed rgba(255,255,255,0.4);
     padding: 2px;
-    width: 209px;
+    width: 254px;
     border-radius: 7px;
     float: left;
     margin-left: 13px;
@@ -89,20 +110,20 @@ h1 {
 .com-item .title {
     background-size: 100% auto;
     text-align: center;
-    font-size: 15px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 38px;
     height: 38px;
 }
 .content-item {
     margin-bottom: 10px;
 }
 .content-item a {
-    font-size: 10px;
+    font-size: 14px;
     color: black;
 }
 .content-item p {
-    font-size: 11px;
-    width: 165px;
+    font-size: 14px;
+    width: 197px;
     border-left: 1px #0c8ac2 solid;
     margin-left: 9px;
     padding-left: 12px;
@@ -172,20 +193,23 @@ p.noneBorder:before {
     left: 14px;
     cursor: pointer;
     height: 40px;
-    width: 152px;
+    width: 182px;
 }
 .content-first {
     position: relative;
     border-left: 1px #0c8ac2 solid;
-    width: 162px;
+    width: 214px;
     padding-left: 12px;
     margin: 0 auto;
 }
 .content-first p {
-    font-size: 11px;
+    font-size: 14px;
+}
+.content-first p span {
+    border: 1px #0c8ac2 solid;
 }
 .content-first a {
-    font-size: 10px;
+    font-size: 14px;
     color: black;
 }
 .content-item {

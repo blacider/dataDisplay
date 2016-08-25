@@ -14,7 +14,7 @@
         });
         $("#total_page").css('position', 'relative');
     }
-    if (['/', '/data', '/system'].indexOf(window.location.pathname) != -1) {
+    if (['/','/com', '/data', '/system'].indexOf(window.location.pathname) != -1) {
         $("#total_page").css("transform", "scale("+scale_+")");
         $(document).ready(function() {
             $(window).resize(function(event) {

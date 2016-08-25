@@ -1,15 +1,17 @@
 <% include head.html %>
 <link rel="stylesheet" href="/css/com.css">
-<div class="block">
-  <h1><%=data[1]%></h1>
-  <p class="com-title"><%=data[0]%></p>
-  <ul class="status">
-    <!-- <li>异常</li> -->
-    <li class="active">企业状态:<%=data[15]%></li>
-    <!-- <li>特殊</li> -->
-  </ul>
+<div class="block title-p">
+  <p>搜索结果</p>
 </div>
-<div class="block main" data-addr="<%=data[8]%>" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-bottom:70px;">
+<div class="block com-titles">
+  <p class="com-title"><%=data[1]%></p>
+  <p class="com-title" style="width:342px">信用代码:<%=data[0]%></p>
+  <p class="com-title" style="width:250px">企业状态:<%=data[15]%></p>
+</div>
+<div class="title-p block">
+  <p>专属档案</p>
+</div>
+<div class="block main" data-addr="<%=data[8]%>" data-zch="<%=data[0]%>" data-name="<%=data[1]%>" style="margin-top:30px;">
   <div>
     <div class="com-item jbxx" data-url="/jbxx">
       <p class="title-able title" data-name="jb" style="background-image: url(/images/com-title1.png);">基本信息</p>
@@ -140,15 +142,14 @@
       })
       .done(function(data) {
         dom.replaceWith(data);
-        $(".content-container > div").css('height', contentHight+'px');
       });
     }
     $(".com-item").each(function(index, el) {
       if ($(el).data("url")) getData($(el).data("url"), $(el).find('.load'));
     });
     $(".jwxx").delegate('.first-title', 'click', function(event) {
-      $(event.target).next().toggleClass('hide');
-      $(event.target).toggleClass('noneBorder');
+      $(event.target).closest('p').next().toggleClass('hide');
+      $(event.target).closest('p').toggleClass('noneBorder');
     });
   });
 </script>
