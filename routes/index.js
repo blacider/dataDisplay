@@ -89,6 +89,17 @@ router.get('/system', function(req, res, next) {
         titleName:titles[n]
     });
 });
+router.get('/jws', function(req, res, next) {
+    var n = '';
+    if (req.query.name) n = req.query.name;
+    res.render('jianguan_', {
+        title: '广州开发区审批监管大数据平台' ,
+        name:'jg',
+        search:n,
+        titleName:titles['jg']
+    });
+    return;
+});
 
 router.get('/getData', function(req, res, next) {
     res.json({

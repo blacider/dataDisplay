@@ -1,0 +1,95 @@
+<% include head.html %>
+<link rel="stylesheet" href="css/systems.css">
+<p class="com-title">
+    <%=titleName%>
+</p>
+<p id="total" style="    text-align: center;font-size: 15px;color: white;margin-top: 10px;">更新日期:<%=new Date().toLocaleDateString()%> 总数:30000</p>
+<div class="content main <%=name%>" data-name="<%=name%>">
+  <div class="thead-container">
+    <table class="thead" cellspacing="0" cellpadding="0">
+      <tr>
+          <td>
+              <select id="comStatusSelect">
+                  <option value="hb">环保</option>
+                  <option value="aj">安监</option>
+                  <option value="sc">市场</option>    
+                  <option value="lj">劳监</option>
+              </select>
+          </td>
+          <td>检查日期</td>
+          <td>企业名</td>
+          <td>监管类别</td>
+          <td>执法人员</td>
+          <td>执法证号</td>
+          <td>监管内容</td>
+          <td>监管结果</td>
+          <td>执法文书</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="table-container">
+    <table class="tbody" cellspacing="0" cellpadding="0">
+    </table>
+    <img src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+  </div>
+  <div id="pagination"></div>
+</div>
+<script type="text/javascript" src="/js/pagination.min.js"></script>
+<script>
+  jQuery(document).ready(function($) {
+      (function bendEvent() {
+          var current = 0, n='hb', isGetData = false, searchText = '<%=search%>';
+          var showPagination = function(total) {
+              $("#pagination").pagination({
+                  pageCount:total,
+                  jump:true,
+                  current:current,
+                  coping:true,
+                  prevContent:' < ',
+                  nextContent:' > ',
+                  callback:function(pag) {
+                      showLoading();
+                      getData(pag.getCurrent());
+                  }
+              });
+          }
+          function getData (page) {
+              isGetData = true;
+              current = page;
+              $.ajax({
+                  url: '/jgs',
+                  type: 'GET',
+                  dataType: 'json',
+                  data: {p:page,n:n, search:searchText},
+              })
+              .done(function(res) {
+                  var data = "";
+                  console.log(res.table);
+                  for (var i = 0; i < res.table.length; i++) {
+                      data += '<tr><td>' + String((current-1)*10+i+1) +'</td>';
+                      for (var item in res.table[i]) {
+                          data += '<td>' + (res.table[i][item]?res.table[i][item]:'无') + '</td>'
+                      }
+                      data += '</tr>';
+                  }
+                  $('.tbody').empty().append(data).parent().find('img').remove();
+                  $("#total").empty().append('更新日期:'+new Date().toLocaleDateString() + ' 总数:'+res.total);
+                  showPagination(Math.ceil(res.total/10));
+                  isGetData = false;
+                  hideLoading();
+              });
+          }
+          getData(1);
+          $("#comStatusSelect").change(function(event) {
+              isGetData = true;
+              n = this.value;
+              current = 0;
+              $('.tbody').empty();
+              console.log(n);
+              getData(1);
+          });
+      })();
+  });
+</script>
+<% include foot.html %>

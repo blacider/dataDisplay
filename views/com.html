@@ -30,6 +30,7 @@
     <div class="com-item jwxx" data-url="/jwxx">
       <p class="title" style="background-image: url(/images/com-title3.png);">监管信息</p>
       <img class="load" src="/images/loading.gif" alt="loading" style="width: 20px;margin: 10px auto;display: block;">
+      <p class="jwxx_ items" data-name="jw" data-url="jws?name=<%=data[1]%>">详细信息>></p>
     </div>
   </div>
   <div>
@@ -118,6 +119,10 @@
         addr = $(".main").data("addr"),
         zch = $(".main").data("zch"), isClickP = false;
     $("p.items").css('cursor', 'pointer').click(function(event) {
+      if ($(event.target).data('name') == 'jw') {
+        window.location.href = $(event.target).data('url');
+        return;
+      }
       if (isClickP) return;
       isClickP = true;
       showLoading();
