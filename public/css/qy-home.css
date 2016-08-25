@@ -519,24 +519,27 @@ p {
 	height: 70px;
 	background:url(/qy-image/ownInfo-icon.png);
 	background-repeat: no-repeat;
+	background-size: contain;
 	margin-left: 91px;
 	margin-top: 25px;
 }
 
 .manageInfo-icon {
-	width: 55px;
+	width: 86px;
 	height: 70px;
-	background:url(/qy-image/ownInfo-icon.png);
+	background: url(/qy-image/manageInfo-icon.png);
 	background-repeat: no-repeat;
-	margin-left: 91px;
+	background-size: contain;
+	margin-left: 76px;
 	margin-top: 25px;
 }
 
 .ownSupport-icon {
 	width: 55px;
 	height: 70px;
-	background:url(/qy-image/ownInfo-icon.png);
+	background:url(/qy-image/ownSupport-icon.png);
 	background-repeat: no-repeat;
+	background-size: contain;
 	margin-left: 91px;
 	margin-top: 25px;
 }
