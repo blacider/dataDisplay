@@ -23,6 +23,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+router.get('/qy', function(req, res, next) {
+    res.render('qy-login', {
+        title: '广州开发区审批监管大数据平台'
+    });
+});
+
 var names = {
     sf:{
         FN:"档案号",

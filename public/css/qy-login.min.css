@@ -1,0 +1,8 @@
+html,body{width:100%;overflow-x:hidden;min-width:1100px;font-family:"Microsoft Yahei"}html{overflow:auto}.block{width:1080px;margin:0 auto}
+.block1-bg{height:434px;background-size:cover;background-position:center;width:100%;background-image:url(/images/qy-bg1.jpg)}.block1{height:100%}.left,.right{color:white;text-align:center;width:50%;float:left;height:100%;position:relative}
+.left{left:5px}.right{right:5px}.block1 h1{padding:0;font-size:38px;line-height:48px;font-weight:bolder}.left h1{margin:54px auto 19px}.right h1{margin:79px auto 16px}
+.block1-item h2{font-size:24px;line-height:24px;padding:0;margin:0;margin-bottom:14px}.block2{height:200px;border:1px solid #f4f2f2;background-image:url(/images/qy-block2.png);background-repeat:no-repeat;background-position:center;position:relative}
+.block2 ul{width:100%;margin:0;padding:0;overflow:hidden;position:absolute;bottom:0}.block2 ul li{font-size:23px;line-height:30px;color:white;text-align:right;float:left;width:266px;display:block;height:100%;box-sizing:border-box;padding:32px 13px}
+footer{height:70px;background:#4e4d4a;width:100%}footer p{padding:17px 0;margin:0;width:100%;text-align:center;color:white;font-size:12px;line-height:18px}
+.block3{background-repeat:no-repeat;width:1087px;height:196px;margin:0 auto;background-image:url(/images/qy-block3-bg.png)}.block3 img{display:block;padding:40px 0;margin:0 auto}
+.block3 ul li{display:block;float:left;margin-left:20px;font-size:17px;line-height:23px;color:#}
