@@ -19,5 +19,8 @@
     "crypto": "0.0.3",
     "request": "^2.73.0",
     "oracledb": "^1.10.0"
+  },
+  "devDependencies": {
+    "ccap": "^0.6.10"
   }
 }
