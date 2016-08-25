@@ -127,7 +127,7 @@ li {
     color: black;
 }
 .left-item {
-    padding: 19px 88px 17px 18px;
+    padding: 19px 78px 17px 18px;
     box-sizing: border-box;
     float: left;
     width: 178px;
@@ -135,6 +135,7 @@ li {
     position: relative;
     top: 208px;
     left: 25px;
+    font-weight: bolder;
     font-size: 18px;
     line-height: 23px;
 }
