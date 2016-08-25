@@ -488,9 +488,9 @@ router.get('/jgs', function(req, res, next) {
                 });
         }
     if (name === 'aj') {
-        oracleDao.query("select to_char(check_time_start,'yyyy-mm-dd'), SAFETY_DEPT_NAME,'日常检查', check_man, CHECK_MAN1_CODE, risk_contain, '' ,''\
+        oracleDao.query("select to_char(check_time_start,'yyyy-mm-dd'), CORP_NAME,'日常检查', check_man, CHECK_MAN1_CODE, risk_contain, '' ,''\
         from (select rownum rn, a.*, b.*\
-        from (select * from lgsafe.site_check_record order by check_time_start desc) a\
+        from (select * from lgsafe.site_check_record where CORP_NAME like '%" + search + "%' order by check_time_start desc) a\
         left join\
         lgsafe.check_record_item b\
         on a.uuid = b.check_uuid\
@@ -499,49 +499,49 @@ router.get('/jgs', function(req, res, next) {
             resultData["table"] = result["rows"];
             renderData();
         });
-        oracleDao.query("select count(*) from lgsafe.site_check_record\
+        oracleDao.query("select count(*) from lgsafe.site_check_record where CORP_NAME like '%" + search + "%' \
             ",function(result) {
             resultData["total"] = result["rows"][0];
             renderData();
         });
     } else if (name === 'sc') {
-        oracleDao.query("select to_char(JCJSSJ,'yyyy-mm-dd'), '市场局', '日常巡查', zfrqm,jcqy_ssxq,'卫生',to_char(spjcjl),''\
+        oracleDao.query("select to_char(JCJSSJ,'yyyy-mm-dd'), JCQYMC, '日常巡查', zfrqm,jcqy_ssxq,'卫生',to_char(spjcjl),''\
         from (select rownum rn, a.*\
-        from (select * from LGYJ_CYJG.B_CY_RC_J_XCJC order by jcjssj desc) a\
+        from (select * from LGYJ_CYJG.B_CY_RC_J_XCJC where JCQYMC like '%"+search+"%' order by jcjssj desc) a\
         where rownum <= "+(p*10)+")\
         where rn >= "+(p*10-9),function(result) {
             resultData["table"] = result["rows"];
             renderData();
         });
-        oracleDao.query("select count(*) from LGYJ_CYJG.B_CY_RC_J_XCJC\
+        oracleDao.query("select count(*) from LGYJ_CYJG.B_CY_RC_J_XCJC where JCQYMC like '%"+search+"%' \
             ",function(result) {
             resultData["total"] = result["rows"][0];
             renderData();
         });
     } else if (name === 'lj') {
-        oracleDao.query("select to_char(start_time,'yyyy-mm-dd'), '劳动局', '日常巡查', main_man||','||ass_man, '', to_char(CONTENT), to_char(question),''\
+        oracleDao.query("select to_char(start_time,'yyyy-mm-dd'), QY_NAME, '日常巡查', main_man||','||ass_man, '', to_char(CONTENT), to_char(question),''\
         from (select rownum rn, a.*\
-        from (select * from ldzf.QY_RCXC_REAL order by start_time desc) a\
+        from (select * from ldzf.QY_RCXC_REAL where QY_NAME like '%"+search+"%' order by start_time desc) a\
         where rownum <= "+(p*10)+")\
         where rn >= "+(p*10-9),function(result) {
             resultData["table"] = result["rows"];
             renderData();
         });
-        oracleDao.query("select count(*) from ldzf.QY_RCXC_REAL\
+        oracleDao.query("select count(*) from ldzf.QY_RCXC_REAL where QY_NAME like '%"+search+"%'\
             ",function(result) {
             resultData["total"] = result["rows"][0];
             renderData();
         });
     } else if (name === 'hb') {
-        oracleDao.query("select to_char(startdate,'yyyy-mm-dd'), undertakedepartment, QDLX, researchman, '', zflx, '', ''\
+        oracleDao.query("select to_char(startdate,'yyyy-mm-dd'), unitname, QDLX, researchman, '', zflx, '', ''\
         from (select rownum rn, a.*\
-        from (select * from sa.T_YYYD_ZF_MAIN order by startdate desc) a\
+        from (select * from sa.T_YYYD_ZF_MAIN where UNITNAME like '%"+search+"%' order by startdate desc) a\
         where rownum <= "+(p*10)+")\
         where rn >= "+(p*10-9),function(result) {
             resultData["table"] = result["rows"];
             renderData();
         });
-        oracleDao.query("select count(*) from sa.T_YYYD_ZF_MAIN\
+        oracleDao.query("select count(*) from sa.T_YYYD_ZF_MAIN where UNITNAME like '%"+search+"%'\
             ",function(result) {
             resultData["total"] = result["rows"][0];
             renderData();
