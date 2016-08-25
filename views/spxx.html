@@ -4,12 +4,31 @@
 }%>
 <div class="content-container">
 <div>
+    <div class="content-first">
+        <p class="first-title noneBorder"><span>行政审批</span></p>
+    <div class="hide">
 <%for (var i = 0; i < data.length; i++) {%>
-<div class="content-item">
+    <div class="content-second">
     <a href="spxxitem?id=<%=data[i][0]%>">
     <p><%=getDate(data[i][1])%> 向 <%=data[i][2]%> 提出办理 <%=data[i][3]%> <%=getDate(data[i][4])%>得到批准</p>
     </a>
-</div>
+    </div>
 <%}%>
+   </div>
+    </div>
+    <div class="content-first">
+        <p class="first-title noneBorder"><span>行政许可</span></p>
+    <div class="hide">
+<%for (var i = 0; i < xkz.length; i++) {%>
+    <div class="content-second">
+    <a href="javascript:showXKZ()">
+    <p>
+        取得<%xkz[i][0]%>许可证件，有效期为<%=getDate(xkz[i][4])%>至<%=getDate(xkz[i][5])%>
+    </p>
+    </a>
+    </div>
+<%}%>
+    </div>
+    </div>
 </div>
 </div>

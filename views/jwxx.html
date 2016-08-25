@@ -6,48 +6,40 @@ if (d == '') return '';
 var name = '';
 %>
 <div class="content-container">
-<div>
+<div> 
 <%
-    names = ['区建设和环境保护局', '区劳动和社会保障局', '区安全生产监督管理局', '区市场质量监督管理局'];
+    names = [
+            '区建设和环境保护局',
+            '区安全生产监督管理局',
+            '区市场和质量监督管理局',
+            '区劳动和社会保障局'];
     name = names[0];
-    var index = 0;
+    var index = 0, point = 0;
 %>
-<%for (var i = 0; i < data.length; i++) {%>
-    <%
-    if (name != data[i][2]) {
-        while (name != data[i][2] && name != undefined) {
-    %>
-            <div class="content-first">
-                <p class="first-title noItem noneBorder"><span><%=name%></span></p>
-            </div> 
-    <% 
-            name = names[++index];
-        }
-    %>
-            <div class="content-first">
-                <p class="first-title noneBorder"><span><%=name%></span></p>
-            <div class="hide">
-    <%
-    } else {
-        if (index == 0) {
-    %>
-        
+<%
+    for (index = 0; index < 4; index++) {
+%>
         <div class="content-first">
-                <p class="first-title noneBorder"><span><%=name%></span></p>
-            <div class="hide">
-    <%
+            <p class="first-title noneBorder"><span><%=names[index]%></span></p>
+        <div class="hide">
+<%
+        while (point < data.length && data[point][2] == names[index]) {
+%>
+            <div class="content-second">
+                <a href="/item?id=<%=data[point][0]%>&t=<%=data[point][4]%>&type=<%=data[point][6]%>&n=<%=data[point][5]%>">
+                    <p><%=getDate(data[point][1])%><%=data[point][2]%>进行<%=data[point][3]%></p>
+                </a>
+            </div>
+<%
+            point++;
         }
-    }
-    %>
-    <div class="content-second">
-        <a href="/item?id=<%=data[i][0]%>&t=<%=data[i][4]%>&type=<%=data[i][6]%>&n=<%=data[i][5]%>">
-            <p><%=getDate(data[i][1])%><%=data[i][2]%>进行<%=data[i][3]%></p>
-        </a>
-    </div>
-    <% if (i+1 == data.length || name != data[i+1][2]) {%>
+%>
             </div>
         </div>
-    <%}%>
-<%}%>
+<%
+    }
+%>
+
+
 </div>
 </div>

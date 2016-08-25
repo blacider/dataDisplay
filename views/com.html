@@ -147,9 +147,11 @@
     $(".com-item").each(function(index, el) {
       if ($(el).data("url")) getData($(el).data("url"), $(el).find('.load'));
     });
-    $(".jwxx").delegate('.first-title', 'click', function(event) {
-      $(event.target).closest('p').next().toggleClass('hide');
-      $(event.target).closest('p').toggleClass('noneBorder');
+    $(".com-item").delegate('.first-title', 'click', function(event) {
+      if ($(event.target).closest('p').next().children().length != 0) {
+        $(event.target).closest('p').next().toggleClass('hide');
+        $(event.target).closest('p').toggleClass('noneBorder');
+      }
     });
   });
 </script>

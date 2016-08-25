@@ -382,11 +382,50 @@ router.get('/jbxx', function(req, res, next) {
     });
 });
 router.get('/spxx', function(req, res, next) {
+    var resultsData = {'许可证' : []},
+        name = req.query.name,
+        zch = req.query.zch,
+        total = 5,
+        renderDataY = function() {
+            res.render('spxx', {
+                data: resultsData['审批信息'],
+                xkz:resultsData['许可证']
+            });
+        },
+        index = 0;
     oracleDao.query("select a.ORIGINAl_SEQ, start_date, unit_name, approve_item, complete_date from lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ and a.cust_name like '%"+req.query.name+"%'",
     function(result) {
-        res.render('spxx', {
-            data:result["rows"]
-        });
+        var data = result["rows"];
+        resultsData['审批信息'] = data;
+        if (++index == total) renderDataY();
+    });
+    oracleDao.query("select '环保许可证', LICENSENUMBER, POLLUTIONTYPE, '广州开发区建设和环境保护局',  REGEXP_SUBSTR(LICENSEVALIDITY,'[^至]+',1,1,'i'),REGEXP_SUBSTR(LICENSEVALIDITY,'[^至]+',1,2,'i'),''\
+    from SA.T_YYYD_XKZ_MAIN where entername = '"+name+"'\
+    ", function(result) {
+        var data = result["rows"];
+        resultsData['许可证'] = resultsData['许可证'].concat(data);
+        if (++index == total) renderDataY();
+    });
+    oracleDao.query("select '食品经营许可',xkzbh,jyxm_zw,creator_partname,xkksrq,xkjsrq,'' from lgyj_xdr.b_xdr_sp_jy_zsxx\
+    where qymc like '%"+name+"%'\
+    ", function(result) {
+        var data = result["rows"];
+        resultsData['许可证'] = resultsData['许可证'].concat(data);
+        if (++index == total) renderDataY();
+    });
+    oracleDao.query("select '化妆品许可',xkzbh,pzscxm,'市场局',to_char(create_time,'yyyy-mm-dd'),to_char(yxq,'yyyy-mm-dd'),'' from lgyj_xdr.b_xdr_hzp_fac_zsxx\
+    where qymc like '%"+name+"%'\
+    ", function(result) {
+        var data = result["rows"];
+        resultsData['许可证'] = resultsData['许可证'].concat(data);
+        if (++index == total) renderDataY();
+    });
+    oracleDao.query("select credentials_name,credentials_code,licenses_range,award_unit, to_char(award_date,'yyyy-mm-dd'),to_char(valid_end,'yyyy-mm-dd') ,'' from lgsafe.corp_credentials\
+    where CORP_NAME like '%"+name+"%'\
+    ", function(result) {
+        var data = result["rows"];
+        resultsData['许可证'] = resultsData['许可证'].concat(data);
+        if (++index == total) renderDataY();
     });
 });
 router.get('/spxxitem', function(req, res, next) {
@@ -409,17 +448,14 @@ router.get('/spxxitem', function(req, res, next) {
     });
 });
 router.get('/jwxx', function(req, res, next) {
-    oracleDao.query("select to_char(ywid), startdate, '区建设和环境保护局', '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' ,'0'\
-        from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
+    oracleDao.query("\
+    select to_char(ywid), startdate, '区建设和环境保护局', '日常巡查', 'sa.T_YYYD_ZF_MAIN', 'ywid' ,'0'\
+    from (select * from sa.T_YYYD_ZF_MAIN where unitname like '%"+req.query.name+"%'\
     order by startdate desc)\
     union all\
     select to_char(ywid), starttime, '区建设和环境保护局', '行政处罚', 'sa.T_YYYD_LA_MAIN', 'ywid','1' \
     from (select * from sa.T_YYYD_LA_MAIN where PARTY like '%"+req.query.name+"%'\
     order by starttime desc)\
-    union all\
-    select to_char(id), start_time , '区劳动和社会保障局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' ,'0' \
-    from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
-    order by start_time desc)\
     union all\
     select uuid, check_time_start,'区安全生产监督管理局', '日常巡查', 'lgsafe.site_check_record', 'uuid', '0' \
     from (select * from lgsafe.site_check_record where corp_name like '%"+req.query.name+"%'\
@@ -432,6 +468,10 @@ router.get('/jwxx', function(req, res, next) {
     select id, jcjssj, '区市场质量监督管理局', '日常巡查', 'LGYJ_CYJG.B_CY_RC_J_XCJC', 'id' ,'0' from (select * \
     from LGYJ_CYJG.B_CY_RC_J_XCJC where jcqymc like '%"+req.query.name+"%'\
     order by jcjssj desc)\
+    union all\
+    select to_char(id), start_time , '区劳动和社会保障局', '日常巡查', 'ldzf.QY_RCXC_REAL', 'id' ,'0' \
+    from (select * from ldzf.QY_RCXC_REAL where qy_name like '%"+req.query.name+"%'\
+    order by start_time desc)\
     ",
     function(result) {
         res.render('jwxx', {
