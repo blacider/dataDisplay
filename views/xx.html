@@ -134,14 +134,15 @@
     <table class="xxtable ytable <%=index?'':'active'%>" id="table_<%=index++%>" cellspacing="0" cellpadding="0">
         <thead>
             <tr>
-                <%for (item in data['用水用电'][0]){%>
-                    <td><%=item%></td>
-                <%}%>
+                    <td>月份</td>
+                    <td>用水量</td>
+                    <td>用电量</td>
             </tr>
         </thead>
         <tbody>
             <% for (item1 in data['用水用电']) {%>
                 <tr>
+                    <td><%=item1%></td>
                     <% for (item in data['用水用电'][item1]) {%>
                         <td><%=data['用水用电'][item1][item]%></td>
                     <%}%>

@@ -12,8 +12,12 @@ function getDate(d) {
   var dd = new Date(d);
   return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日";
 }
+function getMonthDate(d) {
+  var dd = new Date(d);
+  return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月";
+}
 router.get('/xx', function(req, res, next) {
-    var resultsData = {},total, name=req.query.name, index = 0, zch = req.query.zch, addr = req.query.addr;
+    var resultsData = {'用水用电':{}},total, name=req.query.name, index = 0, zch = req.query.zch, addr = req.query.addr;
     var renderData = function() {
         console.log(resultsData);
         res.render('xx',{data:resultsData});
@@ -23,7 +27,7 @@ router.get('/xx', function(req, res, next) {
         res.render('yy',{data:resultsData});
     }
     if (req.query.n == 'jb') {
-        total = 7;
+        total = 8;
         oracleDao.query("select zch, mc, fddbr, zyxmlb, jyfw, xkjyfw, dz\
         from exdb.ssdj_jbxx where zch = '"+zch+"'\
         ", function(result) {
@@ -70,21 +74,41 @@ router.get('/xx', function(req, res, next) {
             }
             if (++index == total) renderData();
         });
-        oracleDao.query("select aa.month, aa.consumption, bb.consumption  from\
-        (select * from WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0') aa\
-        left join\
-        (select * from WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0') bb\
-        on aa.month = bb.month\
-        order by aa.month desc\
+        oracleDao.query("select month, consumption from\
+        WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0'\
+        order by month desc\
         ", function(result) {
-            var data = result["rows"];
-            resultsData['用水用电'] = [];
-            for (var i = 0; i < data.length; i++) {
-                resultsData['用水用电'].push({
-                    '月份':getDate(data[i][0]),
-                    '用电量':data[i][1],
-                    '用水量':data[i][2],
-                })
+            var data = result["rows"], m, s = 0, d = 0;
+            m = getMonthDate(data[0][0]);
+            s = Number(data[0][1]);
+            for (var i = 1; i < data.length; i++) {
+                if (getMonthDate(data[i][0]) == m) {
+                    s += Number(data[i][1]);
+                } else {
+                    if (!resultsData['用水用电'][m]) resultsData['用水用电'][m] = {};
+                    resultsData['用水用电'][m]['用电量']=s;
+                    m = getMonthDate(data[i][0]);
+                    s = Number(data[i][1]);
+                }
+            }
+            if (++index == total) renderData();
+        });
+        oracleDao.query("select month, consumption from\
+        WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0'\
+        order by month desc\
+        ", function(result) {
+            var data = result["rows"], m, s = 0, d = 0;
+            m = getMonthDate(data[0][0]);
+            s = Number(data[0][1]);
+            for (var i = 1; i < data.length; i++) {
+                if (getMonthDate(data[i][0]) == m) {
+                    s += Number(data[i][1]);
+                } else {
+                    if (!resultsData['用水用电'][m]) resultsData['用水用电'][m] = {};
+                    resultsData['用水用电'][m]['用水量']=s;
+                    m = getMonthDate(data[i][0]);
+                    s = Number(data[i][1]);
+                }
             }
             if (++index == total) renderData();
         });
@@ -374,11 +398,58 @@ router.get('/jg', function(req, res, next) {
 });
 
 router.get('/jbxx', function(req, res, next) {
+    var name = req.query.name,
+        total = 3,
+        datas = {'用水用电':{}},
+        renderData = function() {
+            res.render('jbxx', {
+                data:datas['jbxx'],
+                xkz:datas['用水用电']
+            });
+        },
+        index = 0;
     oracleDao.query("select clrq, czsj from EXDB.EX_GONGSHANG_41V2_SSZTJCXX where zch = '"+req.query.zch+"'",
     function(result) {
-        res.render('jbxx', {
-            data:result["rows"]
-        });
+        datas['jbxx'] = result['rows'];
+        if (++index == total) renderData();
+    });
+    oracleDao.query("select month, consumption from\
+    WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0'\
+    order by month desc\
+    ", function(result) {
+        var data = result["rows"], m, s = 0, d = 0;
+        m = getMonthDate(data[0][0]);
+        s = Number(data[0][1]);
+        for (var i = 1; i < data.length; i++) {
+            if (getMonthDate(data[i][0]) == m) {
+                s += Number(data[i][1]);
+            } else {
+                if (!datas['用水用电'][m]) datas['用水用电'][m] = {};
+                datas['用水用电'][m]['用电量']=s;
+                m = getMonthDate(data[i][0]);
+                s = Number(data[i][1]);
+            }
+        }
+        if (++index == total) renderData();
+    });
+    oracleDao.query("select month, consumption from\
+    WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0'\
+    order by month desc\
+    ", function(result) {
+        var data = result["rows"], m, s = 0, d = 0;
+        m = getMonthDate(data[0][0]);
+        s = Number(data[0][1]);
+        for (var i = 1; i < data.length; i++) {
+            if (getMonthDate(data[i][0]) == m) {
+                s += Number(data[i][1]);
+            } else {
+                if (!datas['用水用电'][m]) datas['用水用电'][m] = {};
+                datas['用水用电'][m]['用水量']=s;
+                m = getMonthDate(data[i][0]);
+                s = Number(data[i][1]);
+            }
+        }
+        if (++index == total) renderData();
     });
 });
 router.get('/spxx', function(req, res, next) {

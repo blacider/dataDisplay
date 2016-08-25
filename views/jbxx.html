@@ -2,15 +2,33 @@
   var dd = new Date(d);
   return dd.getFullYear()+"年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日"
 }%>
+
 <div class="content-container">
 <div>
-<div class="content-item">
+    <div class="content-first">
+        <p class="first-title noneBorder"><span>注册登记</span></p>
+    <div class="hide">
+<div class="content-second">
     <p><%=getDate(data[0][0])%>注册登记</p>
 </div>
 <%for (var i = 0; i < data.length; i++) {%>
-<div class="content-item">
+<div class="content-second">
     <p><%=getDate(data[i][1])%>变更登记</p>
 </div>
 <%}%>
+   </div>
+    </div>
+    <div class="content-first">
+        <p class="first-title noneBorder"><span>用水用电</span></p>
+    <div class="hide">
+<%for (var item in xkz) {%>
+    <div class="content-second">
+    <p>
+         <%=item%>用水<%=xkz[item]['用水量']%>吨,用电<%=xkz[item]['用电量']%>度
+    </p>
+    </div>
+<%}%>
+    </div>
+    </div>
 </div>
 </div>
