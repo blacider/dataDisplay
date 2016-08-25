@@ -21,10 +21,10 @@
       <tr>
           <td>
               <select id="comStatusSelect">
+                  <option value="hb">环保</option>
                   <option value="aj">安监</option>
                   <option value="sc">市场</option>    
                   <option value="lj">劳监</option>
-                  <option value="hb">环保</option>
               </select>
           </td>
           <td>检查日期</td>
@@ -50,7 +50,7 @@
 <script>
   jQuery(document).ready(function($) {
       (function bendEvent() {
-          var current = 0, n='aj', isGetData = false, searchText = '';
+          var current = 0, n='hb', isGetData = false, searchText = '';
           var showPagination = function(total) {
               $("#pagination").pagination({
                   pageCount:total,

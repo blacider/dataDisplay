@@ -1,6 +1,6 @@
 table {
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 12px;
     border-collapse:collapse;
     width: 97%;
@@ -113,6 +113,7 @@ div.table-container {
     right: 8%;
     top: 28.8%;
 }
+/*工商*/
 .gs td:nth-child(1) {
     width: 37px;
 }
@@ -133,6 +134,91 @@ div.table-container {
 }
 .gs td:nth-child(7) {
     width: 68px;
+}
+/*审批*/
+.sp td:nth-child(1) {
+    width: 50px;
+}
+.sp td:nth-child(2) {
+    width: 275px;
+}
+.sp td:nth-child(3) {
+    width: 227px;
+}
+.sp td:nth-child(4) {
+    width: 148px;
+}
+.sp td:nth-child(5) {
+    width: 123px;
+}
+.sp td:nth-child(6) {
+    width: 55px;
+}
+/*电费*/
+.df td:nth-child(1) {
+    width: 50px;
+}
+.df td:nth-child(2) {
+    width: 145px;
+}
+.df td:nth-child(3) {
+    width: 227px;
+}
+.df td:nth-child(4) {
+    width: 148px;
+}
+.df td:nth-child(5) {
+    width: 123px;
+}
+.df td:nth-child(6) {
+    width: 55px;
+}
+/*水费*/
+.sf td:nth-child(1) {
+    width: 50px;
+}
+.sf td:nth-child(2) {
+    width: 145px;
+}
+.sf td:nth-child(3) {
+    width: 227px;
+}
+.sf td:nth-child(4) {
+    width: 148px;
+}
+.sf td:nth-child(5) {
+    width: 123px;
+}
+.sf td:nth-child(6) {
+    width: 55px;
+}
+/*监管*/
+.jg td:nth-child(1) {
+    width: 53px;
+}
+.jg td:nth-child(2) {
+    width: 82px;
+}
+.jg td:nth-child(3) {
+    width: 204px;
+}
+.jg td:nth-child(4) {
+    width: 103px;
+}
+.jg td:nth-child(5) {
+    width: 108px;
+}
+.jg td:nth-child(6) {
+    width: 64px;
+}
+.jg td:nth-child(7) {
+    width: 174px;
+}
+.jg td:nth-child(8) {
+    width: 122px;
+}
+.jg td:nth-child(9) {
+    width: 64px;
 }
 #pagination {
     padding: 9px 16px;
