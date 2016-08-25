@@ -157,7 +157,7 @@ router.get('/case', function(req, res, next) {
 
 router.get('/other', function(req, res, next) {
     var n = Number(req.query.n);
-    // 1:环保  2：审批系统  3:安监 4:劳动局 5 权责
+    // 1:环保  2：审批系统  3:安监 4:劳动局 5 权责  6 市场
     if (n === 1) {
         request('http://172.16.55.74:8442/lgydzf/login_byuser_sso.jsp?user=test', function(error, resp, body) {
             if (error) {
@@ -204,7 +204,16 @@ router.get('/other', function(req, res, next) {
             var token = crypto.createHash('md5').update('admin'+body.trim()).digest('hex');
             res.redirect('http://172.23.2.33/admin/ssoServlet?token=' + token);
         });
-    }
+    } else if (n === 6) {
+        request('http://172.16.55.8:8000/portal/gzyj/lgoa/getdc.jsp?user=kf13214', function(error, resp, body) {
+            if (error) {
+                res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
+                return error;
+            }
+            var token = crypto.createHash('md5').update('kf13214'+body.trim()).digest('hex');
+            res.redirect('http://172.16.55.8:8000/portal/home/index.do?token=' + token);
+        });
+    } 
 });
 
 

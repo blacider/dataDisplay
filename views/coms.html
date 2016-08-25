@@ -70,7 +70,7 @@
         <div class="thead-container">
           <table class="thead" cellspacing="0" cellpadding="0">
             <tr>
-                <td style="width:50px">序号</td>
+                <td>序号</td>
                 <td>统一社会信用代码</td>
                 <td>企业名称</td>
                 <td>地址</td>
@@ -141,7 +141,7 @@
                         var data = "";
                         
                         for (var i = 0; i < res.table.length; i++) {
-                            data += '<tr data-zch="'+res.table[i]['ZCH']+'"><td style="width:50px">' + String((current-1)*10+i+1) +'</td>';
+                            data += '<tr data-zch="'+res.table[i]['ZCH']+'"><td>' + String((current-1)*10+i+1) +'</td>';
                             for (var item in res.table[i]) {
                                 data += '<td>' + res.table[i][item] + '</td>'
                             }
