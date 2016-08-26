@@ -78,6 +78,10 @@ router.get('/xx', function(req, res, next) {
         WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0'\
         order by month desc\
         ", function(result) {
+            if (result["rows"].length == 0) {
+                if (++index == total) renderData();
+                return;
+            }
             var data = result["rows"], m, s = 0, d = 0;
             m = getMonthDate(data[0][0]);
             s = Number(data[0][1]);
@@ -97,6 +101,10 @@ router.get('/xx', function(req, res, next) {
         WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0'\
         order by month desc\
         ", function(result) {
+            if (result["rows"].length == 0) {
+                if (++index == total) renderData();
+                return;
+            }
             var data = result["rows"], m, s = 0, d = 0;
             m = getMonthDate(data[0][0]);
             s = Number(data[0][1]);
@@ -418,6 +426,10 @@ router.get('/jbxx', function(req, res, next) {
     WEBLH.T_ELECTRICITY where name = '"+name+"' and consumption != '0'\
     order by month desc\
     ", function(result) {
+        if (result["rows"].length == 0) {
+            if (++index == total) renderData();
+            return;
+        }
         var data = result["rows"], m, s = 0, d = 0;
         m = getMonthDate(data[0][0]);
         s = Number(data[0][1]);
@@ -437,6 +449,10 @@ router.get('/jbxx', function(req, res, next) {
     WEBLH.T_WATER_NRESIDENT where name = '"+name+"' and consumption != '0'\
     order by month desc\
     ", function(result) {
+        if (result["rows"].length == 0) {
+            if (++index == total) renderData();
+            return;
+        }
         var data = result["rows"], m, s = 0, d = 0;
         m = getMonthDate(data[0][0]);
         s = Number(data[0][1]);

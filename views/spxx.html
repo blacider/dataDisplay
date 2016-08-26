@@ -5,7 +5,7 @@
 <div class="content-container">
 <div>
     <div class="content-first">
-        <p class="first-title"><span>行政审批</span></p>
+        <p class="first-title <%=data.length?'':'noItem'%>"><span>行政审批</span></p>
     <div class="">
 <%for (var i = 0; i < data.length; i++) {%>
     <div class="content-second">
@@ -17,7 +17,7 @@
    </div>
     </div>
     <div class="content-first">
-        <p class="first-title"><span>行政许可</span></p>
+        <p class="first-title <%=xkz.length?'':'noItem'%>"><span>行政许可</span></p>
     <div class="">
 <%for (var i = 0; i < xkz.length; i++) {%>
     <div class="content-second">
