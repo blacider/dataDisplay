@@ -57,7 +57,7 @@ var names = {
         MC:"企业名",
         FDDBR:"法人",
         ZYXMLB:"行业",
-        DZ:"地址",
+        DZ:"注册地址",
         CLRQ:"注册时间"
     },
     jg:{

@@ -38,8 +38,18 @@
       <p class="title" style="background-image: url(/images/com-title4.png);">服务信息</p>
       <div class="content-container">
         <div>
+          <div class="content-first">
+            <p class="first-title noneBorder noItem"><span>政策兑现</span></p>
+          </div>
+          <div class="content-first">
+            <p class="first-title noneBorder noItem"><span>资金扶持</span></p>
+          </div>
+          <div class="content-first">
+            <p class="first-title noneBorder noItem"><span>场地扶持</span></p>
+          </div>
         </div>
       </div>
+      <p class="items" data-name="fw">详细信息>></p>
     </div>
   </div>
 </div>
@@ -121,6 +131,8 @@
     $("p.items").css('cursor', 'pointer').click(function(event) {
       if ($(event.target).data('name') == 'jw') {
         window.location.href = $(event.target).data('url');
+        return;
+      } else if ($(event.target).data('name') == 'fw') {
         return;
       }
       if (isClickP) return;
