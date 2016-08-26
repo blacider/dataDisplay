@@ -14,14 +14,23 @@ var name = '';
             '区市场和质量监督管理局',
             '区劳动和社会保障局'];
     name = names[0];
+    results = {};
     var index = 0, point = 0;
+    for (index = 0; index < 4; index++) {
+        results[names[index]] = [];
+        while (point < data.length && data[point][2] == names[index]) {
+            results[names[index]].push(data[point]);
+            point++;
+        }
+    }
 %>
 <%
+    point = 0;
     for (index = 0; index < 4; index++) {
 %>
         <div class="content-first">
-            <p class="first-title noneBorder"><span><%=names[index]%></span></p>
-        <div class="hide">
+            <p class="first-title <%=results[names[index]].length?'':'noItem'%>"><span><%=names[index]%></span></p>
+        <div>
 <%
         while (point < data.length && data[point][2] == names[index]) {
 %>
