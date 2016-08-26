@@ -136,6 +136,9 @@ div.table-container {
     width: 74px;
 }
 /*审批*/
+.sp td {
+    text-align: center;
+}
 .sp td:nth-child(1) {
     width: 50px;
 }
@@ -157,21 +160,27 @@ div.table-container {
 /*电费*/
 .df td:nth-child(1) {
     width: 50px;
+    text-align: center;
 }
 .df td:nth-child(2) {
     width: 145px;
+    text-align: center;
 }
 .df td:nth-child(3) {
     width: 227px;
+    text-align: center;
 }
 .df td:nth-child(4) {
     width: 148px;
+    text-align: center;
 }
 .df td:nth-child(5) {
     width: 123px;
+    text-align: center;
 }
 .df td:nth-child(6) {
-    width: 55px;
+text-align: center;
+    width: 109px;
 }
 /*水费*/
 .sf td:nth-child(1) {
@@ -216,15 +225,20 @@ div.table-container {
 }
 .jg td:nth-child(6) {
     width: 64px;
+    text-align: center;
 }
 .jg td:nth-child(7) {
     width: 174px;
+    text-align: center;
 }
+
 .jg td:nth-child(8) {
     width: 122px;
+    text-align: center;
 }
 .jg td:nth-child(9) {
     width: 64px;
+    text-align: center;
 }
 #pagination {
     padding: 9px 16px;

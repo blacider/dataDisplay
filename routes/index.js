@@ -39,18 +39,18 @@ router.get('/qyhome', function(req, res, next) {
 
 var names = {
     sf:{
-        FN:"客户档案",
+        FN:"客户编号",
         NAME:"客户名称",
-        MONTH:"用水月份",
-        CONSUMPTION:"用水量",
+        MONTH:"抄表月份",
+        CONSUMPTION:"用水量（吨）",
         INDUSTRY:"客户行业"
     },
     df:{
-        ID:"id",
+        ID:"客户编号",
         NAME:"客户名称",
         MONTH:"抄表月份",
-        TYPE:"类型",
-        CONSUMPTION:"本月用点量"
+        TYPE:"用电类型",
+        CONSUMPTION:"本月用点量（度）"
     },
     gs:{
         ZCH:"企业代码",
