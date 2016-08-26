@@ -232,7 +232,7 @@ p {
 	padding: 0 0 0 0;
 	color: white;
 	font-size: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 19px;
 }
 
 .six-bubbles li {
@@ -243,7 +243,7 @@ p {
 }
 
 #line1 {
-	padding-top: 17px;
+	padding-top: 22px;
 }
 
 #line1 li {
@@ -435,9 +435,9 @@ p {
 	width: 200px;
 	color: #005D9e;
 	text-align: center;
-	font-size: 25px;
+	font-size: 19px;
 	font-weight: 600;
-	margin-top: 2px;
+	margin-top: 6px;
 }
 
 .infor-details {
@@ -449,14 +449,18 @@ p {
 }
 
 .hints {
-	width: 282px;
+	width: 300px;
+	margin: 0 auto;
 	font-size: 15px;
 }
 
 .hints ul {
 	list-style: none;
+	padding: 0;
 }
-
+.hints ul li{
+	padding: 10px 0;
+}
 .zhuanshu-container {
 	height: 335px;
 	width: 1080px;
