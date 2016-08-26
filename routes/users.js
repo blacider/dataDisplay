@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userDao = require("../modal/dao/userDao.js");
-
+var ccap = require('ccap');
 var logger = require("../util/logger.js");
 /* GET users listing. */
 router.post('/signup', function(req, res, next) {
@@ -22,11 +22,35 @@ router.post('/signup', function(req, res, next) {
     });
 });
 
+
+router.get('/getCode', function(req, res, next) {
+    var captcha = ccap({
+    　　width:100,
+    　　height:47,　
+    　　offset:15,
+    　　quality:100,
+    　　fontsize:25,
+        generate:function(){
+            var rnd="";
+            for(var i=0;i<5;i++)
+                rnd+=Math.floor(Math.random()*10);
+            return rnd;
+        }
+    });
+    var ary = captcha.get();
+    req.session.code = ary[0];
+    console.log(ary[0]);//字符串
+    res.write(ary[1]); //
+    res.end();
+});
+
+
 router.get('/login', function(req, res, next) {
     var error = "";
     if (req.session["error"]) {
         error = req.session["error"];
     }
+    console.log(req.session);
     res.render('login', {
         title: '广州开发区审批监管大数据平台',
         page:1,
@@ -75,6 +99,13 @@ router.get('/logout', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
     logger.log("/login" + JSON.stringify(req.body));
+    if (req.body.code != req.session.code) {
+        req.session.error = "请输入正确验证码";
+        console.log(req.session.code, req.body.code);
+        res.redirect("/login");
+        return;
+    }
+    req.session.error = '';
     userDao.queryUserNumByName(req.body.name, function(err, result) {
         console.log(JSON.stringify(result));
         if (result[0]["count(*)"] == 0) {

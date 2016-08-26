@@ -62,7 +62,7 @@ app.use(function(req, res, next) {
   log.log(url);
   if (!req.session.hasOwnProperty("name")) {
     res.locals.isLogin = false;
-    if (url != "/login" && url != "/signup" && url != "/isLogin")
+    if (url != "/login" && url != "/signup" && url != "/isLogin" && url != "/getCode")
       return res.redirect("/login");
   } else {
     if (url == "/login" || url == "/signup") {
