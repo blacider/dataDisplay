@@ -44,7 +44,7 @@
                         data += '</tr>';
                     }
                     $('.tbody').empty().append(data).parent().find('img').remove();
-                    $("#total").empty().append('更新日期:'+new Date().toLocaleDateString() + ' 总数:'+res.total);
+                    $("#total").empty().append('更新日期:'+(new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月' + new Date().getDate() + '日')+ ' 总数:'+res.total);
                     showPagination(Math.ceil(res.total/10));
                     isGetData = false;
                     hideLoading();

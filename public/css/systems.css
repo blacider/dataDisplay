@@ -133,7 +133,7 @@ div.table-container {
 
 }
 .gs td:nth-child(7) {
-    width: 68px;
+    width: 74px;
 }
 /*审批*/
 .sp td:nth-child(1) {
@@ -176,21 +176,27 @@ div.table-container {
 /*水费*/
 .sf td:nth-child(1) {
     width: 50px;
+    text-align: center;
 }
 .sf td:nth-child(2) {
     width: 145px;
+    text-align: center;
 }
 .sf td:nth-child(3) {
     width: 227px;
+    text-align: center;
 }
 .sf td:nth-child(4) {
-    width: 148px;
+    width: 103px;
+    text-align: center;
 }
 .sf td:nth-child(5) {
-    width: 123px;
+    width:  78px;
+    text-align: center;
 }
 .sf td:nth-child(6) {
-    width: 55px;
+    width: 258px;
+    text-align: center;
 }
 /*监管*/
 .jg td:nth-child(1) {

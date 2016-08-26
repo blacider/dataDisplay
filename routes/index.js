@@ -39,11 +39,11 @@ router.get('/qyhome', function(req, res, next) {
 
 var names = {
     sf:{
-        FN:"档案号",
+        FN:"客户档案",
         NAME:"客户名称",
-        MONTH:"抄表月份",
-        CONSUMPTION:"本月用水量",
-        INDUSTRY:"行业"
+        MONTH:"用水月份",
+        CONSUMPTION:"用水量",
+        INDUSTRY:"客户行业"
     },
     df:{
         ID:"id",

@@ -83,6 +83,7 @@ td:nth-child(5) {
 }
 td:nth-child(6) {
     width: 25px;
+    text-align: center;
 }
 table {
     width: 100%;
@@ -169,6 +170,7 @@ footer {
 }
 .block2-text {
     overflow: hidden;
+    font-size: 15px;
     padding: 30px;
 }
 .block2-text p:first-child {
@@ -189,7 +191,7 @@ footer {
 }
 .search-result li {
     color: #000;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 22px;
     padding: 0 8px;
 }

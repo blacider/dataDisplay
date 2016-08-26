@@ -3,7 +3,7 @@
 <p class="com-title">
     <%=titleName%>
 </p>
-<p id="total" style="    text-align: center;font-size: 15px;color: white;margin-top: 10px;">更新日期:<%=new Date().toLocaleDateString()%> 总数:30000</p>
+<p id="total" style="    text-align: center;font-size: 15px;color: white;margin-top: 10px;">更新日期:<%=(new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月' + new Date().getDate() + '日')%> 总数:</p>
 <div class="content main <%=name%>" data-name="<%=name%>">
   <div class="thead-container">
     <table class="thead" cellspacing="0" cellpadding="0">
@@ -74,7 +74,7 @@
                       data += '</tr>';
                   }
                   $('.tbody').empty().append(data).parent().find('img').remove();
-                  $("#total").empty().append('更新日期:'+new Date().toLocaleDateString() + ' 总数:'+res.total);
+                  $("#total").empty().append('更新日期:'+(new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月' + new Date().getDate() + '日') + ' 总数:'+res.total);
                   showPagination(Math.ceil(res.total/10));
                   isGetData = false;
                   hideLoading();
