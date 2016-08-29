@@ -25,11 +25,6 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/getCode', function(req, res, next) {
     var captcha = ccap({
-    　　width:100,
-    　　height:47,　
-    　　offset:15,
-    　　quality:100,
-    　　fontsize:25,
         generate:function(){
             var rnd="";
             for(var i=0;i<5;i++)
@@ -113,7 +108,7 @@ router.post('/login', function(req, res, next) {
             res.redirect("/login");
         } else {
             userDao.queryUserByName(req.body.name, function(err, result) {
-                if (result.pass != req.body.pass) {
+                if (result[0].pass != req.body.password) {
                     req.session.error = "密码不正确";
                     res.redirect("/login");
                 } else {
