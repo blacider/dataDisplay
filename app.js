@@ -58,6 +58,7 @@ app.use(session({
 }));
 
 app.use(function(req, res, next) {
+  console.log(JSON.stringify(req.session));
   var url = req.originalUrl.split("?")[0];
   log.log(url);
   if (!req.session.hasOwnProperty("name")) {
