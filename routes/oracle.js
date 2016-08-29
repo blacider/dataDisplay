@@ -481,7 +481,16 @@ router.get('/spxx', function(req, res, next) {
             });
         },
         index = 0;
-    oracleDao.query("select a.ORIGINAl_SEQ, start_date, unit_name, approve_item, complete_date from lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ and a.cust_name like '%"+req.query.name+"%'",
+    oracleDao.query("select * from\
+                    (select a.control_seq, start_date, unit_name, approve_item, b.complete_date\
+                    from lg_base.V_SP_SHENQIN@oanet37 a left join\
+                    lg_base.V_SP_SHENPIFISH@oanet37 b on a.control_seq = b.control_seq\
+                    where a.cust_name like '%"+name+"%'\
+                    union all\
+                    select a.ORIGINAl_SEQ, start_date, unit_name, approve_item, complete_date from lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ and a.cust_name like '%"+name+"%'\
+                    )\
+                    order by start_date desc\
+                    ",
     function(result) {
         var data = result["rows"];
         resultsData['审批信息'] = data;
@@ -518,11 +527,14 @@ router.get('/spxx', function(req, res, next) {
 });
 router.get('/spxxitem', function(req, res, next) {
     var id = req.query.id;
-    oracleDao.query("select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,ACCEPT_MAN,ACCEPT_DATE,UNIT_NAME,PZ_MAN_NAME,PZ_DATE from\
-    (select * from lg_base.V_SP_SHOULI@TO_QYXX) aa,\
-    (select * from lg_base.V_SP_SHENPIGUOCHENG_PZ@TO_QYXX) bb,\
-    (select * from lg_base.V_SP_SHENPIFISH@TO_QYXX) cc\
-    where aa.original_seq = '"+id+"' and aa.original_seq=bb.original_seq and bb.original_seq=cc.original_seq\
+    oracleDao.query("\
+    select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,start_man,start_date,UNIT_NAME,complete_man,complete_date\
+    from lg_base.V_SP_SHENQIN@oanet37 a left join\
+        lg_base.V_SP_SHENPIFISH@oanet37 b on a.control_seq = b.control_seq\
+    where a.control_seq = '"+id+"'\
+    union all\
+    select APPROVE_ITEM, CUST_CONTACT_PERSON,CUST_CONTACT_WAY,CUST_ADDR,CUST_MOBILE,start_man,start_date,UNIT_NAME,complete_man,complete_date from lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.ORIGINAl_SEQ = b.ORIGINAl_SEQ\
+    and a.original_seq = '"+id+"'\
     ", function(result) {
         var data = result["rows"];
         for (item of data) {
