@@ -230,12 +230,12 @@ router.get('/other', function(req, res, next) {
             res.redirect('http://172.23.2.33/admin/ssoServlet?token=' + token);
         });
     } else if (n === 6) {
-        request('http://172.16.55.8:8000/portal/gzyj/lgoa/getdc.jsp?user=kf13214', function(error, resp, body) {
+        request('http://172.16.55.8:8000/portal/gzyj/lgoa/getdc.jsp?user=kf13094', function(error, resp, body) {
             if (error) {
                 res.send("该系统内部系统错误<br>错误信息:"+JSON.stringify(error));
                 return error;
             }
-            var token = crypto.createHash('md5').update('kf13214'+body.trim()).digest('hex');
+            var token = crypto.createHash('md5').update('kf13094'+body.trim()).digest('hex');
             res.redirect('http://172.16.55.8:8000/portal/home/index.do?token=' + token);
         });
     } 
