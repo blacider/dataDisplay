@@ -349,10 +349,10 @@ router.get('/sp', function(req, res, next) {
     var end = p*10;
     var total = 10002;
     oracleDao.query("SELECT approve_item,cust_name , start_date,  complete_date, '批准' \
-                    FROM (SELECT aa.*,b.*, ROWNUM RN FROM lg_base.V_SP_SHENQIN@TO_QYXX aa,\
+                    FROM (SELECT aa.*,b.*, ROWNUM RN FROM (select * from lg_base.V_SP_SHENQIN@TO_QYXX order by start_date desc) aa,\
                     lg_base.V_SP_SHENPIFISH@TO_QYXX b  \
                     WHERE aa.cust_name like '%"+search+"%' and aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ and ROWNUM <= " + end + "\
-                    order by start_date desc) \
+                    ) \
                     WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
