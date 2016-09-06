@@ -348,12 +348,14 @@ router.get('/sp', function(req, res, next) {
     if (req.query.p) p = Number(req.query.p);
     var end = p*10;
     var total = 10002;
-    oracleDao.query("SELECT approve_item,cust_name , start_date,  complete_date, '批准' \
-                    FROM (SELECT aa.*,b.*, ROWNUM RN FROM (select * from lg_base.V_SP_SHENQIN@TO_QYXX order by start_date desc) aa,\
-                    lg_base.V_SP_SHENPIFISH@TO_QYXX b  \
-                    WHERE aa.cust_name like '%"+search+"%' and aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ and ROWNUM <= " + end + "\
-                    ) \
-                    WHERE RN > " + (end-10),
+    oracleDao.query("\
+        SELECT approve_item,cust_name , start_date,  complete_date, '批准'\
+        FROM (SELECT approve_item,cust_name , start_date,  complete_date, '批准', ROWNUM RN \
+              FROM (select aa.*,b.* from lg_base.V_SP_SHENQIN@TO_QYXX  aa,lg_base.V_SP_SHENPIFISH@TO_QYXX b \
+                    where aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ  \
+                    order by start_date desc)   \
+              WHERE cust_name like '%"+search+"%'  and ROWNUM <= " + end + ")\
+        WHERE RN > " + (end-10),
     function(result) {
         var table = result["rows"];
         var tableData = [], tmp = {};
