@@ -351,9 +351,12 @@ router.get('/sp', function(req, res, next) {
     oracleDao.query("\
         SELECT approve_item,cust_name , start_date,  complete_date, '批准'\
         FROM (SELECT approve_item,cust_name , start_date,  complete_date, '批准', ROWNUM RN \
-              FROM (select aa.*,b.* from lg_base.V_SP_SHENQIN@TO_QYXX  aa,lg_base.V_SP_SHENPIFISH@TO_QYXX b \
-                    where aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ  \
-                    order by start_date desc)   \
+              FROM (select approve_item,cust_name , start_date,  complete_date, '批准' from lg_base.V_SP_SHENQIN@TO_QYXX  aa,lg_base.V_SP_SHENPIFISH@TO_QYXX b \
+                    where aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ\
+                    union all\
+                    select approve_item,cust_name , start_date,  complete_date, '批准' from lg_base.V_SP_SHENQIN@oanet37 a left join\
+                    lg_base.V_SP_SHENPIFISH@oanet37 b on a.control_seq = b.control_seq where start_date is not null\
+                    order by start_date desc)\
               WHERE cust_name like '%"+search+"%'  and ROWNUM <= " + end + ")\
         WHERE RN > " + (end-10),
     function(result) {
@@ -370,7 +373,13 @@ router.get('/sp', function(req, res, next) {
             }
             tableData.push(tmp);
         }
-        oracleDao.query("SELECT count(*) FROM lg_base.V_SP_SHENQIN@TO_QYXX a, lg_base.V_SP_SHENPIFISH@TO_QYXX b where a.cust_name like '%"+search+"%' and a.ORIGINAl_SEQ = b.ORIGINAl_SEQ", function(data) {
+        oracleDao.query("SELECT count(*) \
+            FROM (select approve_item,cust_name , start_date,  complete_date, '批准' from lg_base.V_SP_SHENQIN@TO_QYXX  aa,lg_base.V_SP_SHENPIFISH@TO_QYXX b \
+            where aa.ORIGINAl_SEQ = b.ORIGINAl_SEQ\
+            union all\
+            select approve_item,cust_name , start_date,  complete_date, '批准' from lg_base.V_SP_SHENQIN@oanet37 a left join\
+            lg_base.V_SP_SHENPIFISH@oanet37 b on a.control_seq = b.control_seq where start_date is not null)\
+            where cust_name like '%"+search+"%'", function(data) {
             total = data["rows"][0];
             res.json({
                 table:tableData,
