@@ -243,3 +243,9 @@ text-align: center;
 #pagination {
     padding: 9px 16px;
 }
+.tbody tr {
+    cursor:pointer;
+}
+.tbody tr:hover {
+    background: #f2fefc;
+}

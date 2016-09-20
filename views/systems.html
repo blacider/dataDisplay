@@ -46,6 +46,64 @@
   </div>
   <div id="pagination"></div>
 </div>
+<style>
+  .modal {
+      z-index: 100;
+      position: absolute;
+      position: fixed;
+      top:0;
+      left: 0;
+      max-height: 600px;
+      overflow: auto;
+      right: 0;
+      bottom: 0;
+      width: 900px;
+      height: 500px;
+      margin: auto;
+      animation-name:modal;
+      animation-duration:600ms;
+      animation-timing-function: ease-in-out;
+       -webkit-transition: .3s ease-out; 
+      transition: .3s ease-out;
+      border-radius: 8px;
+      box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+      background-color: white;
+      opacity: 1;
+      display: none;
+      border: 1px solid #cbcbcb;
+  }
+  @keyframes modal{
+
+      0% {transform-origin: 50% 50%;transform: rotate3d(0, 1, 0, 720deg) rotateZ(45deg) scale(0);}
+
+      100% {transform: rotate3d(0, 1, 0, 0) rotateZ(0) scale(1);}
+
+  }
+  .icon {
+      background-position: -37px -76px;
+      width: 16px;
+      height: 16px;
+      background-image: url(../images/icons.png);
+  }
+  .close {
+      right: 10px;
+      opacity: .2;
+      position: absolute;
+      top: 10px;
+      cursor: pointer;
+      -webkit-transition: opacity .2s ease-out;
+      transition: opacity .2s ease-out;
+  }
+  .close:hover {
+      opacity: .3;
+  }
+
+</style>
+<div class="modal">
+    <div class="close icon">
+    </div>
+    <div></div>
+</div>
 <script type="text/javascript" src="/js/pagination.min.js"></script>
 <script src="js/systems.js"></script>
 <% include foot.html %>
