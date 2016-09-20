@@ -169,7 +169,7 @@
                 $(".search-container").delegate('li', 'click', function(event) {
                     var liDom = $(event.target),
                         zch = liDom.closest('li').data('zch');
-                    window.location.href = "/com?ZCH="+zch;
+                    window.open("/com?ZCH="+zch);
                 });
                 var timeoutId;
                 $(document).click(function(event) {
